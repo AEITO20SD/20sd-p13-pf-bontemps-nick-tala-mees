@@ -1,7 +1,7 @@
 ## 20sd-p13-pf-bontempas-nick-tala-mees Readme
 
 ## Import things to know
-	All written communication the team is in discord. If you want to follow along, please use the link below to join.
+	All written communication the team is in discord. If you want to follow along please use the link below to join.
 	All important document are for now in google drive please click on the link below. (They will later be transferred to this repository)
 	
 	Project members: Nick Hoebe, Tala Hasan & Mees Rootjes.
