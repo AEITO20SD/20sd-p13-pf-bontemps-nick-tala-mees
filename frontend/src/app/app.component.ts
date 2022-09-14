@@ -11,9 +11,13 @@ export class AppComponent {
 
   constructor(private _apiservice:ApiserviceService){}
 
+    readData:any;
+
     ngOnInit(): void{
       this._apiservice.getApiData().subscribe((data)=>{
         console.log("Helloworld", data);
+
+        this.readData = data.message;
       });
   }
 }

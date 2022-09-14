@@ -10,9 +10,13 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
 });
 
 app.get("/api", (req: Request, res: Response, next: NextFunction) => {
-    res.json({
-        "statusMessage": 'Success'
-    })
+    // res.json({
+    //     "statusMessage": 'Success'
+    // })
+    res.send({
+        message: 'Success'
+    }  
+    );
 });
 
 app.listen(3080, () => {
