@@ -67,3 +67,41 @@
   margin: auto;
   padding: 7px 10px;
 }
+
+.login-form .login-submit {
+  width: 322px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background: #F2A099;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.login-form button:hover {
+  background: #F29188;
+  color: #fff;
+}
+
+.login-divider {
+  width: 322px;
+  margin: auto;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.login-register {
+  font-size: 14px;
+  color: black;
+  margin-top: 10px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.login-register a {
+  color: #F2A099;
+  font-weight: 600;
+  text-decoration: none;
+}

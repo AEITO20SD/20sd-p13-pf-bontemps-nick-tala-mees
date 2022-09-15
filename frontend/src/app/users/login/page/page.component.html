@@ -14,8 +14,12 @@
         </div>
         <div class="login-form">
           <form action="/login" method="POST">
-            <app-login-inputs></app-login-inputs>
+            <app-login-inputs [placeholder]="placeholder" [type]="type" [name]="name"></app-login-inputs>
+            <app-login-inputs [placeholder]="placeholder_pass" [type]="type_pass" [name]="name_pass"></app-login-inputs>
           </form>
+          <p class="login-register">Forgot your password? <a href="/login">reset password</a></p>
+          <hr class="login-divider">
+          <p class="login-register">No account yet? <a href="/register">register</a></p>
         </div>
       </div>
       <div class="login-disclaimer">

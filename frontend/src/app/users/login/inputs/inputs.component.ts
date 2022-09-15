@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-login-inputs',
@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inputs.component.css']
 })
 export class InputsComponent implements OnInit {
-
   constructor() { }
+
+  @Input() placeholder: string | undefined;
+  @Input() type: string | undefined;
+  @Input() name: string | undefined;
 
   ngOnInit(): void {
   }
