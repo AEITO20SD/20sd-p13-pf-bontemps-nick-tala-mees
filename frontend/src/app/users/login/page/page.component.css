@@ -32,7 +32,7 @@
 }
 
 .login-disclaimer a {
-  color: #F2A099;
+  color: #CA2C0C;
   font-weight: 600;
   text-decoration: none;
 }
@@ -42,11 +42,12 @@
 }
 
 .login-img-container img {
-  height: 100px;
+  height: 130px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 20px;
+  padding-top: 30px;
+  margin-bottom: 30px;
 }
 
 .login-title {
@@ -73,7 +74,7 @@
   height: 35px;
   border: none;
   border-radius: 5px;
-  background: #F2A099;
+  background: #CA2C0C;
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -82,7 +83,7 @@
 }
 
 .login-form button:hover {
-  background: #F29188;
+  background: #ba4b35;
   color: #fff;
 }
 
@@ -101,7 +102,7 @@
 }
 
 .login-register a {
-  color: #F2A099;
+  color: #CA2C0C;
   font-weight: 600;
   text-decoration: none;
 }
