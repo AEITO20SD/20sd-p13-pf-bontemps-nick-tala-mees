@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction} from 'express';
 
-var cors = require('cors')
+var cors = require('cors');
+const databse = require('./connect');
 
 const app: Application = express();
 
