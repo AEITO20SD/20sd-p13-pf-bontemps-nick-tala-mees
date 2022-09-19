@@ -7,16 +7,16 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiserviceService } from './apiservice.service';
 import { PageComponent } from './users/login/page/page.component';
-import { InputsComponent } from './users/login/inputs/inputs.component';
 import { HeaderComponent } from './home/header/header.component';
 import { HomeComponent } from './home/home/home.component';
+import { UserInputComponent } from './users/shared/user-input/user-input.component';
 @NgModule({
   declarations: [
     AppComponent,
     PageComponent,
-    InputsComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    UserInputComponent
   ],
   imports: [
     BrowserModule,
