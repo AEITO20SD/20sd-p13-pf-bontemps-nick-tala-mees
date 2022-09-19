@@ -1,1 +1,31 @@
-<p>page works!</p>
+<section class="login-page-section">
+  <div class="login-page-container">
+    <div class="login-object">
+      <div class="login-card">
+        <div class="login-img-container">
+          <img src="../../../../assets/img/icon-logo.png" alt="">
+        </div>
+        <h1 class="login-title">Login by BonTemps</h1>
+        <div class="login-notifactions"></div>
+        <!-- <div class="login-error">
+          <p>
+            testing the error
+          </p>
+        </div> -->
+        <div class="login-form">
+          <form action="/login" method="POST">
+            <app-login-inputs [placeholder]="placeholder" [type]="type" [name]="name"></app-login-inputs>
+            <app-login-inputs [placeholder]="placeholder_pass" [type]="type_pass" [name]="name_pass"></app-login-inputs>
+            <input class="login-submit" type="submit" value="Login">
+          </form>
+          <p class="login-register">Forgot your password? <a href="/login">Reset password</a></p>
+          <hr class="login-divider">
+          <p class="login-register">No account yet? <a href="/register">Register</a></p>
+        </div>
+      </div>
+      <div class="login-disclaimer">
+        <p>BonTemps.com ⓒ 2022 all right preserved <a href="">Privacy statment </a></p>
+      </div>
+    </div>
+  </div>
+</section>
