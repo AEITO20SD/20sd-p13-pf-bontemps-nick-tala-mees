@@ -1,0 +1,12 @@
+div input {
+  width: 300px;
+  height: 25px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}
+
+div input:focus {
+  outline: 1px solid rgb(106, 106, 106);
+}
