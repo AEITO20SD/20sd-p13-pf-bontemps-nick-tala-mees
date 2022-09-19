@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-login-inputs',
-  templateUrl: './inputs.component.html',
-  styleUrls: ['./inputs.component.css']
+  selector: 'app-user-input',
+  templateUrl: './user-input.component.html',
+  styleUrls: ['./user-input.component.css']
 })
-export class InputsComponent implements OnInit {
+export class UserInputComponent implements OnInit {
+
   constructor() { }
 
   @Input() placeholder: string | undefined;
