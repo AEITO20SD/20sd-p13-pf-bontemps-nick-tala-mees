@@ -14,8 +14,8 @@
         </div> -->
         <div class="login-form">
           <form action="/login" method="POST">
-            <app-user-input [placeholder]="placeholder" [type]="type" [name]="name"></app-user-input>
-            <app-user-input [placeholder]="placeholder_pass" [type]="type_pass" [name]="name_pass"></app-user-input>
+            <app-login-inputs [placeholder]="placeholder" [type]="type" [name]="name"></app-login-inputs>
+            <app-login-inputs [placeholder]="placeholder_pass" [type]="type_pass" [name]="name_pass"></app-login-inputs>
             <input class="login-submit" type="submit" value="Login">
           </form>
           <p class="login-register">Forgot your password? <a href="/login">Reset password</a></p>
