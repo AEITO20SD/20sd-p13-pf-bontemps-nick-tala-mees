@@ -11,13 +11,15 @@ import { HeaderComponent } from './home/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { UserInputComponent } from './users/shared/user-input/user-input.component';
 import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
     UserInputComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
