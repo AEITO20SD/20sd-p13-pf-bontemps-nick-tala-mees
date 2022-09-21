@@ -5,23 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiserviceService } from './apiservice.service';
-import { PageComponent } from './users/login/page/page.component';
-import { InputsComponent } from './users/login/inputs/inputs.component';
+
 import { HeaderComponent } from './home/header/header.component';
 import { NavbarComponent } from './home/navbar/navbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContactComponent } from './contact/contact.component';
 import { ReserverenComponent } from './reserveren/reserveren.component';
+import { HomeComponent } from './home/home.component';
+import { UserInputComponent } from './users/shared/user-input/user-input.component';
+import { LoginComponent } from './users/login/login.component';
 @NgModule({
   declarations: [
-    AppComponent,
-    PageComponent,
-    InputsComponent,
-    HeaderComponent,
-    NavbarComponent,
-    MenuComponent,
-    ContactComponent,
-    ReserverenComponent
+    AppComponent, 
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +26,7 @@ import { ReserverenComponent } from './reserveren/reserveren.component';
       { path: 'menu', component: MenuComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'reserveren', component: ReserverenComponent },
-      { path: 'inloggen', component: PageComponent }
+      { path: 'inloggen', component: LoginComponent }
     ]),
     HttpClientModule
   ],
