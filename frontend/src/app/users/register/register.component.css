@@ -1,0 +1,58 @@
+.register-page-section {
+  background-color: #f3f3f3;
+  height: 100vh;
+}
+
+.register-page-container {
+  margin: auto;
+  height: 675px;
+  width: 425px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.register-card {
+  width: inherit;
+  height: 600px;
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(129, 129, 129, 0.2), 0 6px 20px 0 rgba(164, 164, 164, 0.19);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.register-disclaimer {
+  height: 75px;
+  text-align: center;
+  margin-top: 80px;
+  font-family: 'Roboto Slab', serif;
+  font-size: 14px;
+}
+
+.register-disclaimer a {
+  color: #CA2C0C;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-card .register-img-container {
+  align-items: center;
+}
+
+.register-img-container img {
+  height: 130px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+
+.register-title {
+  font-size: 30px;
+  font-weight: semi-bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

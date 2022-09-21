@@ -14,10 +14,15 @@ import { ReserverenComponent } from './reserveren/reserveren.component';
 import { HomeComponent } from './home/home.component';
 import { UserInputComponent } from './users/shared/user-input/user-input.component';
 import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
 @NgModule({
   declarations: [
-    AppComponent, 
-    HeaderComponent
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    UserInputComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
