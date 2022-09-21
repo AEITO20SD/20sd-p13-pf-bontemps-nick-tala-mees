@@ -139,6 +139,7 @@ CREATE TABLE `type` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `phonenumber` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `street` varchar(255) NOT NULL,
