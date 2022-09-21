@@ -11,13 +11,14 @@
           <form action="/login" method="POST">
             <app-user-input [placeholder]="placeholder_email" [type]="type_email" [name]="name_email"></app-user-input>
             <app-user-input [placeholder]="placeholder_firstname" [type]="type_firstname" [name]="name_firstname"></app-user-input>
-            <app-user-input [placeholder]="placeholder_secondname" [type]="type_secondname" [name]="name_secondname"></app-user-input>
+            <app-user-input [placeholder]="placeholder_lastname" [type]="type_lastname" [name]="name_lastname"></app-user-input>
+            <app-user-input [placeholder]="placeholder_phone" [type]="type_phone" [name]="name_phone"></app-user-input>
             <app-user-input [placeholder]="placeholder_pass" [type]="type_pass" [name]="name_pass"></app-user-input>
+            <app-user-input [placeholder]="placeholder_passconf" [type]="type_passconf" [name]="name_passconf"></app-user-input>
             <input class="register-submit" type="submit" value="Login">
           </form>
-          <p class="login-register">Forgot your password? <a href="/login">Reset password</a></p>
           <hr class="register-divider">
-          <p class="login-register">No account yet? <a href="/register">Register</a></p>
+          <p class="login-register">Already an account? <a href="/login">Login</a></p>
         </div>
       </div>
       <div class="register-disclaimer">
