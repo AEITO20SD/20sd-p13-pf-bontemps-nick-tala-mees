@@ -32,7 +32,7 @@ import { RegisterComponent } from './users/register/register.component';
       { path: 'menu', component: MenuComponent },
       { path: 'contact', component: ContactComponent },
       { path: 'reserveren', component: ReserverenComponent },
-      { path: 'inloggen', component: LoginComponent }
+      { path: 'login', component: LoginComponent }
     ]),
     HttpClientModule
   ],
