@@ -22,7 +22,8 @@ import { RegisterComponent } from './users/register/register.component';
     HomeComponent,
     UserInputComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
