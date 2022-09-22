@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './users/register/register.component';
+import { RegisterComponent } from './users/pages/register/register.component';
 
 @NgModule({
   declarations: [

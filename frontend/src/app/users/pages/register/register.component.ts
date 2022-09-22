@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RegisterService } from '../services/register.service';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   selector: 'app-register',
