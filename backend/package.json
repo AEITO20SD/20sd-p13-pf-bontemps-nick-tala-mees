@@ -4,8 +4,8 @@
   "description": "A nodeJS express backend for the bontemps project",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "nodemon app.ts",
+    "start": "node dist/server.js",
+    "dev": "nodemon server.ts",
     "build": "tsc -p ."
   },
   "author": "",

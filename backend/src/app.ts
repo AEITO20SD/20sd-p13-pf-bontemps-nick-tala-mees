@@ -1,22 +1,22 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+// Import statments
+import express from 'express';
 
+// Declare a new express app instance
 const app = express();
-const encoder = bodyParser.json();
-const port = process.env.PORT || 3080;
 
+// Middleware for parsing the body of a request
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 
+//  Routes
 app.post('/', (req, res) => {
     console.log(req.body);
 });
 
-// Listening on port 3000
-app.listen(port, () => {console.log('Listening on port ' + port)});
+// Exoprts the app variable
+module.exports = app;
