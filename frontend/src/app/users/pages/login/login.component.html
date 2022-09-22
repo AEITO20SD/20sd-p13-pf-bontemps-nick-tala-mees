@@ -1,1 +1,35 @@
-<p>login works!</p>
+<section class="login-page-section">
+  <div class="login-page-container">
+    <div class="login-object">
+      <div class="login-card">
+        <div class="login-img-container">
+          <img src="../../../../assets/img/icon-logo.png" alt="">
+        </div>
+        <h1 class="login-title">Login by BonTemps</h1>
+        <div class="login-notifactions"></div>
+        <!-- <div class="login-error">
+          <p>
+            testing the error
+          </p>
+        </div> -->
+        <div class="login-form">
+          <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+            <div>
+              <input type="text" name="email" ngModel placeholder="bontemps@example.com" #emailInput="ngModel">
+            </div>
+            <div>
+              <input type="password" name="password" ngModel placeholder="password" #passwordInput="ngModel">
+            </div>
+            <input class="login-submit" type="submit" value="Login">
+          </form>
+          <p class="login-register">Forgot your password? <a href="/login">Reset password</a></p>
+          <hr class="login-divider">
+          <p class="login-register">No account yet? <a href="/register">Register</a></p>
+        </div>
+      </div>
+      <div class="login-disclaimer">
+        <p>BonTemps.com ⓒ 2022 all right preserved <a href="">Privacy statment </a></p>
+      </div>
+    </div>
+  </div>
+</section>
