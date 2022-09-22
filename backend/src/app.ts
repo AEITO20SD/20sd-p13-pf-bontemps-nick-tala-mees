@@ -14,10 +14,8 @@ app.use((req, res, next) => {
     next();
 });
 
-//  Routes
-app.post('/', (req, res) => {
-    console.log(req.body);
-});
+// Adding route files
+app.use('/users', require('./routes/authenticationRoutes'));
 
 // Exoprts the app variable
 module.exports = app;
