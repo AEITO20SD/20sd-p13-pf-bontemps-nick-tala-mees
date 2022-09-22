@@ -13,7 +13,6 @@ export class RegisterComponent {
 
   // Function to send data to the backend
   onRegister(form: NgForm) {
-    console.log(form.value);
     if(form.invalid){
       return;
     }

@@ -9,4 +9,8 @@ authentication.post('/register', (req, res) => {
     console.log(req.body);
 });
 
+authentication.post('/login', (req, res) => {
+    console.log(req.body);
+});
+
 module.exports = authentication;
