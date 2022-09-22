@@ -1,42 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { ApiserviceService } from './apiservice.service';
+import { RegisterComponent } from './users/pages/register/register.component';
+import { LoginComponent } from './users/pages/login/login.component';
+import { HomeComponent } from './home/pages/home/home.component';
+import { HeaderComponent } from './home/shared/header/header.component';
 
-import { HeaderComponent } from './home/header/header.component';
-import { NavbarComponent } from './home/navbar/navbar.component';
-import { MenuComponent } from './menu/menu.component';
-import { ContactComponent } from './contact/contact.component';
-import { ReserverenComponent } from './reserveren/reserveren.component';
-import { HomeComponent } from './home/home.component';
-import { UserInputComponent } from './users/shared/user-input/user-input.component';
-import { LoginComponent } from './users/login/login.component';
-import { RegisterComponent } from './users/register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    UserInputComponent,
-    LoginComponent,
     RegisterComponent,
-    NavbarComponent,
+    LoginComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([
-      { path: 'menu', component: MenuComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'reserveren', component: ReserverenComponent },
-      { path: 'login', component: LoginComponent }
-    ]),
+    FormsModule,
     HttpClientModule
   ],
-  providers: [ApiserviceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
