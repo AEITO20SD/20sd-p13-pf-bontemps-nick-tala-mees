@@ -3,6 +3,7 @@ import express from 'express';
 
 // Declare a new express app instance
 const app = express();
+const connect = require('./helpers/connect');
 
 // Middleware for parsing the body of a request
 app.use(express.json());
