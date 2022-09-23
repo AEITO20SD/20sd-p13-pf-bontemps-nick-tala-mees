@@ -11,6 +11,9 @@ import { RegisterComponent } from './users/pages/register/register.component';
 import { LoginComponent } from './users/pages/login/login.component';
 import { HomeComponent } from './home/pages/home/home.component';
 import { HeaderComponent } from './home/shared/header/header.component';
+import { SuccessComponent } from './users/shared/success/success.component';
+import { VerifiedComponent } from './users/pages/verified/verified.component';
+import { SendComponent } from './users/pages/send/send.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { HeaderComponent } from './home/shared/header/header.component';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    SuccessComponent,
+    VerifiedComponent,
+    SendComponent,
   ],
   imports: [
     BrowserModule,

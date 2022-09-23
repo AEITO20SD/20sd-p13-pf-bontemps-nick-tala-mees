@@ -144,7 +144,8 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `street` varchar(255) NOT NULL,
   `postalCode` varchar(255) NOT NULL,
-  `city` varchar(255) NOT NULL
+  `city` varchar(255) NOT NULL,
+  `vertification` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
