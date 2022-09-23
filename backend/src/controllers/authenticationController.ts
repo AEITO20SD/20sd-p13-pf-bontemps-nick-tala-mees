@@ -1,8 +1,8 @@
 const connection = require('../helpers/connect');
 const bcrypt = require('bcrypt');
+const validator = require('email-validator');
 
 exports.registerUser = async (req, res) => {
-    console.log(req.body);
 
     // Request body data decalration:
     const { email, firstname, lastname, phone , password, passwordconf } = req.body;
@@ -10,8 +10,15 @@ exports.registerUser = async (req, res) => {
     // Validation
     if (!email || !firstname || !lastname || !phone || !password || !passwordconf) {
         return res.status(200).json({ msg: 'Please enter all fields' });
+
+    // Checks if passwords match
     } else if (password !== passwordconf) {
         return res.status(200).json({ msg: 'Passwords do not match' });
+
+    // Checks if user added a valid email
+    } else if (!validator.validate(email)) {
+        return res.status(200).json({ msg: 'Please enter a valid email' });   
+        
     } else {
         // Password hashing method using bcrypt
         const salt = await bcrypt.genSalt(10);

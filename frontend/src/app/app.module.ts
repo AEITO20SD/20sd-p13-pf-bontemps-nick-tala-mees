@@ -11,6 +11,7 @@ import { RegisterComponent } from './users/pages/register/register.component';
 import { LoginComponent } from './users/pages/login/login.component';
 import { HomeComponent } from './home/pages/home/home.component';
 import { HeaderComponent } from './home/shared/header/header.component';
+import { SuccessComponent } from './users/pages/success/success.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HeaderComponent } from './home/shared/header/header.component';
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
