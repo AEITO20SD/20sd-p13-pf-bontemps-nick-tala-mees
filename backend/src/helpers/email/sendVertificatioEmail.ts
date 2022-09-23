@@ -16,19 +16,21 @@ let transporter = nodemailer.createTransport({
 exports.sendVertificatioEmail = async (_id, email, res) => {
 
     // Start of the url send in the email
-    const currentUrl = "http://localhost:4200/";
+    const currentUrl = "http://localhost:3080/";
 
     const uniqueString = uuidv4() + _id;
 
+    // Mailoptions for styling the email
     const mailOptions = {
         from: process.env.AUTH_EMAIL,
         to: email,
         subject: 'Account Verification BonTemps',
         html: ` <h1>Please click the link to verify your account</h1>
                 <p> this link expires in 6 hours </p>
-                <a href="${currentUrl + "register/verify/" + _id + "/" + uniqueString}">Verify</a>`
+                <a href="${currentUrl + "users/register/verify/" + _id + "/" + uniqueString}">Verify</a>`
     }
 
+    // Send the emailing the email and insert data into the database
     const saltRounds = 10;
      bcrypt.hash(uniqueString, saltRounds).then((hashedUniqueString) => {
         const createdAt = new Date().toISOString().slice(0, 19).replace('T', ' ');
@@ -42,9 +44,7 @@ exports.sendVertificatioEmail = async (_id, email, res) => {
                 transporter.sendMail(mailOptions, function(error, info){
                     if (error) {
                         console.log(error);
-                    } else {
-                        console.log('Email sent: ' + info.response);
-                    }
+                    } 
                 });
             }          
             });

@@ -10,6 +10,8 @@ const authentication = express();
 //  Routes
 authentication.post('/register', controller.registerUser);
 
+authentication.get('/register/verify/:userId/:uniqueString', controller.verifyUser);
+
 authentication.post('/login', controller.loginUser);
 
 module.exports = authentication;

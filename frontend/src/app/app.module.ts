@@ -12,6 +12,7 @@ import { LoginComponent } from './users/pages/login/login.component';
 import { HomeComponent } from './home/pages/home/home.component';
 import { HeaderComponent } from './home/shared/header/header.component';
 import { SuccessComponent } from './users/pages/success/success.component';
+import { VerifyComponent } from './users/pages/verify/verify.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SuccessComponent } from './users/pages/success/success.component';
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    SuccessComponent
+    SuccessComponent,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,
