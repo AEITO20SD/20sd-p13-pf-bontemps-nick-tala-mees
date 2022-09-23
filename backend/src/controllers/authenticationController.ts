@@ -2,6 +2,8 @@ const connection = require('../helpers/connect');
 const bcrypt = require('bcrypt');
 const validator = require('email-validator');
 
+const vertificationEmail = require('../helpers/email/sendVertificatioEmail');
+
 exports.registerUser = async (req, res) => {
 
     // Request body data decalration:
@@ -41,6 +43,8 @@ exports.registerUser = async (req, res) => {
                         console.log(error);
                         return res.status(400).json({ msg: 'Something went wrong' });
                     }
+                    // Send verification email
+                    vertificationEmail.sendVertificatioEmail(results.insertId, email, res);
                     return res.status(200).json({ msg: 'User registered successfully' });
                 });
             }
