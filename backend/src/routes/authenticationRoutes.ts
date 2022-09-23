@@ -1,16 +1,15 @@
 // Import statments
 import express from 'express';
 
+
+const controller = require('../controllers/authenticationController');
+
 // Declare a new express app instance
 const authentication = express();
 
 //  Routes
-authentication.post('/register', (req, res) => {
-    console.log(req.body);
-});
+authentication.post('/register', controller.registerUser);
 
-authentication.post('/login', (req, res) => {
-    console.log(req.body);
-});
+authentication.post('/login', controller.loginUser);
 
 module.exports = authentication;
