@@ -15,6 +15,7 @@ export class RegisterService {
     // Send the register object to the backend
     this.http.post('http://localhost:3080/users/register', registerData).subscribe(response => {
       console.log(response);
+      console.log("User created");
       });
   }
 }
