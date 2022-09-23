@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-success',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./success.component.css']
 })
 export class SuccessComponent implements OnInit {
+
+  @Input() title: string | undefined;
+  @Input() message: string | undefined;
+  @Input() image: string | undefined;
+  @Input() account: string | undefined;
 
   constructor() { }
 

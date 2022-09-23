@@ -97,7 +97,7 @@ exports.verifyUser = (req, res) => {
                     });
 
                     // Redirects on succesfull verification
-                    res.redirect('http://localhost:4200/login');
+                    res.redirect('http://localhost:4200/register/verified');
                 }
             });
             } else {
