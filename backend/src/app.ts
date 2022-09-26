@@ -1,25 +1,21 @@
-import express, { Application, Request, Response, NextFunction} from 'express';
+// Import statments
+import express from 'express';
 
-var cors = require('cors');
-const databse = require('./connect');
+// Declare a new express app instance
+const app = express();
+const connect = require('./helpers/connect');
 
-const app: Application = express();
-
-app.use(cors()) // Use this after the variable declaration
-
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
+// Middleware for parsing the body of a request
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
 });
 
-app.get("/api", (req: Request, res: Response, next: NextFunction) => {
-    // res.json({
-    //     "statusMessage": 'Success'
-    // })
-    res.send({
-        message: 'Success'
-    }  
-    );
-});
+// Adding route files
+app.use('/users', require('./routes/authenticationRoutes'));
 
-app.listen(3080, () => {
-    console.log('Server running on port 3080');
-});
+// Exoprts the app variable
+module.exports = app;
