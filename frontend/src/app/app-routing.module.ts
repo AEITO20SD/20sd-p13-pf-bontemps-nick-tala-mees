@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'register/send-verification-email', component: SendComponent },
   { path: 'register/verified', component: VerifiedComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'login/reset-password', component: ResetSendComponent },
+  { path: 'login/reset-password-send', component: ResetSendComponent },
 ];
 
 @NgModule({
