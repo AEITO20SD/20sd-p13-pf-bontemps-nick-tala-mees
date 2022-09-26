@@ -7,6 +7,13 @@ const app = express();
 const connect = require('./helpers/connect');
 
 // Setting up the session for the user login
+app.use(session({
+    secret: `${process.env.SESSION_SECRET}`,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+    },
+    saveUninitialized: false
+}));
 
 
 // Middleware for parsing the body of a request

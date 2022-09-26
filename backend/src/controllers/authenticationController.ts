@@ -133,12 +133,21 @@ exports.loginUser = (req, res) => {
                 // Compares password with the hashed password in the database
                 bcrypt.compare(password, hashedPassword, function(err, result) {
                     if(result){
+                        if(req.session.authenticated){
+                            // res.json(req.session)
+                        } else {
+                            req.session.authenticated = true;
+                            req.session.user = {
+                            id: results[0].id,
+                            email: results[0].email,
+                        };
+                        console.log(req.session);
+                        req.session.destroy();
+                        console.log(req.session);
 
-                        // Here must come some more code for the section
-
-                        return res.status(200).json({ msg: 'User logged in successfully' });
+                    }
                     } else {
-                        return res.status(200).json({ msg: 'Wrong password' });
+                        return res.status(200).json({ msg: 'Password or Email is invalid' });
                     }
                 });
             }
