@@ -109,5 +109,44 @@ exports.verifyUser = (req, res) => {
 
 
 exports.loginUser = (req, res) => {
-    console.log(req.body);
+    
+    // Request body data decalration:
+    const { email, password } = req.body;
+
+    // Checks if all the required fields are filled in:
+    if(email == "" || password == ""){
+        return res.status(200).json({ msg: 'Please enter all fields' });
+    }
+
+    connection.query('SELECT * FROM user WHERE email = ?', [req.body.email], function(error, results, fields){
+        if(error){
+            res.status(200).json({ msg: 'Something went wrong' });
+            return;
+        }
+        if(results.length > 0){
+            // Checks if user is vertified
+            if(results[0].vertification == 0){
+                return res.status(200).json({ msg: 'Please verify your email' });
+            } else {
+                const hashedPassword = results[0].password;
+
+                // Compares password with the hashed password in the database
+                bcrypt.compare(password, hashedPassword, function(err, result) {
+                    if(result){
+
+                        // Here must come some more code for the section
+
+                        return res.status(200).json({ msg: 'User logged in successfully' });
+                    } else {
+                        return res.status(200).json({ msg: 'Wrong password' });
+                    }
+                });
+            }
+        } else {
+            return res.status(200).json({ msg: 'Please enter an valid email or password' });
+        }
+
+    });
+
+    console.log(email, password);
 }

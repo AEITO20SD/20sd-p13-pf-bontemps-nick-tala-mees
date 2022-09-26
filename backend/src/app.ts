@@ -1,9 +1,13 @@
 // Import statments
 import express from 'express';
+import session from 'express-session';
 
 // Declare a new express app instance
 const app = express();
 const connect = require('./helpers/connect');
+
+// Setting up the session for the user login
+
 
 // Middleware for parsing the body of a request
 app.use(express.json());

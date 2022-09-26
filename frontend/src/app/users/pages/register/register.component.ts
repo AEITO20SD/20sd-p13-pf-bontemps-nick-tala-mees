@@ -15,6 +15,8 @@ export class RegisterComponent {
   onRegister(form: NgForm) {
     if(form.invalid){
       return;
+    } else if (form.value.password != form.value.passwordconf) {
+      return;
     }
     this.registerService.CreateUser(form.value.email, form.value.firstname, form.value.lastname, form.value.phone, form.value.password, form.value.passwordconf);
   }
