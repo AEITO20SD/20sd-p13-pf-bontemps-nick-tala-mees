@@ -107,7 +107,7 @@ exports.verifyUser = (req, res) => {
     });
 }
 
-
+// Login user an existing user
 exports.loginUser = (req, res) => {
     
     // Request body data decalration:
