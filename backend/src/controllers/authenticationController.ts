@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const validator = require('email-validator');
 
 const vertificationEmail = require('../helpers/email/sendVertificatioEmail');
+const resetEmail = require('../helpers/email/sendPasswordResetEmail');
 
 // Register a new user
 exports.registerUser = async (req, res) => {
@@ -161,8 +162,8 @@ exports.loginUser = (req, res) => {
 }
 
 exports.resetPasswordEmailUser = (req, res) => {
-    console.log(req.body);
 
+    // Request body data decalration:
     const { email } = req.body;
 
     // Checks if email is filled in
@@ -177,8 +178,9 @@ exports.resetPasswordEmailUser = (req, res) => {
                 console.log('Error connecting to DB', error);
                 return;
             } else if(results.length > 0){
-                    // sendRestEmail(connection, results[0].id, email, res);
-                console.log(results)
+
+                // Generates a unique string and sends and email to the user
+                resetEmail.sendPasswordResetEmail(results[0].id, email, res);
             } else {
                 return res.status(200).json({ msg: 'Please enter an valid email or password' });
             }
