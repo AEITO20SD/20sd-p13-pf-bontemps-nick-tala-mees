@@ -1,8 +1,10 @@
-// required packages
-require('dotenv').config();
-const mysql = require('mysql');
+// Import statments
+import mysql from 'mysql2';
 
-// connection info
+// Adding Env variables
+require('dotenv').config();
+
+// Connection info
 const connection = mysql.createConnection({
     host: 'localhost',
     user: process.env.USER,
@@ -10,7 +12,7 @@ const connection = mysql.createConnection({
     database: 'bontemps'
 });
 
-// connect with database
+// Connects with database
 connection.connect(function(err) {
     if (err) {
         return console.error('Error: ' + err.message);
@@ -18,3 +20,5 @@ connection.connect(function(err) {
         console.log('Connected to the MySQL server.');
     }
 });
+
+module.exports = connection;
