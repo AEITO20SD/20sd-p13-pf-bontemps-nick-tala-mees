@@ -14,4 +14,6 @@ authentication.get('/register/verify/:userId/:uniqueString', controller.verifyUs
 
 authentication.post('/login', controller.loginUser);
 
+authentication.post('/login/reset-password', controller.resetPasswordEmailUser);
+
 module.exports = authentication;

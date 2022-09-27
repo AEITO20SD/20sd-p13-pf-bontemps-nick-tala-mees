@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ResetService } from '../../services/reset.service';
 
 @Component({
   selector: 'app-reset',
   templateUrl: './reset.component.html',
   styleUrls: ['./reset.component.css']
 })
-export class ResetComponent implements OnInit {
+export class ResetComponent {
 
-  constructor() { }
+  constructor(public resetService: ResetService) { }
 
-  ngOnInit(): void {
+  onReset(form: NgForm) {
+
+    // Calls the service to send the data to the backend
+    this.resetService.ResetPassword(form.value.email);
   }
 
 }

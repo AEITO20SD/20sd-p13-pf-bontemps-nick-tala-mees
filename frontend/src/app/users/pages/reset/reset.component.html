@@ -8,9 +8,9 @@
         <h1 class="reset-title">Please enter your email</h1>
         <div class="reset-notifactions"></div>
         <div class="reset-form">
-          <form>
+          <form (submit)="onReset(resetForm)" #resetForm="ngForm">
             <div>
-              <input type="text" name="email" placeholder="Adaptive@example.com">
+              <input type="text" name="email" ngModel placeholder="Adaptive@example.com" #resetInput="ngModel">
             </div>
             <input class="reset-submit" type="submit" value="Reset password">
           </form>

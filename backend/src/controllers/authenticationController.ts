@@ -159,3 +159,30 @@ exports.loginUser = (req, res) => {
 
     console.log(email, password);
 }
+
+exports.resetPasswordEmailUser = (req, res) => {
+    console.log(req.body);
+
+    const { email } = req.body;
+
+    // Checks if email is filled in
+    if(email == ""){
+        return res.status(200).json({ msg: 'Please enter an email' });
+    // Checks if user added a valid email
+    } else if (!validator.validate(email)) {
+        return res.status(200).json({ msg: 'Please enter a valid email' });   
+    } else {
+        connection.query('SELECT * FROM user WHERE email = ?', [email], function(error, results, fields){
+            if(error){
+                console.log('Error connecting to DB', error);
+                return;
+            } else if(results.length > 0){
+                    // sendRestEmail(connection, results[0].id, email, res);
+                console.log(results)
+            } else {
+                return res.status(200).json({ msg: 'Please enter an valid email or password' });
+            }
+
+        });
+    }
+}
