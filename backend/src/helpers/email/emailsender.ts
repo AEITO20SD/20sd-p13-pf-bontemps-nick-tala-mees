@@ -10,6 +10,7 @@ exports.emailsender = (_id, uniqueString, transporter, mailOptions, datatable) =
         const expiredAt = new Date(Date.now() + 216000).toISOString().slice(0, 19).replace('T', ' ');
          connection.query(`INSERT INTO ${datatable} (uniqueString, userId, expiredAt, createdAt) VALUES (?, ?, ?, ?)`, 
             [hashedUniqueString, _id, expiredAt, createdAt], function(error, results, fields){
+                console.log(hashedUniqueString)
                 if(error){
                     console.log(error);
                 } else {

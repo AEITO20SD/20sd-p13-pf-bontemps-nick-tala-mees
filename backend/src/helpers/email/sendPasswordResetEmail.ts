@@ -27,7 +27,7 @@ exports.sendPasswordResetEmail = async (_id, email, res) => {
         subject: 'Reset Password',
         html: `<h1>Please click the link to Reset your password</h1>
         <p> this link expires in 6 hours </p>
-                <a href="${currentUrl + "login/reset/" + _id + "/" + uniqueString}">Reset</a>`
+                <a href="${currentUrl + "users/login/reset-password/" + _id + "/" + uniqueString}">Reset</a>`
     }
 
     // Sends the email to the user and inserts data into the database
