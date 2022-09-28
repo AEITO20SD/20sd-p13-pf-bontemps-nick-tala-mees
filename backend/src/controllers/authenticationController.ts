@@ -179,8 +179,10 @@ exports.resetPasswordEmailUser = (req, res) => {
                 return;
             } else if(results.length > 0){
 
+                
                 // Generates a unique string and sends and email to the user
                 resetEmail.sendPasswordResetEmail(results[0].id, email, res);
+                return res.status(200).json({ msg: 'Password recovery email send' });
             } else {
                 return res.status(200).json({ msg: 'Please enter an valid email or password' });
             }
