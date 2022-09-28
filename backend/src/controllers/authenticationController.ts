@@ -214,6 +214,7 @@ exports.resetPasswordUserGet = (req, res) => {
                             res.status(200).json({ msg: 'Link expired' });
                         } else {
                             console.log("Valid")
+                            res.redirect('http://localhost:4200/reset-password-request/' + userId + '/' + uniqueString);
                         }
                     } else {
                         res.status(200).json({ msg: 'Unique string does not compare' });

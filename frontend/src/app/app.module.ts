@@ -16,6 +16,7 @@ import { VerifiedComponent } from './users/pages/verified/verified.component';
 import { SendComponent } from './users/pages/send/send.component';
 import { ResetSendComponent } from './users/pages/reset-send/reset-send.component';
 import { ResetComponent } from './users/pages/reset/reset.component';
+import { ResetFormComponent } from './users/pages/reset-form/reset-form.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ResetComponent } from './users/pages/reset/reset.component';
     SendComponent,
     ResetSendComponent,
     ResetComponent,
+    ResetFormComponent,
   ],
   imports: [
     BrowserModule,
