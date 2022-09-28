@@ -119,3 +119,15 @@ div input:focus {
   margin-top: 10px;
   font-family: 'Roboto Slab', serif;
 }
+
+.reset-error {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Roboto Slab', serif;
+  margin-top: 10px;
+  width: 302px;
+  margin: auto;
+  padding: 7px 10px;
+}
