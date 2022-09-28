@@ -1,0 +1,41 @@
+<section class="register-page-section">
+  <div class="register-page-container">
+    <div class="register-object">
+      <div class="register-card">
+        <div class="register-img-container">
+          <img src="../../../../assets/img/icon-logo.png" alt="">
+        </div>
+        <h1 class="register-title">Register by BonTemps</h1>
+        <div class="register-notifactions"></div>
+        <div class="register-form">
+          <form (submit)="onRegister(registerForm)" #registerForm="ngForm">
+            <div>
+              <input type="text" name="email" ngModel placeholder="bontemps@example.com" #emailInput="ngModel" >
+            </div>
+            <div>
+              <input type="text" name="firstname" ngModel placeholder="firstname" #firstnameInput="ngModel">
+            </div>
+            <div>
+              <input type="text" name="lastname" ngModel placeholder="lastname" #lastnameInput="ngModel">
+            </div>
+            <div>
+              <input type="text" name="phone" ngModel placeholder="phone number" #phoneInput="ngModel">
+            </div>
+            <div>
+              <input type="password" name="password" ngModel placeholder="password" #passwordInput="ngModel">
+            </div>
+            <div>
+              <input type="password" name="passwordconf" ngModel placeholder="confirm password" #passwordconfInput="ngModel">
+            </div>
+            <input class="register-submit" type="submit" value="Register">
+          </form>
+          <hr class="register-divider">
+          <p class="login-register">Already an account? <a href="/login">Login</a></p>
+        </div>
+      </div>
+      <div class="register-disclaimer">
+        <p>BonTemps.com ⓒ 2022 all right preserved <a href="">Privacy statment </a></p>
+      </div>
+    </div>
+  </div>
+</section>
