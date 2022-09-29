@@ -5,7 +5,6 @@ import { RegisterData } from "../models/register-data.model";
 
 @Injectable({providedIn: "root"})
 export class RegisterService {
-  private message: string | undefined;
 
   constructor(private http: HttpClient, private router: Router) { }
 

@@ -1,0 +1,33 @@
+<section class="reset-page-section">
+  <div class="reset-page-container">
+    <div class="reset-object">
+      <div class="reset-card">
+          <div class="reset-img-container">
+            <img src="../../../../assets/img/icon-logo.png" alt="">
+          </div>
+          <h1 class="reset-title">Enter a new password</h1>
+          <div class="reset-notifactions">
+            <!-- Here will come the error handeling -->
+          </div>
+          <div *ngIf="Error != '' " class="reset-error">
+            <p>{{Error}}</p>
+          </div>
+          <div class="reset-form">
+            <form (submit)="onReset(resetForm)" #resetForm="ngForm" >
+              <div>
+                <input type="password" name="password" ngModel placeholder="Password" #resetInput="ngModel">
+              </div>
+              <div>
+                <input type="password" name="password_conf" ngModel placeholder="Confirm password" #resetInput="ngModel">
+              </div>
+              <input class="reset-submit" type="submit" value="Create new password">
+            </form>
+            <hr class="reset-divider">
+          </div>
+      </div>
+      <div class="reset-disclaimer">
+        <p>Adaptive.com ⓒ 2022 all right preserved <a href="">Privacy statment </a></p>
+      </div>
+    </div>
+  </div>
+</section>
