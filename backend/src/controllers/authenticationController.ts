@@ -5,6 +5,8 @@ const validator = require('email-validator');
 const vertificationEmail = require('../helpers/email/sendVertificatioEmail');
 const resetEmail = require('../helpers/email/sendPasswordResetEmail');
 
+const url = "http://localhost:4200/"
+
 // Register a new user
 exports.registerUser = async (req, res) => {
 
@@ -98,7 +100,7 @@ exports.verifyUser = (req, res) => {
                     });
 
                     // Redirects on succesfull verification
-                    res.redirect('http://localhost:4200/register/verified');
+                    res.redirect(url + 'register/verified');
                 }
             });
             } else {
@@ -214,7 +216,7 @@ exports.resetPasswordUserGet = (req, res) => {
                             res.status(200).json({ msg: 'Link expired' });
                         } else {
                             console.log("Valid")
-                            res.redirect('http://localhost:4200/login/reset-password-new/' + userId + '/' + uniqueString);
+                            res.redirect(url + 'login/reset-password-new/' + userId + '/' + uniqueString);
                         }
                     } else {
                         res.status(200).json({ msg: 'Unique string does not compare' });

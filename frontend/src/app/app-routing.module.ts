@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
+import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
 
 import { HomeComponent } from './home/pages/home/home.component';
 import { LoginComponent } from './users/pages/login/login.component';
@@ -28,6 +30,11 @@ const routes: Routes = [
   { path: 'login/reset-password', component: ResetComponent },
   { path: 'login/reset-password-send', component: ResetSendComponent },
   { path: 'login/reset-password-new/:id/:uniqueString', component: ResetFormComponent },
+
+  // Error page routes
+  { path: 'error/401', component: UnauthorizedComponent },
+  { path: 'error/403', component: ForbiddenComponent },
+
 ];
 
 @NgModule({

@@ -14,9 +14,9 @@ export class ResetFormService {
 
         this.http.post<{msg: string}>('http://localhost:3080/users/login/reset-password-check', resetFormDataCheck).subscribe(response => {
           console.log(response);
-          // if(response['msg'] == 'Password recovery email send'){
-          //   this.router.navigate(['/login/reset-password-send']);
-          // }
+          if(response['msg'] == 'Unique string does not compare'){
+            this.router.navigate(['/error/403']);
+          }
         });
     }
 }
