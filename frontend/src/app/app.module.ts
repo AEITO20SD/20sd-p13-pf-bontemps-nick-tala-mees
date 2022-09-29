@@ -14,6 +14,12 @@ import { HeaderComponent } from './home/shared/header/header.component';
 import { SuccessComponent } from './users/shared/success/success.component';
 import { VerifiedComponent } from './users/pages/verified/verified.component';
 import { SendComponent } from './users/pages/send/send.component';
+import { ResetSendComponent } from './users/pages/reset-send/reset-send.component';
+import { ResetComponent } from './users/pages/reset/reset.component';
+import { ResetFormComponent } from './users/pages/reset-form/reset-form.component';
+import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
+import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
+import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +31,12 @@ import { SendComponent } from './users/pages/send/send.component';
     SuccessComponent,
     VerifiedComponent,
     SendComponent,
+    ResetSendComponent,
+    ResetComponent,
+    ResetFormComponent,
+    UnauthorizedComponent,
+    ForbiddenComponent,
+    StatusCodeComponent,
   ],
   imports: [
     BrowserModule,
