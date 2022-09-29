@@ -20,6 +20,7 @@ import { ResetFormComponent } from './users/pages/reset-form/reset-form.componen
 import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
 import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
 import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { StatusCodeComponent } from './errors/shared/status-code/status-code.com
     UnauthorizedComponent,
     ForbiddenComponent,
     StatusCodeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
