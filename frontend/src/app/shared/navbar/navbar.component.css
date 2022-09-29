@@ -12,6 +12,7 @@ nav {
   width: 100%;
   max-width: 1200px;
   margin: auto;
+  margin-top: 20px;
 }
 
 nav .logo {
@@ -70,6 +71,3 @@ nav li a:hover {
   display: none;
 }
 
-.logo {
-  margin: 4rem;
-}
