@@ -1,9 +1,9 @@
-.register-page-section {
+.reset-page-section {
   background-color: #f3f3f3;
   height: 100vh;
 }
 
-.register-page-container {
+.reset-page-container {
   margin: auto;
   height: 675px;
   width: 425px;
@@ -14,7 +14,7 @@
   right: 0;
 }
 
-.register-card {
+.reset-card {
   width: inherit;
   height: 625px;
   background: #fff;
@@ -23,7 +23,7 @@
   text-align: center;
 }
 
-.register-disclaimer {
+.reset-disclaimer {
   height: 25px;
   text-align: center;
   margin-top: 55px;
@@ -31,17 +31,17 @@
   font-size: 14px;
 }
 
-.register-disclaimer a {
+.reset-disclaimer a {
   color: #CA2C0C;
   font-weight: 600;
   text-decoration: none;
 }
 
-.register-card .register-img-container {
+.reset-card .reset-img-container {
   align-items: center;
 }
 
-.register-img-container img {
+.reset-img-container img {
   height: 130px;
   display: block;
   margin-left: auto;
@@ -50,49 +50,23 @@
   margin-bottom: -10px;
 }
 
-.register-title {
+.reset-title {
   font-size: 30px;
   font-weight: semi-bold;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.register-form .register-submit {
-  width: 322px;
-  height: 35px;
-  border: none;
-  border-radius: 5px;
-  background: #CA2C0C;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 10px;
-  font-family: 'Roboto Slab', serif;
-}
-
-.register-form button:hover {
+.reset-form button:hover {
   background: #ba4b35;
   color: #fff;
 }
 
-.register-divider {
+.reset-divider {
   width: 322px;
   margin: auto;
   margin-top: 20px;
   border-top: 1px solid #ccc;
-}
-
-.login-register {
-  font-size: 14px;
-  color: black;
-  margin-top: 10px;
-  font-family: 'Roboto Slab', serif;
-}
-
-.login-register a {
-  color: #CA2C0C;
-  font-weight: 600;
-  text-decoration: none;
 }
 
 div input {
@@ -118,4 +92,30 @@ div input:focus {
   width: 302px;
   margin: auto;
   padding: 7px 10px;
+}
+
+.login-register {
+  font-size: 14px;
+  color: black;
+  margin-top: 10px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.login-register a {
+  color: #CA2C0C;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.reset-form .reset-submit {
+  width: 322px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background: #CA2C0C;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  font-family: 'Roboto Slab', serif;
 }
