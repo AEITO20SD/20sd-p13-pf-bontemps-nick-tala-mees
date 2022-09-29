@@ -27,7 +27,7 @@ const routes: Routes = [
   // Password reset routes
   { path: 'login/reset-password', component: ResetComponent },
   { path: 'login/reset-password-send', component: ResetSendComponent },
-  { path: 'login/reset-password-form/:id/:uniqueString', component: ResetFormComponent },
+  { path: 'login/reset-password-new/:id/:uniqueString', component: ResetFormComponent },
 ];
 
 @NgModule({

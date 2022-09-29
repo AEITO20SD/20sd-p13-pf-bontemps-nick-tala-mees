@@ -13,7 +13,7 @@ export class ResetService {
     // Creates the reset object from a the reset data model
     const resetData: ResetData = {email: email};
 
-     this.http.post<{msg: string}>('http://localhost:3080/users/login/reset-password', resetData).subscribe(response => {
+    this.http.post<{msg: string}>('http://localhost:3080/users/login/reset-password', resetData).subscribe(response => {
       console.log(response);
       if(response['msg'] == 'Password recovery email send'){
         this.router.navigate(['/login/reset-password-send']);

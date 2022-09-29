@@ -214,7 +214,7 @@ exports.resetPasswordUserGet = (req, res) => {
                             res.status(200).json({ msg: 'Link expired' });
                         } else {
                             console.log("Valid")
-                            res.redirect('http://localhost:4200/reset-password-request/' + userId + '/' + uniqueString);
+                            res.redirect('http://localhost:4200/login/reset-password-new/' + userId + '/' + uniqueString);
                         }
                     } else {
                         res.status(200).json({ msg: 'Unique string does not compare' });
@@ -226,4 +226,43 @@ exports.resetPasswordUserGet = (req, res) => {
 
     });
     console.log(userId, uniqueString);
+}
+
+exports.resetPasswordUserCheck = (req, res) => {
+
+    // Request body data decalration:
+    let { _id, uniqueString } = req.body;
+
+    console.log('INFORMATION: ' + _id, uniqueString);
+
+    connection.query('SELECT * FROM user_password_reset WHERE userId = ?', [_id], function(error, results, fields){
+        if(error){
+            console.log('Error connecting to DB', error);
+            return;
+        } else if(results.length > 0){
+             console.log(uniqueString)
+            bcrypt.compare(uniqueString, results[0].uniqueString, function(err, result) {
+                    if(result){
+                        if(results[0].expiredAt < new Date().toISOString().slice(0, 19).replace('T', ' ')){
+                            connection.query("DELETE FROM user_vertification_email WHERE userId = ?", [_id], function(error, results, fields){
+                                if(error){
+                                    console.log('Error connecting to DB', error);
+                                    return;
+                                }
+                            });
+                            res.status(200).json({ msg: 'Link expired' });
+                        } else {
+                            console.log("Information is valid")
+                        }
+                    } else {
+                        res.status(200).json({ msg: 'Unique string does not compare' });
+                    }
+                });
+        } else {
+            return res.status(200).json({ msg: 'No record found' });
+        }
+
+    });
+    
+
 }

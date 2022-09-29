@@ -20,4 +20,6 @@ authentication.post('/login/reset-password', controller.resetPasswordEmailUser);
 
 authentication.get('/login/reset-password/:userId/:uniqueString', controller.resetPasswordUserGet);
 
+authentication.post('/login/reset-password-check', controller.resetPasswordUserCheck);
+
 module.exports = authentication;

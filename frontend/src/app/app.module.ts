@@ -17,6 +17,9 @@ import { SendComponent } from './users/pages/send/send.component';
 import { ResetSendComponent } from './users/pages/reset-send/reset-send.component';
 import { ResetComponent } from './users/pages/reset/reset.component';
 import { ResetFormComponent } from './users/pages/reset-form/reset-form.component';
+import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
+import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
+import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { ResetFormComponent } from './users/pages/reset-form/reset-form.componen
     ResetSendComponent,
     ResetComponent,
     ResetFormComponent,
+    UnauthorizedComponent,
+    ForbiddenComponent,
+    StatusCodeComponent,
   ],
   imports: [
     BrowserModule,
