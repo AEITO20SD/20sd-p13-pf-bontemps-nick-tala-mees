@@ -32,12 +32,9 @@ export class ResetFormComponent implements OnInit {
       this.Error = "Please enter all fields";
       return;
     }
-    // Check if the passwords are the same
-    if(form.value.password !== form.value.confirmPassword) {
-      this.Error = "Passwords do not match";
-      return;
-    }
-    console.log(form.value);
-    console.log(this.id + ' ' + this.uniqueString);
+
+    this.resetFormService.ResetPassword(this.id, this.uniqueString, form.value.password, form.value.passwordconf);
+    // console.log(form.value);
+    // console.log(this.id + ' ' + this.uniqueString);
   }
 }

@@ -261,10 +261,41 @@ exports.resetPasswordUserCheck = (req, res) => {
                     }
                 });
         } else {
-            return res.status(200).json({ msg: 'No record found' });
+            res.status(200).json({ msg: 'Unique string does not compare' });
         }
 
     });
-    
+}
 
+exports.resetPasswordUserPost = (req, res) => {
+
+    // Request body data decalration:
+    let { _id, uniqueString, password } = req.body;
+
+    connection.query('SELECT * FROM user WHERE id = ?', [_id],async function(error, results, fields){
+        if(error){
+            console.log('Error connecting to DB', error);
+            return;
+        } else if(results.length > 0){
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
+
+            connection.query('UPDATE user SET password = ? WHERE id = ?', [hashedPassword, _id], function(error, results, fields){
+                if(error){
+                    console.log('Error connecting to DB', error);
+                    return;
+                }
+                connection.query("DELETE FROM user_password_reset WHERE userId = ?", [_id], function(error, results, fields){
+                    if(error){
+                        console.log('Error connecting to DB', error);
+                        return;
+                    }
+                });
+                return res.status(200).json({ msg: 'Password has been succesfully reset' });
+            });
+        } else {
+            return res.status(200).json({ msg: 'No record found' });
+        }
+        
+    });
 }
