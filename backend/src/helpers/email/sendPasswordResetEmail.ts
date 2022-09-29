@@ -13,8 +13,8 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-exports.sendVertificatioEmail = async (_id, email, res) => {
-
+exports.sendPasswordResetEmail = async (_id, email, res) => {
+    
     // Start of the url send in the email
     const currentUrl = "http://localhost:3080/";
 
@@ -24,12 +24,12 @@ exports.sendVertificatioEmail = async (_id, email, res) => {
     const mailOptions = {
         from: process.env.AUTH_EMAIL,
         to: email,
-        subject: 'Account Verification BonTemps',
-        html: ` <h1>Please click the link to verify your account</h1>
-                <p> this link expires in 6 hours </p>
-                <a href="${currentUrl + "users/register/verify/" + _id + "/" + uniqueString}">Verify</a>`
+        subject: 'Reset Password',
+        html: `<h1>Please click the link to Reset your password</h1>
+        <p> this link expires in 6 hours </p>
+                <a href="${currentUrl + "users/login/reset-password/" + _id + "/" + uniqueString}">Reset</a>`
     }
 
     // Sends the email to the user and inserts data into the database
-    emailsender.emailsender(_id, uniqueString, transporter, mailOptions, "user_vertification_email");
-}   
+    emailsender.emailsender(_id, uniqueString, transporter, mailOptions, "user_password_reset");
+}

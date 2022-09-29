@@ -7,6 +7,9 @@
         </div>
         <h1 class="register-title">Register by BonTemps</h1>
         <div class="register-notifactions"></div>
+        <div *ngIf="Error != '' " class="login-error">
+          <p>{{Error}}</p>
+        </div>
         <div class="register-form">
           <form (submit)="onRegister(registerForm)" #registerForm="ngForm">
             <div>
