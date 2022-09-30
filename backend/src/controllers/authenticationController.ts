@@ -299,3 +299,7 @@ exports.resetPasswordUserPost = (req, res) => {
         
     });
 }
+
+exports.logoutUser = (req, res) => {
+    console.log("test")
+}
