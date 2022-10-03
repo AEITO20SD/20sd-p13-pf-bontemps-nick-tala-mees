@@ -22,6 +22,7 @@ export class LoginService {
     this.http.post<{token: string}>('http://localhost:3080/users/login', LoginData).subscribe(response => {
       const token = response.token;
       this.token = token;
+      console.log(response);
     });
   }
 }
