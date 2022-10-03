@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 sep 2022 om 12:20
+-- Gegenereerd op: 03 okt 2022 om 11:11
 -- Serverversie: 10.4.14-MariaDB
 -- PHP-versie: 7.4.9
 
@@ -43,7 +43,9 @@ CREATE TABLE `ingredient` (
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,7 +68,9 @@ CREATE TABLE `menu_recipe` (
 CREATE TABLE `recipe` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `typeRecipeId` int(11) NOT NULL
+  `typeRecipeId` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -157,6 +161,19 @@ CREATE TABLE `user` (
   `postalCode` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `vertification` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user_password_reset`
+--
+
+CREATE TABLE `user_password_reset` (
+  `uniqueString` varchar(255) NOT NULL,
+  `userId` varchar(255) NOT NULL,
+  `expiredAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -323,13 +340,13 @@ ALTER TABLE `type_recipe`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT voor een tabel `user_vertification_email`
 --
 ALTER TABLE `user_vertification_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
