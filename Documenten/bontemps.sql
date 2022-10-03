@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 03 okt 2022 om 10:59
+-- Gegenereerd op: 03 okt 2022 om 11:07
 -- Serverversie: 10.4.14-MariaDB
 -- PHP-versie: 7.4.9
 
@@ -162,13 +162,6 @@ CREATE TABLE `user` (
   `city` varchar(255) NOT NULL,
   `vertification` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `user`
---
-
-INSERT INTO `user` (`id`, `name`, `password`, `phonenumber`, `email`, `street`, `postalCode`, `city`, `vertification`) VALUES
-(2, 'Tala Hasan', '$2b$10$9TQkRUKWZbn7gfB2wp8tk.aAiv6qu4uKPwBeEjWWwvmMj8m5HNH5C', '0684464962', 'talahasan1999@gmail.com', 'helloworld', '1763kg', 'Alkmaar', 1);
 
 -- --------------------------------------------------------
 
