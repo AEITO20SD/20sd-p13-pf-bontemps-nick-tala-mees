@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 03 okt 2022 om 11:07
+-- Gegenereerd op: 03 okt 2022 om 11:11
 -- Serverversie: 10.4.14-MariaDB
 -- PHP-versie: 7.4.9
 
@@ -200,13 +200,6 @@ CREATE TABLE `user_vertification_email` (
   `expiredAt` timestamp NULL DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `user_vertification_email`
---
-
-INSERT INTO `user_vertification_email` (`id`, `uniqueString`, `userId`, `expiredAt`, `createdAt`) VALUES
-(1, '$2b$10$hibskR4CgqwkqVu9YAsPeeiTCgOiYwQuXYjN43KjATbUhx.3A4apG', '1', '2022-09-28 07:59:46', '2022-09-28 07:56:10');
 
 --
 -- Indexen voor geëxporteerde tabellen
