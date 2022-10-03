@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 sep 2022 om 12:20
+-- Gegenereerd op: 03 okt 2022 om 10:59
 -- Serverversie: 10.4.14-MariaDB
 -- PHP-versie: 7.4.9
 
@@ -43,7 +43,9 @@ CREATE TABLE `ingredient` (
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,7 +68,9 @@ CREATE TABLE `menu_recipe` (
 CREATE TABLE `recipe` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `typeRecipeId` int(11) NOT NULL
+  `typeRecipeId` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -159,6 +163,26 @@ CREATE TABLE `user` (
   `vertification` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `password`, `phonenumber`, `email`, `street`, `postalCode`, `city`, `vertification`) VALUES
+(2, 'Tala Hasan', '$2b$10$9TQkRUKWZbn7gfB2wp8tk.aAiv6qu4uKPwBeEjWWwvmMj8m5HNH5C', '0684464962', 'talahasan1999@gmail.com', 'helloworld', '1763kg', 'Alkmaar', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user_password_reset`
+--
+
+CREATE TABLE `user_password_reset` (
+  `uniqueString` varchar(255) NOT NULL,
+  `userId` varchar(255) NOT NULL,
+  `expiredAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -183,6 +207,13 @@ CREATE TABLE `user_vertification_email` (
   `expiredAt` timestamp NULL DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `user_vertification_email`
+--
+
+INSERT INTO `user_vertification_email` (`id`, `uniqueString`, `userId`, `expiredAt`, `createdAt`) VALUES
+(1, '$2b$10$hibskR4CgqwkqVu9YAsPeeiTCgOiYwQuXYjN43KjATbUhx.3A4apG', '1', '2022-09-28 07:59:46', '2022-09-28 07:56:10');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -323,13 +354,13 @@ ALTER TABLE `type_recipe`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT voor een tabel `user_vertification_email`
 --
 ALTER TABLE `user_vertification_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
