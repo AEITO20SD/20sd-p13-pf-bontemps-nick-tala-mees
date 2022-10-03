@@ -12,10 +12,11 @@ export class ResetFormComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private resetFormService: ResetFormService) { }
 
+  // Emoty variables
   Error = "";
-
   id: any;
   uniqueString: any;
+
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     this.uniqueString = this.activatedRoute.snapshot.params['uniqueString'];
@@ -29,12 +30,16 @@ export class ResetFormComponent implements OnInit {
 
     //Check if all the fields are filled in
     if(form.value.password == "" || form.value.passwordconf == "") {
-      this.Error = "Please enter all fields";
-      return;
+      return this.Error = "Please enter all fields";
     }
 
-    this.resetFormService.ResetPassword(this.id, this.uniqueString, form.value.password, form.value.passwordconf);
-    // console.log(form.value);
-    // console.log(this.id + ' ' + this.uniqueString);
+    // Check if the passwords match
+    if(form.value.password == form.value.password_conf) {
+      // Call a service to send the new password to the backend
+      this.resetFormService.ResetPassword(this.id, this.uniqueString, form.value.password, form.value.password_conf);
+    } else {
+      return this.Error = "Passwords do not match";
+    }
+    return this.Error = "Something went wrong";
   }
 }
