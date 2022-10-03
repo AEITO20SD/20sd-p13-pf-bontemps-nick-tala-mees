@@ -5,7 +5,13 @@ import { LoginData } from "../models/login-data.model";
 @Injectable({providedIn: "root"})
 export class LoginService {
 
+  private token: string | undefined;
+
   constructor(private http: HttpClient) { }
+
+  GetToken(){
+    return this.token;
+  }
 
   // Fucntion to send the login object to the backend
   LoginUser(email: string, password: string){
@@ -13,8 +19,9 @@ export class LoginService {
     const LoginData: LoginData = {email: email, password: password};
 
     // Send the login object to the backend
-    this.http.post('http://localhost:3080/users/login', LoginData).subscribe(response => {
-      console.log(response);
+    this.http.post<{token: string}>('http://localhost:3080/users/login', LoginData).subscribe(response => {
+      const token = response.token;
+      this.token = token;
     });
   }
 }
