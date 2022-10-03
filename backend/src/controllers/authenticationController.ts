@@ -1,7 +1,7 @@
 const connection = require('../helpers/connect');
-const bcrypt = require('bcrypt');
-const validator = require('email-validator');
-const jwt = require('jsonwebtoken');
+import bcrypt from 'bcrypt';
+import validator from 'email-validator';
+import jwt from 'jsonwebtoken';
 
 const vertificationEmail = require('../helpers/email/sendVertificatioEmail');
 const resetEmail = require('../helpers/email/sendPasswordResetEmail');
@@ -133,12 +133,15 @@ exports.loginUser = (req, res) => {
                 return res.status(200).json({ msg: 'Please verify your email' });
             } else {
                 const hashedPassword = results[0].password;
+                const _id = results[0].id;
 
                 // Compares password with the hashed password in the database
                 bcrypt.compare(password, hashedPassword, function(err, result) {
                     if(result){
 
-                        const token = jwt.sign({email: email, userId: result[0]._id}, '3456765^32456789765432456789854354645&#^#^', {expiresIn: '1h'});
+                        const token = jwt.sign({email: email, userId: _id}, '3456765^32456789765432456789854354645&#^#^', {expiresIn: '1h'});
+
+                        res.status(200).json({ msg: 'User logged in successfully', token: token, userId: _id });
 
                     } else {
                         return res.status(200).json({ msg: 'Password or Email is invalid' });
