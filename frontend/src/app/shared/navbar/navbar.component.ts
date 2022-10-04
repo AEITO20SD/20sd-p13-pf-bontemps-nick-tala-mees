@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { LogoutService } from 'src/app/errors/services/logout.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/users/services/auth.service';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,18 +9,33 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy{
+  public userIsAuthenticated: boolean = false;
+  // private authListinerSubs: any;
 
-  constructor(public logoutService: LogoutService) { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // this.authListinerSubs = this.loginService.getAuthStatusListener().subscribe(isAuthenticated => {
+    //   this.userIsAuthenticated = isAuthenticated;
+    //   console.log(this.userIsAuthenticated);
+    //   console.log(this.loginService.getToken());
+    // });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    console.log(this.userIsAuthenticated);
   }
+
 
   barIsOut: boolean = false;
   isSticky: boolean = false;
 
-  Logout() {
-    this.logoutService.LogoutUser();
+  onLogout() {
+    this.userIsAuthenticated = false;
+    this.authService.logoutUser();
+  }
+
+  ngOnDestroy() {
+    // this.authListinerSubs.unsubscribe();
   }
 
   MobileBar() { 
