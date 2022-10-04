@@ -141,7 +141,7 @@ exports.loginUser = (req, res) => {
 
                         const token = jwt.sign({email: email, userId: _id}, '3456765^32456789765432456789854354645&#^#^', {expiresIn: '1h'});
 
-                        res.status(200).json({ msg: 'User logged in successfully', token: token, userId: _id });
+                        res.status(200).json({ msg: 'User logged in successfully', token: token, userId: _id, expiresIn: 3600 });
 
                     } else {
                         return res.status(200).json({ msg: 'Password or Email is invalid' });

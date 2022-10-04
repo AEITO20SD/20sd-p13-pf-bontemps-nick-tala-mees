@@ -1,19 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { LogoutService } from 'src/app/errors/services/logout.service';
+import { LoginService } from 'src/app/users/services/login.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy{
+  public userIsAuthenticated: boolean = false;
+  // private authListinerSubs: any;
 
-  constructor(public logoutService: LogoutService) { }
+  constructor(private loginService: LoginService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // this.authListinerSubs = this.loginService.getAuthStatusListener().subscribe(isAuthenticated => {
+    //   this.userIsAuthenticated = isAuthenticated;
+    //   console.log(this.userIsAuthenticated);
+    //   console.log(this.loginService.getToken());
+    // });
+    this.userIsAuthenticated = this.loginService.getIsAuth();
+    console.log(this.userIsAuthenticated);
   }
 
-  Logout(){
-    this.logoutService.LogoutUser();
+  onLogout() {
+    this.userIsAuthenticated = false;
+    this.loginService.logoutUser();
+  }
+
+  ngOnDestroy() {
+    // this.authListinerSubs.unsubscribe();
   }
 }
