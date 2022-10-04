@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LogoutService } from 'src/app/errors/services/logout.service';
-import { LoginService } from 'src/app/users/services/login.service';
+import { AuthService } from 'src/app/users/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
   public userIsAuthenticated: boolean = false;
   // private authListinerSubs: any;
 
-  constructor(private loginService: LoginService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     // this.authListinerSubs = this.loginService.getAuthStatusListener().subscribe(isAuthenticated => {
@@ -20,13 +20,13 @@ export class NavbarComponent implements OnInit, OnDestroy{
     //   console.log(this.userIsAuthenticated);
     //   console.log(this.loginService.getToken());
     // });
-    this.userIsAuthenticated = this.loginService.getIsAuth();
+    this.userIsAuthenticated = this.authService.getIsAuth();
     console.log(this.userIsAuthenticated);
   }
 
   onLogout() {
     this.userIsAuthenticated = false;
-    this.loginService.logoutUser();
+    this.authService.logoutUser();
   }
 
   ngOnDestroy() {
