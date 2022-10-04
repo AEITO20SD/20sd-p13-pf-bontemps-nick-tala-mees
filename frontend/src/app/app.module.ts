@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 
@@ -20,6 +20,8 @@ import { ResetFormComponent } from './users/pages/reset-form/reset-form.componen
 import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
 import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
 import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { AuthIntercepter } from './users/shared/auth-intercepter';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { StatusCodeComponent } from './errors/shared/status-code/status-code.com
     UnauthorizedComponent,
     ForbiddenComponent,
     StatusCodeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,9 @@ import { StatusCodeComponent } from './errors/shared/status-code/status-code.com
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
