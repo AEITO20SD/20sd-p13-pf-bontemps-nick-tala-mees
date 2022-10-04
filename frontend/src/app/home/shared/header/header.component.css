@@ -7,3 +7,7 @@ section {
   background-attachment: fixed;
   background-position: center bottom;
 }
+div {
+  height: 1000px;
+  background-color: red;
+}
