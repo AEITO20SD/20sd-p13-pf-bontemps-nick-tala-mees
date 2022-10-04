@@ -16,6 +16,11 @@ ul li a {
   color: white;
   text-decoration: none;
   font-size: 18px;
+  transition: all ease 200ms;
+}
+
+ul li a:hover {
+  color: rgb(224, 214, 214);
 }
 
 .navbar-wrapper {
