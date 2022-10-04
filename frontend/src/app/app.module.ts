@@ -22,6 +22,7 @@ import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component
 import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AuthIntercepter } from './users/shared/auth-intercepter';
+import { ExpiredComponent } from './errors/pages/expired/expired.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AuthIntercepter } from './users/shared/auth-intercepter';
     ForbiddenComponent,
     StatusCodeComponent,
     NavbarComponent,
+    ExpiredComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ export class AuthService {
   private token: string | undefined;
   private tokenTimer: any;
   private authStatusListener = new Subject<boolean>();
+  public message: any;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -35,7 +36,7 @@ export class AuthService {
     const LoginData: LoginData = {email: email, password: password};
 
     // Send the login object to the backend
-    this.http.post<{token: string, expiresIn: number}>('http://localhost:3080/users/login', LoginData).subscribe(response => {
+    this.http.post<{token: string, expiresIn: number, msg: string, error: string}>('http://localhost:3080/users/login', LoginData).subscribe(response => {
       const token = response.token;
       this.token = token;
       if (token) {
@@ -63,9 +64,7 @@ export class AuthService {
       this.isAuthenticated = true;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
-
     }
-
   }
 
   // Function to logout the user

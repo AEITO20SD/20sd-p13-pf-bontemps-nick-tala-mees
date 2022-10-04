@@ -16,15 +16,11 @@ export class RegisterComponent {
   // Function to send data to the backend
   onRegister(form: NgForm) {
 
-    this.error = "";
-
     // Calls the service to send the data to the backend
     this.registerService.CreateUser(form.value.email, form.value.firstname, form.value.lastname, form.value.phone, form.value.password, form.value.passwordconf);
 
-
     setTimeout(() => {
-        this.error = this.registerService.getErrorMessage();
-    }, 100);
+      this.error = this.registerService.getErrorMessage();
+    }, 10);
   }
-
 }

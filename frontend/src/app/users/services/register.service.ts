@@ -22,7 +22,6 @@ export class RegisterService {
     // Send the register object to the backend
     this.http.post<{msg: string, error: string}>('http://localhost:3080/users/register', registerData).subscribe(response => {
       console.log(response);
-      this.message = response.msg;
       if(response.error == "true"){
         this.message = response.msg;
         return

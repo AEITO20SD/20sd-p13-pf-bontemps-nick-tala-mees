@@ -17,6 +17,9 @@ export class ResetFormService {
         if(response['msg'] == 'Unique string does not compare'){
           this.router.navigate(['/error/403']);
         }
+        if(response['msg'] == 'Link expired'){
+          this.router.navigate(['/error/410']);
+        }
       });
     }
 

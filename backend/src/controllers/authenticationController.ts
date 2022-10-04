@@ -247,8 +247,6 @@ exports.resetPasswordUserCheck = (req, res) => {
                                 }
                             });
                             res.status(200).json({ msg: 'Link expired' });
-                        } else {
-                            console.log("Information is valid")
                         }
                     } else {
                         res.status(200).json({ msg: 'Unique string does not compare' });
@@ -292,8 +290,4 @@ exports.resetPasswordUserPost = (req, res) => {
         }
         
     });
-}
-
-exports.logoutUser = (req, res) => {
-    console.log("test")
 }

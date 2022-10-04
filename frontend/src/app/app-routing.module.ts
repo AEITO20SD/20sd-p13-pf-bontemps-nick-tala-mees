@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExpiredComponent } from './errors/pages/expired/expired.component';
 import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
 import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   // Error page routes
   { path: 'error/401', component: UnauthorizedComponent, canActivate: [AuthGuard] },
   { path: 'error/403', component: ForbiddenComponent },
+  { path: 'error/410', component: ExpiredComponent },
 
 ];
 
