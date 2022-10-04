@@ -21,6 +21,7 @@ import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.
 import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
 import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
