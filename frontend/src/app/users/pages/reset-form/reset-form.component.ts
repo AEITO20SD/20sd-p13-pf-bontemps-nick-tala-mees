@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ResetFormService } from '../../services/reset-form.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-reset-form',
@@ -10,10 +11,11 @@ import { ResetFormService } from '../../services/reset-form.service';
 })
 export class ResetFormComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private resetFormService: ResetFormService) { }
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) { }
+
+  public error: any = "";
 
   // Emoty variables
-  Error = "";
   id: any;
   uniqueString: any;
 
@@ -22,24 +24,19 @@ export class ResetFormComponent implements OnInit {
     this.uniqueString = this.activatedRoute.snapshot.params['uniqueString'];
 
     // Use the service to check if the id and unique string are valid
-    this.resetFormService.checkIdAndUniqueString(this.id, this.uniqueString);
+    this.authService.checkIdAndUniqueString(this.id, this.uniqueString);
   }
 
   // Function to send the new password to the backend
   onReset(form: NgForm) {
 
-    //Check if all the fields are filled in
-    if(form.value.password == "" || form.value.passwordconf == "") {
-      return this.Error = "Please enter all fields";
-    }
 
-    // Check if the passwords match
-    if(form.value.password == form.value.password_conf) {
-      // Call a service to send the new password to the backend
-      this.resetFormService.ResetPassword(this.id, this.uniqueString, form.value.password, form.value.password_conf);
-    } else {
-      return this.Error = "Passwords do not match";
-    }
-    return this.Error = "Something went wrong";
+    this.authService.ResetPasswordForm(this.id, this.uniqueString, form.value.password, form.value.password_conf);
+
+    // Timer that waits for the response from the backend
+    setTimeout(() => {
+      this.error = this.authService.getErrorMessage();
+    }, 250);
+
   }
 }

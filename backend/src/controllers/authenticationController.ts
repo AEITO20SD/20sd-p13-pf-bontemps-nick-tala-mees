@@ -164,10 +164,10 @@ exports.resetPasswordEmailUser = (req, res) => {
 
     // Checks if email is filled in
     if(email == ""){
-        return res.status(200).json({ msg: 'Please enter an email' });
+        return res.status(200).json({ msg: 'Please enter an email', error: "true" });
     // Checks if user added a valid email
     } else if (!validator.validate(email)) {
-        return res.status(200).json({ msg: 'Please enter a valid email' });   
+        return res.status(200).json({ msg: 'Please enter a valid email', error: "true" });   
     } else {
         connection.query('SELECT * FROM user WHERE email = ?', [email], function(error, results, fields){
             if(error){
@@ -180,7 +180,7 @@ exports.resetPasswordEmailUser = (req, res) => {
                 resetEmail.sendPasswordResetEmail(results[0].id, email, res);
                 return res.status(200).json({ msg: 'Password recovery email send' });
             } else {
-                return res.status(200).json({ msg: 'Please enter an valid email or password' });
+                return res.status(200).json({ msg: 'Please enter an valid email or password', error: "true" });
             }
 
         });
@@ -207,17 +207,18 @@ exports.resetPasswordUserGet = (req, res) => {
                                     return;
                                 }
                             });
-                            res.status(200).json({ msg: 'Link expired' });
+                            res.redirect(url + 'error/410');
                         } else {
                             console.log("Valid")
                             res.redirect(url + 'login/reset-password-new/' + userId + '/' + uniqueString);
                         }
                     } else {
-                        res.status(200).json({ msg: 'Unique string does not compare' });
+                        // res.status(200).json({ msg: 'Unique string does not compare' });
+                        res.redirect(url + 'error/403');
                     }
                 });
         } else {
-            return res.status(200).json({ msg: 'No record found' });
+            return res.redirect(url + 'error/401');
         }
 
     });
@@ -250,10 +251,12 @@ exports.resetPasswordUserCheck = (req, res) => {
                         }
                     } else {
                         res.status(200).json({ msg: 'Unique string does not compare' });
+                        res.redirect(url + 'error/403');
                     }
                 });
         } else {
             res.status(200).json({ msg: 'Unique string does not compare' });
+            res.redirect(url + 'error/403');
         }
 
     });
@@ -286,7 +289,7 @@ exports.resetPasswordUserPost = (req, res) => {
                 return res.status(200).json({ msg: 'Password has been succesfully reset' });
             });
         } else {
-            return res.status(200).json({ msg: 'No record found' });
+            return res.status(200).json({ msg: 'No record found', error: "true" });
         }
         
     });

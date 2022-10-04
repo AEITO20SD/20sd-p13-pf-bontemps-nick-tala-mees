@@ -8,12 +8,18 @@ export class ResetFormService {
 
     constructor(private http:HttpClient, private router: Router) { }
 
+    public message: any;
+
     // Function to check if the id and unique string are valid
     checkIdAndUniqueString(id: any, uniqueString: string) {
       // Creates the resetFormDataCheck object to send to the backend
       const resetFormDataCheck: ResetFormDataCheck = {uniqueString: uniqueString, _id: id};
 
-      this.http.post<{msg: string}>('http://localhost:3080/users/login/reset-password-check', resetFormDataCheck).subscribe(response => {
+      this.http.post<{msg: string, error: string}>('http://localhost:3080/users/login/reset-password-check', resetFormDataCheck).subscribe(response => {
+        if(response.error == "true"){
+          this.message = response.msg;
+          return
+        }
         if(response['msg'] == 'Unique string does not compare'){
           this.router.navigate(['/error/403']);
         }
@@ -28,7 +34,11 @@ export class ResetFormService {
       // Creates the resetFormData object to send to the backend
       const resetFormData: ResetFormData = {uniqueString: uniqueString, _id: id, password: password, confirmPassword: passwordConfirm};
 
-      this.http.post<{msg: string}>('http://localhost:3080/users/login/reset-password-form', resetFormData).subscribe(response => {
+      this.http.post<{msg: string, error: string}>('http://localhost:3080/users/login/reset-password-form', resetFormData).subscribe(response => {
+        if(response.error == "true"){
+          this.message = response.msg;
+          return
+        }
         if(response['msg'] == 'Password has been succesfully reset'){
           this.router.navigate(['/login']);
         }

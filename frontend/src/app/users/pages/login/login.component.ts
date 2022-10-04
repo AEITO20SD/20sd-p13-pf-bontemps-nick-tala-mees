@@ -21,9 +21,6 @@ export class LoginComponent {
     // Timer that waits for the response from the backend
     setTimeout(() => {
       this.error = this.authService.getErrorMessage();
-    }, 200);
+    }, 250);
   }
-
-
-
 }
