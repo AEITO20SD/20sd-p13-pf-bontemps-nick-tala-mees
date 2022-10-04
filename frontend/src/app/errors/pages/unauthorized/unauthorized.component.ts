@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
 })
 export class UnauthorizedComponent  {
 
-  constructor() { }
-
   title = '401 error - Unauthorized';
   message = 'You don\'t have permission to access this page.';
   image = '../../../../assets/svg/denied.svg';
