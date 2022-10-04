@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 18 sep 2022 om 22:02
--- Serverversie: 10.4.17-MariaDB
--- PHP-versie: 8.0.1
+-- Gegenereerd op: 03 okt 2022 om 11:11
+-- Serverversie: 10.4.14-MariaDB
+-- PHP-versie: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ingredient` (
   `id` int(11) NOT NULL,
-  `typeId` int(11) NOT NULL,
+  `typeIngredientId` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `storedAmount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -43,7 +43,9 @@ CREATE TABLE `ingredient` (
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,7 +68,9 @@ CREATE TABLE `menu_recipe` (
 CREATE TABLE `recipe` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `typeRecipe` varchar(255) NOT NULL
+  `typeRecipeId` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -122,10 +126,21 @@ CREATE TABLE `role` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `type`
+-- Tabelstructuur voor tabel `type_ingredient`
 --
 
-CREATE TABLE `type` (
+CREATE TABLE `type_ingredient` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `type_recipe`
+--
+
+CREATE TABLE `type_recipe` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -151,12 +166,39 @@ CREATE TABLE `user` (
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `user_password_reset`
+--
+
+CREATE TABLE `user_password_reset` (
+  `uniqueString` varchar(255) NOT NULL,
+  `userId` varchar(255) NOT NULL,
+  `expiredAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `user_role`
 --
 
 CREATE TABLE `user_role` (
   `userId` int(11) NOT NULL,
   `roleId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user_vertification_email`
+--
+
+CREATE TABLE `user_vertification_email` (
+  `id` int(11) NOT NULL,
+  `uniqueString` varchar(255) NOT NULL,
+  `userId` varchar(255) NOT NULL,
+  `expiredAt` timestamp NULL DEFAULT NULL,
+  `createdAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -168,7 +210,7 @@ CREATE TABLE `user_role` (
 --
 ALTER TABLE `ingredient`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `typeId` (`typeId`);
+  ADD KEY `typeId` (`typeIngredientId`);
 
 --
 -- Indexen voor tabel `menu`
@@ -187,7 +229,8 @@ ALTER TABLE `menu_recipe`
 -- Indexen voor tabel `recipe`
 --
 ALTER TABLE `recipe`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `typeRecipesId-recipe` (`typeRecipeId`);
 
 --
 -- Indexen voor tabel `recipe_ingredient`
@@ -217,9 +260,15 @@ ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `type`
+-- Indexen voor tabel `type_ingredient`
 --
-ALTER TABLE `type`
+ALTER TABLE `type_ingredient`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `type_recipe`
+--
+ALTER TABLE `type_recipe`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -234,6 +283,12 @@ ALTER TABLE `user`
 ALTER TABLE `user_role`
   ADD KEY `userId` (`userId`),
   ADD KEY `roleId` (`roleId`);
+
+--
+-- Indexen voor tabel `user_vertification_email`
+--
+ALTER TABLE `user_vertification_email`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
@@ -270,16 +325,28 @@ ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT voor een tabel `type`
+-- AUTO_INCREMENT voor een tabel `type_ingredient`
 --
-ALTER TABLE `type`
+ALTER TABLE `type_ingredient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `type_recipe`
+--
+ALTER TABLE `type_recipe`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT voor een tabel `user_vertification_email`
+--
+ALTER TABLE `user_vertification_email`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
@@ -289,7 +356,7 @@ ALTER TABLE `user`
 -- Beperkingen voor tabel `ingredient`
 --
 ALTER TABLE `ingredient`
-  ADD CONSTRAINT `typeId-ingredient` FOREIGN KEY (`typeId`) REFERENCES `type` (`id`);
+  ADD CONSTRAINT `typeIngredientId-ingredient` FOREIGN KEY (`typeIngredientId`) REFERENCES `type_ingredient` (`id`);
 
 --
 -- Beperkingen voor tabel `menu_recipe`
@@ -297,6 +364,12 @@ ALTER TABLE `ingredient`
 ALTER TABLE `menu_recipe`
   ADD CONSTRAINT `menuId-menu_recipe` FOREIGN KEY (`menuId`) REFERENCES `menu` (`id`),
   ADD CONSTRAINT `recipeId-menu_recipe` FOREIGN KEY (`recipeId`) REFERENCES `recipe` (`id`);
+
+--
+-- Beperkingen voor tabel `recipe`
+--
+ALTER TABLE `recipe`
+  ADD CONSTRAINT `typeRecipesId-recipe` FOREIGN KEY (`typeRecipeId`) REFERENCES `type_recipe` (`id`);
 
 --
 -- Beperkingen voor tabel `recipe_ingredient`
