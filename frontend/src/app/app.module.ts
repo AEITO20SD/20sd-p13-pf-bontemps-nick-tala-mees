@@ -10,7 +10,6 @@ import { RegisterComponent } from './users/pages/register/register.component';
 import { LoginComponent } from './users/pages/login/login.component';
 import { HomeComponent } from './home/pages/home/home.component';
 import { HeaderComponent } from './home/shared/header/header.component';
-import { SuccessComponent } from './users/shared/success/success.component';
 import { ResetComponent } from './users/pages/reset/reset.component';
 import { ResetFormComponent } from './users/pages/reset-form/reset-form.component';
 import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
@@ -30,7 +29,6 @@ import { PasswordEmailComponent } from './errors/pages/password-email/password-e
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    SuccessComponent,
     ResetComponent,
     ResetFormComponent,
     UnauthorizedComponent,

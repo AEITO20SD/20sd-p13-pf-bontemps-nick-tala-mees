@@ -30,6 +30,11 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
+  // Function to send error message to the login component
+  getErrorMessage(){
+    return this.message;
+  }
+
   // Fucntion to send the login object to the backend
   loginUser(email: string, password: string){
     // Creates the login object from a the register data model
@@ -37,6 +42,10 @@ export class AuthService {
 
     // Send the login object to the backend
     this.http.post<{token: string, expiresIn: number, msg: string, error: string}>('http://localhost:3080/users/login', LoginData).subscribe(response => {
+      if(response.error == "true"){
+        this.message = response.msg;
+        return
+      }
       const token = response.token;
       this.token = token;
       if (token) {

@@ -12,7 +12,7 @@ import { LoginComponent } from './users/pages/login/login.component';
 import { RegisterComponent } from './users/pages/register/register.component';
 import { ResetFormComponent } from './users/pages/reset-form/reset-form.component';
 import { ResetComponent } from './users/pages/reset/reset.component';
-import { AuthGuard } from './users/shared/auth.guard';
+import { AuthGuard } from './users/guard/auth.guard';
 
 const routes: Routes = [
   // Landing page Route
