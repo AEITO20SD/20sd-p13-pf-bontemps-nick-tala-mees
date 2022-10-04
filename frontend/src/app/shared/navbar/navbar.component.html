@@ -8,13 +8,13 @@
       <div class="logo-text"><img src="../../../../assets/images/icon-logo.png"></div>
     </div>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="">Menu</a></li>
-      <li><a href="">Reserveren</a></li>
-      <li><a href="">About us</a></li>
-      <li><a href="">Contact</a></li>
-      <li><a href="">Login</a></li>
-      <li><a (click)="Logout()" href="">Logout</a></li>
+      <li><a routerLink="">Home</a></li>
+      <li><a routerLink="">Menu</a></li>
+      <li><a routerLink="">Reserveren</a></li>
+      <li><a routerLink="">About us</a></li>
+      <li><a routerLink="">Contact</a></li>
+      <li><a *ngIf="!userIsAuthenticated" routerLink="/login">Login</a></li>
+      <li><a *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</a></li>
     </ul>
   </nav>
 </div>
