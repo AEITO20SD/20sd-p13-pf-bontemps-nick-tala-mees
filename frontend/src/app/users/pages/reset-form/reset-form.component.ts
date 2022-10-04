@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { ResetFormService } from '../../services/reset-form.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
