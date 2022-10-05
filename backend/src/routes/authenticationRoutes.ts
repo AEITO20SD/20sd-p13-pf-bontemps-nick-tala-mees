@@ -24,6 +24,4 @@ authentication.post('/login/reset-password-check', controller.resetPasswordUserC
 
 authentication.post('/login/reset-password-form', controller.resetPasswordUserPost);
 
-authentication.get('/logout', controller.logoutUser);
-
 module.exports = authentication;

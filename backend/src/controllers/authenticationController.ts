@@ -16,15 +16,15 @@ exports.registerUser = async (req, res) => {
 
     // Validation
     if (!email || !firstname || !lastname || !phone || !password || !passwordconf) {
-        return res.status(200).json({ msg: 'Please enter all fields' });
+        return res.status(200).json({ msg: 'Please enter all required fields', error: "true" });
 
     // Checks if passwords match
     } else if (password !== passwordconf) {
-        return res.status(200).json({ msg: 'Passwords do not match' });
+        return res.status(200).json({ msg: 'Please enter matching passwords', error: "true" });
 
     // Checks if user added a valid email
     } else if (!validator.validate(email)) {
-        return res.status(200).json({ msg: 'Please enter a valid email' });   
+        return res.status(200).json({ msg: 'Please enter a valid email', error: "true" });   
         
     } else {
         // Password hashing method using bcrypt
@@ -34,10 +34,10 @@ exports.registerUser = async (req, res) => {
         // Check if user email already exists in the database
         connection.query('SELECT * FROM user WHERE email = ?', [email], function(error, results, fields){
             if(error){
-                return res.status(400).json({ msg: 'Something went wrong' });
+                return res.status(200).json({ msg: 'Something went wrong', error: "true" });
             }
             if(results.length > 0){
-                return res.status(200).json({ msg: 'User with this email already exists' });
+                return res.status(200).json({ msg: 'User with this email already exists', error: "true" });
             } else {
                 const fullname = firstname + ' ' + lastname;
 
@@ -46,11 +46,11 @@ exports.registerUser = async (req, res) => {
                     [fullname, hash, phone, email,'helloworld', '1763kg', 'Alkmaar', 0], function(error, results, fields){
                     if(error){
                         console.log(error);
-                        return res.status(400).json({ msg: 'Something went wrong' });
+                        return res.status(200).json({ msg: 'Something went wrong', error: "true" });
                     }
                     // Send verification email
                     vertificationEmail.sendVertificatioEmail(results.insertId, email, res);
-                    return res.status(200).json({ msg: 'User registered successfully' });
+                    return res.status(200).json({ msg: 'User registered successfully', error: "none" });
                 });
             }
         });
@@ -119,18 +119,18 @@ exports.loginUser = (req, res) => {
 
     // Checks if all the required fields are filled in:
     if(email == "" || password == ""){
-        return res.status(200).json({ msg: 'Please enter all fields' });
+        return res.status(200).json({ msg: 'Please enter all fields', error: "true" });
     }
 
     connection.query('SELECT * FROM user WHERE email = ?', [req.body.email], function(error, results, fields){
         if(error){
-            res.status(200).json({ msg: 'Something went wrong' });
+            res.status(200).json({ msg: 'Something went wrong', error: "true" });
             return;
         }
         if(results.length > 0){
             // Checks if user is vertified
             if(results[0].vertification == 0){
-                return res.status(200).json({ msg: 'Please verify your email' });
+                return res.status(200).json({ msg: 'Please verify your email', error: "true" });
             } else {
                 const hashedPassword = results[0].password;
                 const _id = results[0].id;
@@ -144,12 +144,12 @@ exports.loginUser = (req, res) => {
                         res.status(200).json({ msg: 'User logged in successfully', token: token, userId: _id, expiresIn: 3600 });
 
                     } else {
-                        return res.status(200).json({ msg: 'Password or Email is invalid' });
+                        return res.status(200).json({ msg: 'Password or Email is invalid', error: "true" });
                     }
                 });
             }
         } else {
-            return res.status(200).json({ msg: 'Please enter an valid email or password' });
+            return res.status(200).json({ msg: 'Please enter an valid email or password', error: "true" });
         }
 
     });
@@ -164,10 +164,10 @@ exports.resetPasswordEmailUser = (req, res) => {
 
     // Checks if email is filled in
     if(email == ""){
-        return res.status(200).json({ msg: 'Please enter an email' });
+        return res.status(200).json({ msg: 'Please enter an email', error: "true" });
     // Checks if user added a valid email
     } else if (!validator.validate(email)) {
-        return res.status(200).json({ msg: 'Please enter a valid email' });   
+        return res.status(200).json({ msg: 'Please enter a valid email', error: "true" });   
     } else {
         connection.query('SELECT * FROM user WHERE email = ?', [email], function(error, results, fields){
             if(error){
@@ -180,7 +180,7 @@ exports.resetPasswordEmailUser = (req, res) => {
                 resetEmail.sendPasswordResetEmail(results[0].id, email, res);
                 return res.status(200).json({ msg: 'Password recovery email send' });
             } else {
-                return res.status(200).json({ msg: 'Please enter an valid email or password' });
+                return res.status(200).json({ msg: 'Please enter an valid email or password', error: "true" });
             }
 
         });
@@ -207,17 +207,18 @@ exports.resetPasswordUserGet = (req, res) => {
                                     return;
                                 }
                             });
-                            res.status(200).json({ msg: 'Link expired' });
+                            res.redirect(url + 'error/410');
                         } else {
                             console.log("Valid")
                             res.redirect(url + 'login/reset-password-new/' + userId + '/' + uniqueString);
                         }
                     } else {
-                        res.status(200).json({ msg: 'Unique string does not compare' });
+                        // res.status(200).json({ msg: 'Unique string does not compare' });
+                        res.redirect(url + 'error/403');
                     }
                 });
         } else {
-            return res.status(200).json({ msg: 'No record found' });
+            return res.redirect(url + 'error/401');
         }
 
     });
@@ -247,15 +248,15 @@ exports.resetPasswordUserCheck = (req, res) => {
                                 }
                             });
                             res.status(200).json({ msg: 'Link expired' });
-                        } else {
-                            console.log("Information is valid")
                         }
                     } else {
                         res.status(200).json({ msg: 'Unique string does not compare' });
+                        res.redirect(url + 'error/403');
                     }
                 });
         } else {
             res.status(200).json({ msg: 'Unique string does not compare' });
+            res.redirect(url + 'error/403');
         }
 
     });
@@ -288,12 +289,8 @@ exports.resetPasswordUserPost = (req, res) => {
                 return res.status(200).json({ msg: 'Password has been succesfully reset' });
             });
         } else {
-            return res.status(200).json({ msg: 'No record found' });
+            return res.status(200).json({ msg: 'No record found', error: "true" });
         }
         
     });
-}
-
-exports.logoutUser = (req, res) => {
-    console.log("test")
 }

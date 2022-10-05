@@ -7,6 +7,9 @@
         </div>
         <h1 class="reset-title">Please enter your email</h1>
         <div class="reset-notifactions"></div>
+        <div *ngIf="error != '' " class="login-error">
+          <p>{{error}}</p>
+        </div>
         <div class="reset-form">
           <form (submit)="onReset(resetForm)" #resetForm="ngForm">
             <div>

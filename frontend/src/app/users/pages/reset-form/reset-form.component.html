@@ -9,8 +9,8 @@
           <div class="reset-notifactions">
             <!-- Here will come the error handeling -->
           </div>
-          <div *ngIf="Error != '' " class="reset-error">
-            <p>{{Error}}</p>
+          <div *ngIf="error != '' " class="reset-error">
+            <p>{{error}}</p>
           </div>
           <div class="reset-form">
             <form (submit)="onReset(resetForm)" #resetForm="ngForm" >

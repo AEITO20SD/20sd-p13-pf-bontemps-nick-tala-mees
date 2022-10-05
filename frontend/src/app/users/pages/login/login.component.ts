@@ -9,14 +9,18 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
 
+
   constructor(public authService: AuthService) { }
+
+  public error: any = "";
 
   // Function to send data to the backend
   onLogin(form: NgForm) {
-    if(form.invalid){
-      return;
-    }
     this.authService.loginUser(form.value.email, form.value.password);
-  }
 
+    // Timer that waits for the response from the backend
+    setTimeout(() => {
+      this.error = this.authService.getErrorMessage();
+    }, 250);
+  }
 }
