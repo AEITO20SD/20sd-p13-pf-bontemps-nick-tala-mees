@@ -13,6 +13,7 @@ import { RegisterComponent } from './users/pages/register/register.component';
 import { ResetFormComponent } from './users/pages/reset-form/reset-form.component';
 import { ResetComponent } from './users/pages/reset/reset.component';
 import { AuthGuard } from './users/guard/auth.guard';
+import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
 
 const routes: Routes = [
   // Landing page Route
@@ -34,9 +35,12 @@ const routes: Routes = [
   { path: 'login/reset-password-new/:id/:uniqueString', component: ResetFormComponent },
 
   // Error page routes
-  { path: 'error/401', component: UnauthorizedComponent, canActivate: [AuthGuard] },
+  { path: 'error/401', component: UnauthorizedComponent},
   { path: 'error/403', component: ForbiddenComponent },
   { path: 'error/410', component: ExpiredComponent },
+
+  // Table overview routes
+  { path: 'restaurant/overview', component: TableOverviewComponent, canActivate: [AuthGuard] },
 
 ];
 
