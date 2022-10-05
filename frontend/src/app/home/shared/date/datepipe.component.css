@@ -1,0 +1,39 @@
+.block {
+    position: absolute;
+    background-color: rgba(250, 235, 215, 0.488);
+    width: 60%;
+    height: 600px;
+    box-shadow: 0 4px 25px 0 rgba(129, 129, 129, 0.702), 0 6px 20px 0 rgba(164, 164, 164, 0.19);
+    transform: translate(0%, -50%);
+    display: block;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+table {
+    height: 150px;
+    width: 80%;
+    box-shadow: 0 4px 25px 0 rgba(129, 129, 129, 0.702), 0 6px 20px 0 rgba(164, 164, 164, 0.19);
+    background-color: rgba(239, 239, 239, 0.886);
+    margin: 5% 5% 5% 10%;
+}
+
+th {
+    float: left;
+    border: solid;
+    border-width: 0.1px;
+    border-color: black;
+    height: 50px;
+    width: 15%;
+    padding: 4.5%;
+}
+
+.current {
+    float: left;
+    border: groove;
+    border-width: 2px;
+    border-color: black;
+    height: 173px;
+    width: 16%;
+    padding: 5%;
+}
