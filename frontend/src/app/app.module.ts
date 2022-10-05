@@ -16,6 +16,7 @@ import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.
 import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
 import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthIntercepter } from './users/shared/auth-intercepter';
 import { ExpiredComponent } from './errors/pages/expired/expired.component';
 import { AccountVerifiedComponent } from './errors/pages/account-verified/account-verified.component';
@@ -44,7 +45,8 @@ import { PasswordEmailComponent } from './errors/pages/password-email/password-e
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true}
