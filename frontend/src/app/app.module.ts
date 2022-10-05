@@ -23,6 +23,7 @@ import { AccountVerifiedComponent } from './errors/pages/account-verified/accoun
 import { VertificationEmailComponent } from './errors/pages/vertification-email/vertification-email.component';
 import { PasswordEmailComponent } from './errors/pages/password-email/password-email.component';
 import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
+import { TableComponent } from './overview/shared/table/table.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TableOverviewComponent } from './overview/pages/table-overview/table-ov
     VertificationEmailComponent,
     PasswordEmailComponent,
     TableOverviewComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,

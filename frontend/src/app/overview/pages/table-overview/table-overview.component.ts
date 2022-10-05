@@ -5,11 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './table-overview.component.html',
   styleUrls: ['./table-overview.component.css']
 })
-export class TableOverviewComponent implements OnInit {
+export class TableOverviewComponent  {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  // variables
+  big = 'big';
+  small = 'small';
+  round = 'round';
+  square = 'square';
 
 }
