@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/users/services/auth.service';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit{
     this.userIsAuthenticated = this.authService.getIsAuth();
   }
 
-
   barIsOut: boolean = false;
   isSticky: boolean = false;
 
@@ -26,12 +25,8 @@ export class NavbarComponent implements OnInit{
     this.authService.logoutUser();
   }
 
-  ngOnDestroy() {
-    // this.authListinerSubs.unsubscribe();
-  }
-
-  MobileBar() { 
-    this.barIsOut = !this.barIsOut 
+  MobileBar() {
+    this.barIsOut = !this.barIsOut
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -40,4 +35,5 @@ export class NavbarComponent implements OnInit{
   }
 
   faBars = faBars;
-  faXmark = faXmark
+  faXmark = faXmark;
+}
