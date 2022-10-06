@@ -1,2 +1,5 @@
 <p>reservering works!</p>
-<app-datum-kiezen></app-datum-kiezen>
+<app-datum-kiezen *ngIf="id == 1"></app-datum-kiezen>
+<app-gegevens *ngIf="id == 2"></app-gegevens>
+<app-menu *ngIf="id == 3"></app-menu>
+<app-overzicht *ngIf="id == 4"></app-overzicht>

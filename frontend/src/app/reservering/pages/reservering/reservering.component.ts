@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reservering',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReserveringComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
+
+  id: any;
 
   ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.params['id'];
   }
 
 }

@@ -20,8 +20,7 @@ import { GegevensComponent } from './reservering/shared/gegevens/gegevens.compon
 import { MenuComponent } from './reservering/shared/menu/menu.component';
 import { DatepipeComponent } from './home/shared/date/datepipe.component';
 import { DatePipe } from '@angular/common';
-import { AfgerondComponent } from './reservering/shared/afgerond/afgerond.component';
-import { ProgressbarComponent } from './reservering/shared/progressbar/progressbar.component';
+import { OverzichtComponent } from './reservering/shared/overzicht/overzicht.component';
 
 @NgModule({
   declarations: [
@@ -38,16 +37,13 @@ import { ProgressbarComponent } from './reservering/shared/progressbar/progressb
     GegevensComponent,
     MenuComponent,
     DatepipeComponent,
-    AfgerondComponent,
-    ProgressbarComponent,
+    OverzichtComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-
-   
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
