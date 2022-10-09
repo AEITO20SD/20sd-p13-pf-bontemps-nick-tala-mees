@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 03 okt 2022 om 11:11
--- Serverversie: 10.4.14-MariaDB
--- PHP-versie: 7.4.9
+-- Gegenereerd op: 09 okt 2022 om 12:23
+-- Serverversie: 10.4.17-MariaDB
+-- PHP-versie: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -122,6 +122,18 @@ CREATE TABLE `role` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'gebruiker'),
+(2, 'bediende'),
+(3, 'chef'),
+(4, 'manager'),
+(5, 'eigenaar'),
+(6, 'admin');
 
 -- --------------------------------------------------------
 
@@ -322,7 +334,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT voor een tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `type_ingredient`
@@ -340,13 +352,13 @@ ALTER TABLE `type_recipe`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `user_vertification_email`
 --
 ALTER TABLE `user_vertification_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

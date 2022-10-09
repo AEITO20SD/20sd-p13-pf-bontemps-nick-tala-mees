@@ -48,6 +48,22 @@ exports.registerUser = async (req, res) => {
                         console.log(error);
                         return res.status(200).json({ msg: 'Something went wrong', error: "true" });
                     }
+
+                    // roleId 1 = gebruiker
+                    // roleId 2 = bediende
+                    // roleId 3 = chef
+                    // roleId 4 = manager
+                    // roleId 5 = eigenaar
+                    // roleId 6 = admin
+                    
+                    // Insert user_role data into the database
+                    connection.query('INSERT INTO user_role (userId, roleId) VALUES (?, ?)',
+                        [results.insertId, 1], function(error, results, fields){
+                        if(error){
+                            console.log(error);
+                            return res.status(200).json({ msg: 'Something went wrong', error: "true" });
+                        }
+                    });
                     // Send verification email
                     vertificationEmail.sendVertificatioEmail(results.insertId, email, res);
                     return res.status(200).json({ msg: 'User registered successfully', error: "none" });
