@@ -6,7 +6,7 @@
 .login-page-container {
   margin: auto;
   height: 675px;
-  width: 425px;
+  max-width: 425px;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -64,13 +64,13 @@
   font-size: 14px;
   font-family: 'Roboto Slab', serif;
   margin-top: 10px;
-  width: 302px;
+  max-width: 302px;
   margin: auto;
   padding: 7px 10px;
 }
 
 .login-form .login-submit {
-  width: 322px;
+  max-width: 322px;
   height: 35px;
   border: none;
   border-radius: 5px;
@@ -114,6 +114,12 @@ div input {
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 5px 10px;
+}
+
+@media screen and (max-width: 425px) {
+  div input {
+    width: 100%;
+  }
 }
 
 div input:focus {
