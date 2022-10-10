@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit{
     this.userIsAuthenticated = this.authService.getIsAuth();
   }
 
-
   barIsOut: boolean = false;
   isSticky: boolean = false;
 
@@ -25,11 +24,7 @@ export class NavbarComponent implements OnInit{
     this.userIsAuthenticated = false;
     this.authService.logoutUser();
   }
-
-  ngOnDestroy() {
-    // this.authListinerSubs.unsubscribe();
-  }
-
+  
   MobileBar() {
     this.barIsOut = !this.barIsOut
   }

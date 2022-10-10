@@ -22,6 +22,8 @@ import { ExpiredComponent } from './errors/pages/expired/expired.component';
 import { AccountVerifiedComponent } from './errors/pages/account-verified/account-verified.component';
 import { VertificationEmailComponent } from './errors/pages/vertification-email/vertification-email.component';
 import { PasswordEmailComponent } from './errors/pages/password-email/password-email.component';
+import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
+import { TableComponent } from './overview/shared/table/table.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { PasswordEmailComponent } from './errors/pages/password-email/password-e
     AccountVerifiedComponent,
     VertificationEmailComponent,
     PasswordEmailComponent,
+    TableOverviewComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
