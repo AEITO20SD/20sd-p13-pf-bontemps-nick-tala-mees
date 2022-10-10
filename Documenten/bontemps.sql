@@ -128,12 +128,12 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `name`) VALUES
-(1, 'gebruiker'),
-(2, 'bediende'),
-(3, 'chef'),
-(4, 'manager'),
-(5, 'eigenaar'),
-(6, 'admin');
+(1, 'Gebruiker'),
+(2, 'Bediening'),
+(3, 'Chef'),
+(4, 'Manager'),
+(5, 'Eigenaar'),
+(6, 'Admin');
 
 -- --------------------------------------------------------
 
