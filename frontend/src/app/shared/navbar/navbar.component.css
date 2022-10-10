@@ -32,7 +32,7 @@ ul li a:hover {
 
 .navbar-wrapper.sticky {
   position: fixed;
-  background-color: black;
+  background-color: rgb(1, 4, 9);
 }
 
 .navbar {

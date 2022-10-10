@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit{
     this.userIsAuthenticated = false;
     this.authService.logoutUser();
   }
-
+  
   MobileBar() {
     this.barIsOut = !this.barIsOut
   }
