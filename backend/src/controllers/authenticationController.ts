@@ -49,28 +49,38 @@ exports.registerUser = async (req, res) => {
                 return res.status(200).json({ msg: 'User with this email already exists', error: "true" });
             } else {
                 const fullname = firstname + ' ' + lastname;
-
+                
                 // Insert user data into the database
                 connection.query('INSERT INTO user (name, password, phonenumber, email, street, postalCode, city, vertification) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
-                    [fullname, hash, phone, email,'helloworld', '1763kg', 'Alkmaar', 0], function(error, results, fields){
+                [fullname, hash, phone, email,'helloworld', '1763kg', 'Alkmaar', 0], function(error, results, fields){
                     if(error){
                         console.log(error);
                         return res.status(200).json({ msg: 'Something went wrong', error: "true" });
                     }
 
+                    // userId
+                    const userId: Number = results.insertId;
+
                     // Insert user_role data into the database
                     connection.query('INSERT INTO user_role (userId, roleId) VALUES (?, ?)',
-                        [results.insertId, 1], function(error, results, fields){
+                        [userId, 1], function(error, results, fields){
                         if(error){
                             console.log(error);
+
+                            // Delete user with the error
+                            connection.query('DELETE FROM user WHERE id = ?', [userId], function(error, results, fields){
+                                if(error){
+                                    return res.status(200).json({ msg: 'Please contact support', error: "true" });
+                                }
+                            });
                             return res.status(200).json({ msg: 'Something went wrong', error: "true" });
                         }
+
+                        // Send verification email
+                        vertificationEmail.sendVertificatioEmail(results.insertId, email, res);
+                        return res.status(200).json({ msg: 'User registered successfully', error: "none" });
                     });
-                    
-                    // Send verification email
-                    vertificationEmail.sendVertificatioEmail(results.insertId, email, res);
-                    return res.status(200).json({ msg: 'User registered successfully', error: "none" });
-                });
+                });     
             }
         });
     }
