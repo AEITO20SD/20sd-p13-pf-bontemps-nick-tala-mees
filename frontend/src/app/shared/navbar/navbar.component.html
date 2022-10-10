@@ -13,9 +13,9 @@
       <li><a routerLink="">Reserveren</a></li>
       <li><a routerLink="">About us</a></li>
       <li><a routerLink="">Contact</a></li>
-      <li><a *ngIf="!userIsAuthenticated" routerLink="/login">Login</a></li>
-      <li><a *ngIf="userIsAuthenticated" routerLink="">MyAccount</a></li>
-      <li><a *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</a></li>
+      <li *ngIf="!userIsAuthenticated"><a routerLink="/login">Login</a></li>
+      <li *ngIf="userIsAuthenticated"><a routerLink="">MyAccount</a></li>
+      <li *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
     </ul>
     <fa-icon id="hamburger" [icon]="faBars" (click)="MobileBar()"></fa-icon>
   </nav>
@@ -28,8 +28,8 @@
     <li><a routerLink="">Reserveren</a></li>
     <li><a routerLink="">About us</a></li>
     <li><a routerLink="">Contact</a></li>
-    <li><a routerLink="">Login</a></li>
-    <li><a routerLink="">MyAccount</a></li>
-    <li><a (click)="onLogout()">Logout</a></li>
+    <li *ngIf="!userIsAuthenticated"><a routerLink="/login">Login</a></li>
+    <li *ngIf="userIsAuthenticated"><a routerLink="">MyAccount</a></li>
+    <li *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
   </ul>
 </nav>
