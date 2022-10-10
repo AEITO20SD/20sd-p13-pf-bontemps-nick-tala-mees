@@ -70,7 +70,7 @@
 }
 
 .login-form .login-submit {
-  max-width: 322px;
+  width: 322px;
   height: 35px;
   border: none;
   border-radius: 5px;
@@ -119,6 +119,10 @@ div input {
 @media screen and (max-width: 425px) {
   div input {
     width: 100%;
+  }
+
+  .login-from {
+    margin-top: 10px;
   }
 }
 
