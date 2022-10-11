@@ -55,7 +55,7 @@ exports.registerUser = async (req, res) => {
                 [fullname, hash, phone, email,'helloworld', '1763kg', 'Alkmaar', 0], function(error, results, fields){
                     if(error){
                         console.log(error);
-                        return res.status(200).json({ msg: 'Something went wrong - HELLO', error: "true" });
+                        return res.status(200).json({ msg: 'Something went wrong', error: "true" });
                     }
 
                     // userId
