@@ -3,14 +3,14 @@
     <div class="reset-object">
       <div class="reset-card">
           <div class="reset-img-container">
-            <img src="../../../../assets/img/icon-logo.png" alt="">
+            <img src="../../../../assets/images/icon-logo.png" alt="">
           </div>
           <h1 class="reset-title">Enter a new password</h1>
           <div class="reset-notifactions">
             <!-- Here will come the error handeling -->
           </div>
-          <div *ngIf="Error != '' " class="reset-error">
-            <p>{{Error}}</p>
+          <div *ngIf="error != '' " class="reset-error">
+            <p>{{error}}</p>
           </div>
           <div class="reset-form">
             <form (submit)="onReset(resetForm)" #resetForm="ngForm" >
@@ -18,7 +18,7 @@
                 <input type="password" name="password" ngModel placeholder="Password" #resetInput="ngModel">
               </div>
               <div>
-                <input type="password" name="password_conf" ngModel placeholder="Confirm password" #resetInput="ngModel">
+                <input type="password" name="passwordconf" ngModel placeholder="Confirm password" #resetInput="ngModel">
               </div>
               <input class="reset-submit" type="submit" value="Create new password">
             </form>

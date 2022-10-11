@@ -1,0 +1,35 @@
+<div class="navbar-wrapper" [ngClass]="{'sticky' : isSticky}">
+  <nav class="navbar">
+    <!-- <input type="checkbox" id="check">
+    <label for="check" class="checkbtn">
+      <i class="fas fa-bars"></i>
+    </label> -->
+    <div class="logo">
+      <div class="logo-text"><img src="../../../../assets/images/icon-logo.png"></div>
+    </div>
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="">Menu</a></li>
+      <li><a routerLink="">Reserveren</a></li>
+      <li><a routerLink="">About us</a></li>
+      <li><a routerLink="">Contact</a></li>
+      <li *ngIf="!userIsAuthenticated"><a routerLink="/login">Login</a></li>
+      <li *ngIf="userIsAuthenticated"><a routerLink="">MyAccount</a></li>
+      <li *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
+    </ul>
+    <fa-icon id="hamburger" [icon]="faBars" (click)="MobileBar()"></fa-icon>
+  </nav>
+</div>
+<nav class="mobile-navbar" [ngClass]="{'active' : barIsOut}" id="mobile-navbar">
+  <ul>
+    <li id="closeBtn"><fa-icon id="close" [icon]="faXmark" (click)="MobileBar()"></fa-icon></li>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="">Menu</a></li>
+    <li><a routerLink="">Reserveren</a></li>
+    <li><a routerLink="">About us</a></li>
+    <li><a routerLink="">Contact</a></li>
+    <li *ngIf="!userIsAuthenticated"><a routerLink="/login">Login</a></li>
+    <li *ngIf="userIsAuthenticated"><a routerLink="">MyAccount</a></li>
+    <li *ngIf="userIsAuthenticated"><a (click)="onLogout()">Logout</a></li>
+  </ul>
+</nav>

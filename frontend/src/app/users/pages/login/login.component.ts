@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +9,18 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent {
 
-  constructor(public loginService: LoginService) { }
+
+  constructor(public authService: AuthService) { }
+
+  public error: any = "";
 
   // Function to send data to the backend
   onLogin(form: NgForm) {
-    if(form.invalid){
-      return;
-    }
-    this.loginService.LoginUser(form.value.email, form.value.password);
-  }
+    this.authService.loginUser(form.value.email, form.value.password);
 
+    // Timer that waits for the response from the backend
+    setTimeout(() => {
+      this.error = this.authService.getErrorMessage();
+    }, 250);
+  }
 }

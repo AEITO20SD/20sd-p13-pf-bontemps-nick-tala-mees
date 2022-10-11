@@ -3,10 +3,13 @@
     <div class="reset-object">
       <div class="reset-card">
         <div class="reset-img-container">
-          <img src="../../../../assets/img/icon-logo.png" alt="">
+          <img src="../../../../assets/images/icon-logo.png" alt="">
         </div>
         <h1 class="reset-title">Please enter your email</h1>
         <div class="reset-notifactions"></div>
+        <div *ngIf="error != '' " class="login-error">
+          <p>{{error}}</p>
+        </div>
         <div class="reset-form">
           <form (submit)="onReset(resetForm)" #resetForm="ngForm">
             <div>
@@ -15,7 +18,7 @@
             <input class="reset-submit" type="submit" value="Reset password">
           </form>
           <hr class="reset-divider">
-          <p class="login-register">Go back to the <a href="/login">login</a></p>
+          <p class="login-register">Go back to the <a routerLink="/login">login</a></p>
         </div>
       </div>
       <div class="reset-disclaimer">
