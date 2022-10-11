@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 okt 2022 om 12:23
+-- Gegenereerd op: 10 okt 2022 om 11:28
 -- Serverversie: 10.4.17-MariaDB
 -- PHP-versie: 8.0.1
 
@@ -408,7 +408,7 @@ ALTER TABLE `reservation_menu`
 --
 ALTER TABLE `user_role`
   ADD CONSTRAINT `roleId-user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
