@@ -6,7 +6,7 @@
 .register-page-container {
   margin: auto;
   height: 675px;
-  width: 425px;
+  max-width: 425px;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -118,4 +118,29 @@ div input:focus {
   width: 302px;
   margin: auto;
   padding: 7px 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .register-card {
+    padding: 10px;
+  }
+
+  div input {
+    width: calc(100% - 20px);
+    max-width: 302px;
+  }
+
+  .register-form .register-submit {
+    width: 100%;
+    max-width: 322px;
+  }
+
+  .register-divider {
+    width: 100%;
+    max-width: 322px;
+  }
+
+  .register-from {
+    margin-top: 10px;
+  }
 }
