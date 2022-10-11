@@ -55,7 +55,7 @@ exports.registerUser = async (req, res) => {
                 [fullname, hash, phone, email,'helloworld', '1763kg', 'Alkmaar', 0], function(error, results, fields){
                     if(error){
                         console.log(error);
-                        return res.status(200).json({ msg: 'Something went wrong', error: "true" });
+                        return res.status(200).json({ msg: 'Something went wrong - HELLO', error: "true" });
                     }
 
                     // userId
@@ -77,7 +77,7 @@ exports.registerUser = async (req, res) => {
                         }
 
                         // Send verification email
-                        vertificationEmail.sendVertificatioEmail(results.insertId, email, res);
+                        vertificationEmail.sendVertificatioEmail(userId, email, res);
                         return res.status(200).json({ msg: 'User registered successfully', error: "none" });
                     });
                 });     
