@@ -173,7 +173,7 @@ exports.loginUser = (req, res) => {
                         res.status(200).json({ msg: 'User logged in successfully', token: token, userId: _id, expiresIn: 3600 });
 
                     } else {
-                        return res.status(200).json({ msg: 'Password or Email is invalid', error: "true" });
+                        return res.status(200).json({ msg: 'Please enter an valid email or password', error: "true" });
                     }
                 });
             }
