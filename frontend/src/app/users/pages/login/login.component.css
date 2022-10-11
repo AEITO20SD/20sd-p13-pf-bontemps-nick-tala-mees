@@ -6,7 +6,7 @@
 .login-page-container {
   margin: auto;
   height: 675px;
-  width: 425px;
+  max-width: 425px;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -64,7 +64,7 @@
   font-size: 14px;
   font-family: 'Roboto Slab', serif;
   margin-top: 10px;
-  width: 302px;
+  max-width: 302px;
   margin: auto;
   padding: 7px 10px;
 }
@@ -114,6 +114,31 @@ div input {
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 5px 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .login-card {
+    padding: 10px;
+  }
+
+  div input[type="text"], div input[type="password"] {
+    width: calc(100% - 20px);
+    max-width: 302px;
+  }
+
+  .login-form .login-submit {
+    width: 100%;
+    max-width: 322px;
+  }
+
+  .login-divider {
+    width: 100%;
+    max-width: 322px;
+  }
+
+  .login-from {
+    margin-top: 10px;
+  }
 }
 
 div input:focus {

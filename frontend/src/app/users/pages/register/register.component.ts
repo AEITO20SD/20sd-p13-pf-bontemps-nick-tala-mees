@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RegisterService } from '../../services/register.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,32 +9,19 @@ import { RegisterService } from '../../services/register.service';
 })
 export class RegisterComponent {
 
-  constructor(public registerService: RegisterService) { }
+  constructor(public authService: AuthService) { }
 
-  Error = "";
+  public error: any = "";
 
   // Function to send data to the backend
   onRegister(form: NgForm) {
-    // Check if the form is valid
-    if(form.invalid){
-      this.Error = "An unknown error occured";
-      return;
-
-    // Checks if al the required fields are filled in
-    } else if (
-      form.value.email == "" || form.value.firstname == "" || form.value.lastname == "" ||
-      form.value.phone == "" || form.value.password == "" || form.value.passwordconf == ""){
-      this.Error = "Please enter all fields";
-      return;
-
-    // Checks if the password and password confirmation are the same
-    } else if (form.value.password != form.value.passwordconf) {
-      this.Error = "Passwords do not match";
-      return;
-    }
 
     // Calls the service to send the data to the backend
-    this.registerService.CreateUser(form.value.email, form.value.firstname, form.value.lastname, form.value.phone, form.value.password, form.value.passwordconf);
-  }
+    this.authService.CreateUser(form.value.email, form.value.firstname, form.value.lastname, form.value.phone, form.value.password, form.value.passwordconf);
 
+    // Timer that waits for the response from the backend
+    setTimeout(() => {
+      this.error = this.authService.getErrorMessage();
+    }, 250);
+  }
 }
