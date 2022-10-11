@@ -117,8 +117,23 @@ div input {
 }
 
 @media screen and (max-width: 425px) {
-  div input {
+  .login-card {
+    padding: 10px;
+  }
+
+  div input[type="text"], div input[type="password"] {
+    width: calc(100% - 20px);
+    max-width: 302px;
+  }
+
+  .login-form .login-submit {
     width: 100%;
+    max-width: 322px;
+  }
+
+  .login-divider {
+    width: 100%;
+    max-width: 322px;
   }
 
   .login-from {
