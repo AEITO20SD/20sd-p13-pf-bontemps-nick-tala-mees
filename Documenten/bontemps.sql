@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 sep 2022 om 12:20
--- Serverversie: 10.4.14-MariaDB
--- PHP-versie: 7.4.9
+-- Gegenereerd op: 10 okt 2022 om 11:28
+-- Serverversie: 10.4.17-MariaDB
+-- PHP-versie: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,9 @@ CREATE TABLE `ingredient` (
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,7 +68,9 @@ CREATE TABLE `menu_recipe` (
 CREATE TABLE `recipe` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `typeRecipeId` int(11) NOT NULL
+  `typeRecipeId` int(11) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -119,6 +123,18 @@ CREATE TABLE `role` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'Gebruiker'),
+(2, 'Bediening'),
+(3, 'Chef'),
+(4, 'Manager'),
+(5, 'Eigenaar'),
+(6, 'Admin');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +173,19 @@ CREATE TABLE `user` (
   `postalCode` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `vertification` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `user_password_reset`
+--
+
+CREATE TABLE `user_password_reset` (
+  `uniqueString` varchar(255) NOT NULL,
+  `userId` varchar(255) NOT NULL,
+  `expiredAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -305,7 +334,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT voor een tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `type_ingredient`
@@ -379,7 +408,7 @@ ALTER TABLE `reservation_menu`
 --
 ALTER TABLE `user_role`
   ADD CONSTRAINT `roleId-user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

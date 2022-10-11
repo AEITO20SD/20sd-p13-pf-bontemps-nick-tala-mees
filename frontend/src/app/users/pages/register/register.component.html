@@ -3,12 +3,12 @@
     <div class="register-object">
       <div class="register-card">
         <div class="register-img-container">
-          <img src="../../../../assets/img/icon-logo.png" alt="">
+          <img src="../../../../assets/images/icon-logo.png" alt="">
         </div>
         <h1 class="register-title">Register by BonTemps</h1>
         <div class="register-notifactions"></div>
-        <div *ngIf="Error != '' " class="login-error">
-          <p>{{Error}}</p>
+        <div *ngIf="error != '' " class="login-error">
+          <p>{{error}}</p>
         </div>
         <div class="register-form">
           <form (submit)="onRegister(registerForm)" #registerForm="ngForm">
@@ -33,7 +33,7 @@
             <input class="register-submit" type="submit" value="Register">
           </form>
           <hr class="register-divider">
-          <p class="login-register">Already an account? <a href="/login">Login</a></p>
+          <p class="login-register">Already an account? <a routerLink="/login">Login</a></p>
         </div>
       </div>
       <div class="register-disclaimer">

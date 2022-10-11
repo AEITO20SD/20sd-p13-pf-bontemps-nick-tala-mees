@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ResetService } from '../../services/reset.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-reset',
@@ -9,12 +9,19 @@ import { ResetService } from '../../services/reset.service';
 })
 export class ResetComponent {
 
-  constructor(public resetService: ResetService) { }
+  constructor(public authService: AuthService) { }
+
+  public error: any = "";
 
   onReset(form: NgForm) {
 
     // Calls the service to send the data to the backend
-    this.resetService.ResetPassword(form.value.email);
+    this.authService.ResetPassword(form.value.email);
+
+    // Timer that waits for the response from the backend
+    setTimeout(() => {
+      this.error = this.authService.getErrorMessage();
+    }, 250);
   }
 
 }
