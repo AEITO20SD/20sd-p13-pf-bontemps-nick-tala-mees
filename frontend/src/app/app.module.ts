@@ -25,6 +25,9 @@ import { PasswordEmailComponent } from './errors/pages/password-email/password-e
 import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
 import { TableComponent } from './overview/shared/table/table.component';
 import { TabelDetailsComponent } from './table-details/pages/tabel-details/tabel-details.component';
+import { AddonComponent } from './table-details/shared/addon/addon.component';
+import { CategoryComponent } from './table-details/shared/category/category.component';
+import { ReceiptComponent } from './table-details/shared/receipt/receipt.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { TabelDetailsComponent } from './table-details/pages/tabel-details/tabel
     TableOverviewComponent,
     TableComponent,
     TabelDetailsComponent,
+    AddonComponent,
+    CategoryComponent,
+    ReceiptComponent,
   ],
   imports: [
     BrowserModule,
