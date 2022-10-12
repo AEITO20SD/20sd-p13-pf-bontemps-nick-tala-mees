@@ -1,4 +1,16 @@
-section {
+.table-details-section {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0d1117;
+}
+
+div {
+  width: 67vw;
+  height: 90vh;
+  float: right;
+}
+
+.category-section {
   width: 67vw;
   height: calc(20vh - 2px);
   border-top: 1px solid #30363d;

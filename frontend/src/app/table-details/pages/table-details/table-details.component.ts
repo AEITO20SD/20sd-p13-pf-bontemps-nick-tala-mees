@@ -1,19 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
-import { faWineBottle, faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  selector: 'app-table-details',
+  templateUrl: './table-details.component.html',
+  styleUrls: ['./table-details.component.css']
 })
-export class CategoryComponent implements OnInit {
+export class TableDetailsComponent implements OnInit {
 
   constructor(private categoryService: CategoryService) { }
 
   public categories: Category[] = [];
-  public icon: any = faWineBottle;
 
   // Function that triggers when the component is initialized and calls the service to get the data
   ngOnInit(): void {
@@ -22,6 +20,4 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  faWineBottle = faWineBottle;
-  faMartiniGlassCitrus = faMartiniGlassCitrus;
 }

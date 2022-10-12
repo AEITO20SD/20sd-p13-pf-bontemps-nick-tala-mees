@@ -24,9 +24,8 @@ import { VertificationEmailComponent } from './errors/pages/vertification-email/
 import { PasswordEmailComponent } from './errors/pages/password-email/password-email.component';
 import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
 import { TableComponent } from './overview/shared/table/table.component';
-import { TabelDetailsComponent } from './table-details/pages/tabel-details/tabel-details.component';
+import { TableDetailsComponent } from './table-details/pages/table-details/table-details.component';
 import { AddonComponent } from './table-details/shared/addon/addon.component';
-import { CategoryComponent } from './table-details/shared/category/category.component';
 import { ReceiptComponent } from './table-details/shared/receipt/receipt.component';
 import { AppBarComponent } from './table-details/shared/app-bar/app-bar.component';
 
@@ -49,9 +48,8 @@ import { AppBarComponent } from './table-details/shared/app-bar/app-bar.componen
     PasswordEmailComponent,
     TableOverviewComponent,
     TableComponent,
-    TabelDetailsComponent,
+    TableDetailsComponent,
     AddonComponent,
-    CategoryComponent,
     ReceiptComponent,
     AppBarComponent,
   ],

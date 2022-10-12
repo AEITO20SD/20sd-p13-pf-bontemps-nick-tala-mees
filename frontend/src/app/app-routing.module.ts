@@ -14,7 +14,7 @@ import { ResetFormComponent } from './users/pages/reset-form/reset-form.componen
 import { ResetComponent } from './users/pages/reset/reset.component';
 import { AuthGuard } from './users/guard/auth.guard';
 import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
-import { TabelDetailsComponent } from './table-details/pages/tabel-details/tabel-details.component';
+import { TableDetailsComponent } from './table-details/pages/table-details/table-details.component';
 
 const routes: Routes = [
   // Landing page Route
@@ -42,7 +42,7 @@ const routes: Routes = [
 
   // Table overview routes
   { path: 'restaurant/overview', component: TableOverviewComponent, canActivate: [AuthGuard] },
-  { path: 'restaurant/overview/details/:table/:uniqueString', component: TabelDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'restaurant/overview/details/:table/:uniqueString', component: TableDetailsComponent, canActivate: [AuthGuard] },
 
 
 ];
