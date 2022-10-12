@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/category.model';
 import { CategoryService } from '../../services/category.service';
+import { faWineBottle, faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-category',
@@ -11,17 +12,16 @@ export class CategoryComponent implements OnInit {
 
   constructor(private categoryService: CategoryService) { }
 
-  public data: Category[] = [];
+  public categories: Category[] = [];
+  public icon: any = faWineBottle;
 
   // Function that triggers when the component is initialized and calls the service to get the data
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe((response) => {
-      this.data = response;
-      this.getData();
+      this.categories = response;
     });
   }
 
-  getData() {
-    console.log(this.data);
-  }
+  faWineBottle = faWineBottle;
+  faMartiniGlassCitrus = faMartiniGlassCitrus;
 }

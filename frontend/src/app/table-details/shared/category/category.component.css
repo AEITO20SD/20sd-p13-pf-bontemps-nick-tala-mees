@@ -2,4 +2,37 @@ section {
   width: 67vw;
   height: calc(20vh - 2px);
   border-top: 1px solid #30363d;
+  display: flex;
+}
+
+.category-wrapper {
+  display: flex;
+  padding: 1.5vh;
+  padding-top: 2vh;
+}
+
+.category-card {
+  width: 8vw;
+  height: 14vh;
+  margin: 0 1vw;
+  border-radius: 5px;
+  border: 1px solid #30363d;
+  padding: 5px;
+  background-color: #161b22;
+  color: white;
+  font-size: 1.5vh;
+  text-align: center;
+}
+
+.category-card:hover {
+  background-color: #30363d;
+}
+
+img {
+  margin-top: 1.5vh;
+  height: 7vh;
+}
+
+h3 {
+  margin-top: 1.5vh;
 }

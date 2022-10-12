@@ -1,1 +1,8 @@
-<section></section>
+<section>
+  <div class="category-wrapper">
+    <div class="category-card" *ngFor="let category of categories">
+      <img src="{{ category.pictogram }}" alt="">
+      <h3>{{category.name}}</h3>
+    </div>
+  </div>
+</section>
