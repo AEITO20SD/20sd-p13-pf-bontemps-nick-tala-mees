@@ -28,6 +28,7 @@ import { TabelDetailsComponent } from './table-details/pages/tabel-details/tabel
 import { AddonComponent } from './table-details/shared/addon/addon.component';
 import { CategoryComponent } from './table-details/shared/category/category.component';
 import { ReceiptComponent } from './table-details/shared/receipt/receipt.component';
+import { AppBarComponent } from './table-details/shared/app-bar/app-bar.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ReceiptComponent } from './table-details/shared/receipt/receipt.compone
     AddonComponent,
     CategoryComponent,
     ReceiptComponent,
+    AppBarComponent,
   ],
   imports: [
     BrowserModule,

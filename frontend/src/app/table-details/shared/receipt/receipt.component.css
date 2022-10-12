@@ -1,0 +1,6 @@
+section{
+  width: calc(33vw - 1px);
+  height: calc(93vh - 1px);
+  float: left;
+  border-right: 1px solid #30363d;
+}

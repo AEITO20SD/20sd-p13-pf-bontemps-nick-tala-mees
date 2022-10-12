@@ -1,0 +1,5 @@
+section {
+  width: 67vw;
+  height: calc(20vh - 2px);
+  border-top: 1px solid #30363d;
+}

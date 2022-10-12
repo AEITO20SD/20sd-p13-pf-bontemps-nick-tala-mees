@@ -3,3 +3,9 @@ section {
   height: 100vh;
   background-color: #0d1117;
 }
+
+div {
+  width: 67vw;
+  height: 90vh;
+  float: right;
+}
