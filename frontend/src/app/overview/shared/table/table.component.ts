@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -7,8 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TableComponent {
 
+  constructor(private router: Router) { }
+
   @Input() number: number | undefined;
   @Input() size: string | undefined;
   @Input() shape: string | undefined;
+
+  redirect(number: number | undefined) {
+    this.router.navigate(['/restaurant/overview/details/' + number]);
+  }
 
 }

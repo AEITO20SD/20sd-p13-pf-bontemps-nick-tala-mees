@@ -12,5 +12,4 @@ export class TableOverviewComponent  {
   small = 'small';
   round = 'round';
   square = 'square';
-
 }
