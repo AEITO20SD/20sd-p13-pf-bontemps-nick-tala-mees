@@ -15,7 +15,7 @@ export class TableComponent {
   @Input() shape: string | undefined;
 
   redirect(number: number | undefined) {
-    this.router.navigate(['/restaurant/overview/details/' + number]);
+    const uniqueString: string = '/1234567890';
+    this.router.navigate(['/restaurant/overview/details/' + number + uniqueString]);
   }
-
 }

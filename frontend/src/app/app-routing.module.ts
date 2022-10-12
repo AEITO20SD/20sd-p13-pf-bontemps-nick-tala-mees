@@ -42,7 +42,7 @@ const routes: Routes = [
 
   // Table overview routes
   { path: 'restaurant/overview', component: TableOverviewComponent, canActivate: [AuthGuard] },
-  { path: 'restaurant/overview/details/:table', component: TabelDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'restaurant/overview/details/:table/:uniqueString', component: TabelDetailsComponent, canActivate: [AuthGuard] },
 
 
 ];
