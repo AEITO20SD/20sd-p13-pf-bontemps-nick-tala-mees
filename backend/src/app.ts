@@ -37,6 +37,7 @@ app.use(cors());
 
 // Adding route files
 app.use('/users', require('./routes/authenticationRoutes'));
+app.use('/categories', require('./routes/categoryRoutes'));
 
 // Exoprts the app variable
 module.exports = app;
