@@ -20,8 +20,10 @@ fa-icon {
   outline: 1px solid #30363d;
   padding: 1vh 1.1vw;
   border-radius: 5px;
+  transition: .3s ease-out;
 }
 
 fa-icon:hover {
+  transition: .3s ease-in;
   background-color: #30363d;
 }

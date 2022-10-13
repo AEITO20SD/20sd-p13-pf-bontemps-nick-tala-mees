@@ -11,9 +11,9 @@ export class AppBarComponent {
 
   constructor(private router: Router) { }
 
-  faAngleLeft = faAngleLeft;
+  public faAngleLeft: any = faAngleLeft;
 
-  goBack() {
+  goBack(): void {
     this.router.navigate(['/restaurant/overview']);
   }
 

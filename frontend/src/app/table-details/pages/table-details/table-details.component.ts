@@ -25,12 +25,12 @@ export class TableDetailsComponent implements OnInit {
     this.tableNumber = this.activatedRoute.snapshot.params['table'];
     this.id = this.activatedRoute.snapshot.params['id'];
 
-    this.categoryService.getCategories().subscribe((response) => {
+    this.categoryService.getCategories().subscribe((response: Category[]) => {
       this.categories = response;
     });
   }
 
-  onClick(id: number) {
+  onClick(id: number): void {
     this.router.navigate(['/restaurant/overview/details/' + this.tableNumber + '/' + this.uniqueString + '/' + id]);
   }
 

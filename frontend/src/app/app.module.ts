@@ -28,6 +28,10 @@ import { TableDetailsComponent } from './table-details/pages/table-details/table
 import { AddonComponent } from './table-details/shared/addon/addon.component';
 import { ReceiptComponent } from './table-details/shared/receipt/receipt.component';
 import { AppBarComponent } from './table-details/shared/app-bar/app-bar.component';
+import { MockCategoryService } from './table-details/interfaces/MCategory.service';
+import { CategoryService } from './table-details/services/category.service';
+
+const testing = false;
 
 @NgModule({
   declarations: [
@@ -61,7 +65,8 @@ import { AppBarComponent } from './table-details/shared/app-bar/app-bar.componen
     FontAwesomeModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true},
+    {provide: CategoryService, useClass: testing ? MockCategoryService : CategoryService}
   ],
   bootstrap: [AppComponent]
 })
