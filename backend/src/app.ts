@@ -20,5 +20,10 @@ app.use((req, res, next) => {
 
 app.use(cors());
 
+app.post('/api/auth/login', (req, res) => {
+    console.log(req.body);
+    return res.status(200).send({test: 'test'});
+});
+
 // Exoprts the app variable
 module.exports = app;

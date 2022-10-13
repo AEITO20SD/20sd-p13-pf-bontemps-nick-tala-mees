@@ -69,7 +69,6 @@ input:focus {
   height: 75px;
   text-align: center;
   margin-top: 80px;
-  font-family: 'Roboto Slab', serif;
   font-size: 12px;
 }
 
@@ -100,7 +99,6 @@ input:focus {
   color: white;
   border-radius: 5px;
   font-size: 14px;
-  font-family: 'Roboto Slab', serif;
   margin-top: 10px;
   max-width: 302px;
   margin: auto;
@@ -118,7 +116,6 @@ input:focus {
   font-size: 14px;
   color: white;
   margin-top: 10px;
-  font-family: 'Roboto Slab', serif;
 }
 
 .auth-alt-text a {
@@ -139,5 +136,16 @@ input:focus {
 
   .auth-from {
     margin-top: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+      width: calc(100% - 20px);
+      max-width: 302px;
+  }
+
+  .submit {
+    width: 100%;
+    max-width: 322px;
   }
 }

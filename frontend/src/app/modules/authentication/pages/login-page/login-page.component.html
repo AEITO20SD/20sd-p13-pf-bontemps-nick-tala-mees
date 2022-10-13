@@ -6,19 +6,16 @@
           <img src="../../../../../assets/img/icon-logo.png" alt="">
         </div>
         <h1 class="auth-title">Login by BonTemps</h1>
-        <!-- <div *ngIf="error != '' " class="auth-error">
+        <div *ngIf="error != '' " class="auth-error">
           <p>{{error}}</p>
-        </div> -->
+        </div>
         <div class="auth-form">
-          <!-- (submit)="onLogin(loginForm)" #loginForm="ngForm" -->
-          <form>
+          <form (submit)="onSubmit(loginForm)" #loginForm="ngForm">
             <div>
-              <!-- #emailInput="ngModel" -->
-              <input type="text" name="email" ngModel placeholder="bontemps@example.com">
+              <input type="text" name="email" ngModel placeholder="bontemps@example.com"  #emailInput="ngModel">
             </div>
             <div>
-              <!-- #passwordInput="ngModel" -->
-              <input type="password" name="password" ngModel placeholder="password">
+              <input type="password" name="password" ngModel placeholder="password" #passwordInput="ngModel">
             </div>
             <input class="submit" type="submit" value="Login">
           </form>
