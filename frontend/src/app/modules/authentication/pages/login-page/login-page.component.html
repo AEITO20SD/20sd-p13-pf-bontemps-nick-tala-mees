@@ -1,0 +1,35 @@
+<section class="auth-page-section">
+  <div class="auth-page-container">
+    <div class="auth-page-object">
+      <div class="auth-card">
+        <div class="auth-img-container">
+          <img src="../../../../../assets/img/icon-logo.png" alt="">
+        </div>
+        <h1 class="auth-title">Login by BonTemps</h1>
+        <!-- <div *ngIf="error != '' " class="auth-error">
+          <p>{{error}}</p>
+        </div> -->
+        <div class="auth-form">
+          <!-- (submit)="onLogin(loginForm)" #loginForm="ngForm" -->
+          <form>
+            <div>
+              <!-- #emailInput="ngModel" -->
+              <input type="text" name="email" ngModel placeholder="bontemps@example.com">
+            </div>
+            <div>
+              <!-- #passwordInput="ngModel" -->
+              <input type="password" name="password" ngModel placeholder="password">
+            </div>
+            <input class="submit" type="submit" value="Login">
+          </form>
+          <p class="auth-alt-text">Forgot your password? <a routerLink="/login/reset-password">Reset password</a></p>
+          <hr class="auth-divider">
+          <p class="auth-alt-text">No account yet? <a routerLink="/register">Register</a></p>
+        </div>
+      </div>
+      <div class="auth-disclaimer">
+        <p>BonTemps.com ⓒ 2022 all right preserved <a href="">Privacy statment </a></p>
+      </div>
+    </div>
+  </div>
+</section>
