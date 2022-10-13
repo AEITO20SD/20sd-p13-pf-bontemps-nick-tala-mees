@@ -7,6 +7,16 @@ const app = express();
 const connect = require('./helpers/connect');
 const cors = require('cors');
 
+// Setting up the session for the user login
+app.use(session({
+    secret: `${process.env.SESSION_SECRET}`,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+    },
+    saveUninitialized: false
+}));
+
+
 // Middleware for parsing the body of a request
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -18,12 +28,16 @@ app.use((req, res, next) => {
     next();
 });
 
+var corsOptions = {
+    origin: 'http://localhost:4200/',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 app.use(cors());
 
-app.post('/api/auth/login', (req, res) => {
-    console.log(req.body);
-    return res.status(200).send({test: 'test'});
-});
+// Adding route files
+app.use('/users', require('./routes/authenticationRoutes'));
+app.use('/categories', require('./routes/categoryRoutes'));
 
 // Exoprts the app variable
 module.exports = app;
