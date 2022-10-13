@@ -24,6 +24,14 @@ import { VertificationEmailComponent } from './errors/pages/vertification-email/
 import { PasswordEmailComponent } from './errors/pages/password-email/password-email.component';
 import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
 import { TableComponent } from './overview/shared/table/table.component';
+import { TableDetailsComponent } from './table-details/pages/table-details/table-details.component';
+import { AddonComponent } from './table-details/shared/addon/addon.component';
+import { ReceiptComponent } from './table-details/shared/receipt/receipt.component';
+import { AppBarComponent } from './table-details/shared/app-bar/app-bar.component';
+import { MockCategoryService } from './table-details/interfaces/MCategory.service';
+import { CategoryService } from './table-details/services/category.service';
+
+const testing = false;
 
 @NgModule({
   declarations: [
@@ -44,6 +52,10 @@ import { TableComponent } from './overview/shared/table/table.component';
     PasswordEmailComponent,
     TableOverviewComponent,
     TableComponent,
+    TableDetailsComponent,
+    AddonComponent,
+    ReceiptComponent,
+    AppBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +65,8 @@ import { TableComponent } from './overview/shared/table/table.component';
     FontAwesomeModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true},
+    {provide: CategoryService, useClass: testing ? MockCategoryService : CategoryService}
   ],
   bootstrap: [AppComponent]
 })
