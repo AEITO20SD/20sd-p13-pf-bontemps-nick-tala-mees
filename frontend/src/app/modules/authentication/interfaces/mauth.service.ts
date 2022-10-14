@@ -6,6 +6,15 @@ import { IAuthService } from "./iauth.service";
 export class MockAuthService implements IAuthService {
 
   constructor() { }
+
+  getErrorMessage(): string {
+    throw new Error("Method not implemented.");
+  }
+
+  createUser(email: string, firstname: string, lastname: string, phone: string, password: string, passwordconf: string): void {
+    throw new Error("Method not implemented.");
+  }
+
   autoAuthUser(): void {
     throw new Error("Method not implemented.");
   }

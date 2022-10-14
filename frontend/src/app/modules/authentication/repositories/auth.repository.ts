@@ -5,6 +5,7 @@ import { LoginModel } from "../models/login.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { Router } from "@angular/router";
+import { UserModel } from "../models/user.model";
 
 @Injectable({providedIn: "root"})
 export class AuthRepository extends BaseRepository implements IAuthRepository {
@@ -18,6 +19,16 @@ export class AuthRepository extends BaseRepository implements IAuthRepository {
 
   constructor(private http: HttpClient, private router: Router) {
     super();
+  }
+  public createUser(userData: UserModel): void {
+    this.http.post<{msg: string, error: string}>("http://localhost:3080/users/register", userData).subscribe((response) => {
+      if(response.error == "true"){
+        this.error = response.msg;
+        return
+      } else if(response['msg'] == 'User registered successfully'){
+        this.router.navigate(['/register/send-verification-email']);
+      }
+    });
   }
 
   public login(loginData: LoginModel): any {

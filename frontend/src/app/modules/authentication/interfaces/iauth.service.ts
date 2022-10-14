@@ -4,5 +4,7 @@ export interface IAuthService {
   getIsAuth(): boolean ;
   logoutUser(): void ;
   autoAuthUser(): void ;
+  createUser(email: string, firstname: string, lastname: string, phone: string ,password: string, passwordconf: string): void ;
+  getErrorMessage(): string ;
 
 }

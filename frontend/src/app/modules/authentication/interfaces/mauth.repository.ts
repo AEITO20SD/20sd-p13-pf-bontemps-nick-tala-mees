@@ -1,12 +1,16 @@
 import { Injectable } from "@angular/core";
 import { of } from "rxjs";
 import { LoginModel } from "../models/login.model";
+import { UserModel } from "../models/user.model";
 import { IAuthRepository } from "./iauth.repository";
 
 @Injectable({providedIn: "root"})
 export class MockAuthRepository implements IAuthRepository {
 
   constructor() { }
+  createUser(userData: UserModel): void {
+    throw new Error("Method not implemented.");
+  }
   getErrorMessages(): string {
     throw new Error("Method not implemented.");
   }

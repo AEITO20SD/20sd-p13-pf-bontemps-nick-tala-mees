@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './modules/authentication/pages/login-page/login-page.component';
+import { RegisterPageComponent } from './modules/authentication/pages/register-page/register-page.component';
 import { AccountVerifiedPageComponent } from './modules/error/pages/account-verified-page/account-verified-page.component';
 import { ExpiredPageComponent } from './modules/error/pages/expired-page/expired-page.component';
 import { ForbiddenPageComponent } from './modules/error/pages/forbidden-page/forbidden-page.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'login/reset-password-send', component: PasswordEmailPageComponent },
 
   // Register page Route
+    { path: 'register', component: RegisterPageComponent },
   { path: 'register/send-verification-email', component: VertificationEmailPageComponent },
   { path: 'register/verified', component: AccountVerifiedPageComponent },
 

@@ -1,5 +1,6 @@
 import { Observable } from "rxjs";
 import { LoginModel } from "../models/login.model";
+import { UserModel } from "../models/user.model";
 
 export interface IAuthRepository {
   login(loginData: LoginModel): any;
@@ -12,4 +13,5 @@ export interface IAuthRepository {
   clearAuthData(): void;
   autoAuthUser(): void;
   getAuthData(): any;
+  createUser(userData: UserModel): void;
 }

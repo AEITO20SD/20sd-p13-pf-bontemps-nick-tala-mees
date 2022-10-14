@@ -18,5 +18,9 @@ export class LoginPageComponent {
     if (form.valid) {
       this.authService.login(form.value.email, form.value.password);
     }
+
+    setTimeout(() => {
+      this.error = this.authService.getErrorMessage();
+    }, 250);
   }
 }
