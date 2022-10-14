@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './modules/authentication/guards/auth.guard';
+import { ConfirmPasswordPageComponent } from './modules/authentication/pages/confirm-password-page/confirm-password-page.component';
 import { LoginPageComponent } from './modules/authentication/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './modules/authentication/pages/register-page/register-page.component';
+import { ResetPasswordPageComponent } from './modules/authentication/pages/reset-password-page/reset-password-page.component';
 import { AccountVerifiedPageComponent } from './modules/error/pages/account-verified-page/account-verified-page.component';
 import { ExpiredPageComponent } from './modules/error/pages/expired-page/expired-page.component';
 import { ForbiddenPageComponent } from './modules/error/pages/forbidden-page/forbidden-page.component';
@@ -18,10 +20,12 @@ const routes: Routes = [
 
   // login page Route
   { path: 'login', component: LoginPageComponent },
+  { path: 'login/reset-password', component: ResetPasswordPageComponent },
   { path: 'login/reset-password-send', component: PasswordEmailPageComponent },
+   { path: 'login/reset-password-new/:id/:uniqueString', component: ConfirmPasswordPageComponent },
 
   // Register page Route
-    { path: 'register', component: RegisterPageComponent },
+  { path: 'register', component: RegisterPageComponent },
   { path: 'register/send-verification-email', component: VertificationEmailPageComponent },
   { path: 'register/verified', component: AccountVerifiedPageComponent },
 

@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { of } from "rxjs";
+import { ConfirmModel } from "../models/confirm.model";
 import { LoginModel } from "../models/login.model";
+import { ResetCheckModel } from "../models/reset-check.model";
+import { ResetModel } from "../models/reset.model";
 import { UserModel } from "../models/user.model";
 import { IAuthRepository } from "./iauth.repository";
 
@@ -8,6 +11,16 @@ import { IAuthRepository } from "./iauth.repository";
 export class MockAuthRepository implements IAuthRepository {
 
   constructor() { }
+
+  confirmPasswordReset(confirmData: ConfirmModel): void {
+    throw new Error("Method not implemented.");
+  }
+  checkIdAndUniqueString(resetCheckData: ResetCheckModel): void {
+    throw new Error("Method not implemented.");
+  }
+  resetPassword(resetData: ResetModel): void {
+    throw new Error("Method not implemented.");
+  }
   createUser(userData: UserModel): void {
     throw new Error("Method not implemented.");
   }

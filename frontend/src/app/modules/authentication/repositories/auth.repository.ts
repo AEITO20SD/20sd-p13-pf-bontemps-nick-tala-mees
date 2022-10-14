@@ -6,6 +6,9 @@ import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { UserModel } from "../models/user.model";
+import { ResetModel } from "../models/reset.model";
+import { ResetCheckModel } from "../models/reset-check.model";
+import { ConfirmModel } from "../models/confirm.model";
 
 @Injectable({providedIn: "root"})
 export class AuthRepository extends BaseRepository implements IAuthRepository {
@@ -20,6 +23,46 @@ export class AuthRepository extends BaseRepository implements IAuthRepository {
   constructor(private http: HttpClient, private router: Router) {
     super();
   }
+
+  public confirmPasswordReset(confirmData: ConfirmModel): void {
+    this.http.post<{msg: string, error: string}>('http://localhost:3080/users/login/reset-password-form', confirmData).subscribe(response => {
+      if(response.error == "true"){
+        this.error = response.msg;
+        return
+      } else if(response['msg'] == 'Password has been succesfully reset'){
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  public checkIdAndUniqueString(resetCheckData: ResetCheckModel): void {
+    console.log(resetCheckData);
+    this.http.post<{msg: string, error: string}>('http://localhost:3080/users/login/reset-password-check', resetCheckData).subscribe(response => {
+      if(response.error == "true"){
+        this.error = response.msg;
+        return
+      } else if(response['msg'] == 'Unique string does not compare'){
+        this.router.navigate(['/error/403']);
+      } else if(response['msg'] == 'Link expired'){
+        this.router.navigate(['/error/410']);
+      }
+    });
+  }
+
+  public resetPassword(resetData: ResetModel): void {
+    console.log(resetData);
+    this.http.post<{msg: string, error: string}>('http://localhost:3080/users/login/reset-password', resetData).subscribe(response => {
+      console.log(response);
+      if(response.error == "true"){
+        this.error = response.msg;
+        return
+      }
+      if(response['msg'] == 'Password recovery email send'){
+        this.router.navigate(['/login/reset-password-send']);
+      }
+    });
+  }
+
   public createUser(userData: UserModel): void {
     this.http.post<{msg: string, error: string}>("http://localhost:3080/users/register", userData).subscribe((response) => {
       if(response.error == "true"){

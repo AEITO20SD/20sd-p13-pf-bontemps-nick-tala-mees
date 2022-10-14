@@ -1,5 +1,8 @@
 import { Observable } from "rxjs";
+import { ConfirmModel } from "../models/confirm.model";
 import { LoginModel } from "../models/login.model";
+import { ResetCheckModel } from "../models/reset-check.model";
+import { ResetModel } from "../models/reset.model";
 import { UserModel } from "../models/user.model";
 
 export interface IAuthRepository {
@@ -14,4 +17,7 @@ export interface IAuthRepository {
   autoAuthUser(): void;
   getAuthData(): any;
   createUser(userData: UserModel): void;
+  resetPassword(resetData: ResetModel): void;
+  checkIdAndUniqueString(resetCheckData: ResetCheckModel): void;
+  confirmPasswordReset( confirmData: ConfirmModel ): void;
 }

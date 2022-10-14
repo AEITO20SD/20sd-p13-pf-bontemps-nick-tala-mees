@@ -3,7 +3,10 @@ import { BaseService } from 'src/app/services/base.service';
 import { IAuthService } from '../interfaces/iauth.service';
 import { LoginModel } from '../models/login.model';
 import { UserModel } from '../models/user.model';
+import { ResetModel } from '../models/reset.model';
+import { ResetCheckModel } from '../models/reset-check.model';
 import { AuthRepository } from '../repositories/auth.repository';
+import { ConfirmModel } from '../models/confirm.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +17,33 @@ export class AuthService extends BaseService implements IAuthService{
     super();
   }
 
+  public confirmPasswordReset(id: any, uniqueString: string, password: string, passwordconf: string): void {
+    const confirmData: ConfirmModel = {
+      _id: id,
+      uniqueString: uniqueString,
+      password: password,
+      passwordconf: passwordconf
+    }
+    this.authRepository.confirmPasswordReset(confirmData);
+  }
+
+  public checkIdAndUniqueString(id: any, uniqueString: string): void {
+    const resetCheckData: ResetCheckModel = {
+      _id: id,
+      uniqueString: uniqueString
+    };
+    this.authRepository.checkIdAndUniqueString(resetCheckData);
+  }
+
+  // Calls the resetPassword function in the repository
+  public resetPassword(email: string): void {
+    const resetData: ResetModel = {
+      email: email
+    }
+    this.authRepository.resetPassword(resetData);
+  }
+
+  // Gets the error message from the repository
   public getErrorMessage(): string {
     return this.authRepository.getErrorMessages();
   }

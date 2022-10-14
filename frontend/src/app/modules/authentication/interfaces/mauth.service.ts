@@ -7,6 +7,18 @@ export class MockAuthService implements IAuthService {
 
   constructor() { }
 
+  confirmPasswordReset(id: any, uniqueString: string, password: string, passwordconf: string): void {
+    throw new Error("Method not implemented.");
+  }
+
+  checkIdAndUniqueString(id: string, uniqueString: string): void {
+    throw new Error("Method not implemented.");
+  }
+
+  resetPassword(email: string): void {
+    throw new Error("Method not implemented.");
+  }
+
   getErrorMessage(): string {
     throw new Error("Method not implemented.");
   }
