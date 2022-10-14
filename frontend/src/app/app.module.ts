@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { MockAuthService } from './modules/authentication/interfaces/mauth.service';
 import { AuthService } from './modules/authentication/services/auth.service';
+import { ErrorModule } from './modules/error/error.module';
 import { LandingModule } from './modules/landing/landing.module';
 
 const testing = false;
@@ -18,7 +19,8 @@ const testing = false;
     AppRoutingModule,
     BrowserModule,
     AuthenticationModule,
-    LandingModule
+    LandingModule,
+    ErrorModule
   ],
   providers: [
      {provide: AuthService, useClass: testing ? MockAuthService : AuthService}
