@@ -4,18 +4,28 @@ import { TableOverviewPageComponent } from './pages/table-overview-page/table-ov
 import { TableComponent } from './components/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { AppBarComponent } from './components/app-bar/app-bar.component';
+import { AddOnComponent } from './components/add-on/add-on.component';
+import { ReceiptComponent } from './components/receipt/receipt.component';
+import { TableDetailsComponent } from './pages/table-details/table-details.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
 @NgModule({
   declarations: [
     TableOverviewPageComponent,
-    TableComponent
+    TableComponent,
+    AppBarComponent,
+    AddOnComponent,
+    ReceiptComponent,
+    TableDetailsComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
   ]
 })
 export class OverviewModule { }
