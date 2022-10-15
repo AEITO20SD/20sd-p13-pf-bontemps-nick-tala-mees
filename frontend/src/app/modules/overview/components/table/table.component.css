@@ -1,0 +1,35 @@
+section {
+  background-color: #20252c;
+  outline: 1px solid #30363d;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+  color: white;
+  text-shadow: 2px 2px 0 #bcbcbc, 4px 4px 0 #9c9c9c;
+  margin-top: -10px;
+}
+
+.small {
+  height: 16.5vh;
+  width: 16.5vh;
+}
+
+.big {
+  height: 20vh;
+  width: 20vh;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.square {
+  border-radius: 0%;
+}

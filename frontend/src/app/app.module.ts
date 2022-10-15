@@ -8,6 +8,7 @@ import { MockAuthService } from './modules/authentication/interfaces/mauth.servi
 import { AuthService } from './modules/authentication/services/auth.service';
 import { ErrorModule } from './modules/error/error.module';
 import { LandingModule } from './modules/landing/landing.module';
+import { OverviewModule } from './modules/overview/overview.module';
 
 const testing = false;
 
@@ -20,7 +21,8 @@ const testing = false;
     BrowserModule,
     AuthenticationModule,
     LandingModule,
-    ErrorModule
+    ErrorModule,
+    OverviewModule
   ],
   providers: [
      {provide: AuthService, useClass: testing ? MockAuthService : AuthService}

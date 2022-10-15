@@ -12,6 +12,7 @@ import { PasswordEmailPageComponent } from './modules/error/pages/password-email
 import { UnauthorizedPageComponent } from './modules/error/pages/unauthorized-page/unauthorized-page.component';
 import { VertificationEmailPageComponent } from './modules/error/pages/vertification-email-page/vertification-email-page.component';
 import { LandingPageComponent } from './modules/landing/pages/landing-page/landing-page.component';
+import { TableOverviewPageComponent } from './modules/overview/pages/table-overview-page/table-overview-page.component';
 
 const routes: Routes = [
 
@@ -33,6 +34,9 @@ const routes: Routes = [
   { path: 'error/401', component: UnauthorizedPageComponent},
   { path: 'error/403', component: ForbiddenPageComponent },
   { path: 'error/410', component: ExpiredPageComponent },
+
+  // Overview page Route
+  { path: 'restaurant/overview', component: TableOverviewPageComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
