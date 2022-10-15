@@ -1,0 +1,43 @@
+<section class="auth-page-section">
+  <div class="auth-page-container">
+    <div class="auth-page-object">
+      <div class="auth-card">
+        <div class="auth-img-container">
+          <img src="../../../../../assets/img/icon-logo.png" alt="">
+        </div>
+        <h1 class="auth-title">Login by BonTemps</h1>
+        <div *ngIf="error != '' " class="auth-error">
+          <p>{{error}}</p>
+        </div>
+        <div class="auth-form">
+          <form (submit)="onSubmit(registerForm)" #registerForm="ngForm">
+            <div>
+              <input type="text" name="email" ngModel placeholder="bontemps@example.com" #emailInput="ngModel">
+            </div>
+            <div>
+              <input type="text" name="firstname" ngModel placeholder="firstname" #firstnameInput="ngModel">
+            </div>
+            <div>
+              <input type="text" name="lastname" ngModel placeholder="lastname" #lastnameInput="ngModel">
+            </div>
+            <div>
+              <input type="text" name="phone" ngModel placeholder="phone number" #phoneInput="ngModel">
+            </div>
+            <div>
+              <input type="password" name="password" ngModel placeholder="password" #passwordInput="ngModel">
+            </div>
+            <div>
+              <input type="password" name="passwordconf" ngModel placeholder="confirm password" #passwordconfInput="ngModel">
+            </div>
+            <input class="submit" type="submit" value="Register">
+          </form>
+          <hr class="auth-divider">
+          <p class="auth-alt-text">Already an account? <a routerLink="/login">login</a></p>
+        </div>
+      </div>
+      <div class="auth-disclaimer">
+        <p>BonTemps.com ⓒ 2022 all right preserved <a href="">Privacy statment </a></p>
+      </div>
+    </div>
+  </div>
+</section>
