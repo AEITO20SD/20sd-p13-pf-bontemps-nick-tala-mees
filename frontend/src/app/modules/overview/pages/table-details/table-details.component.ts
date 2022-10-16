@@ -27,6 +27,7 @@ export class TableDetailsComponent implements OnInit {
 
     this.categoryService.getCategories().subscribe((response: CategoryModel[]) => {
       this.categories = response;
+      console.log(this.categories);
     });
   }
 
