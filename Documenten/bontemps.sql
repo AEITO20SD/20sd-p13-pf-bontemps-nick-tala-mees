@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `addon` (
   `id` int(11) NOT NULL,
   `categoryId` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` decimal(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -61,7 +61,6 @@ CREATE TABLE `ingredient` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-
 --
 -- Tabelstructuur voor tabel `menu`
 --

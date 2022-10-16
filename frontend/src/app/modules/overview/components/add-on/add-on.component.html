@@ -1,3 +1,8 @@
 <section>
-  {{ id }}
+  <div class="add-on-item-wrapper">
+    <div *ngFor="let addon of addons" class="add-on-item-card {{ addon.color}}">
+      <h3>{{ addon.name}}</h3>
+      <p>{{ addon.price}}</p>
+    </div>
+  </div>
 </section>

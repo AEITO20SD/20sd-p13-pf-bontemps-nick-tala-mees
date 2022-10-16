@@ -2,3 +2,55 @@ section {
   width: 67vw;
   height: 73vh;
 }
+
+.add-on-item-wrapper {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  padding: 1.5vh;
+  row-gap: 2vh;
+}
+
+.add-on-item-card {
+  width: 8vw;
+  height: 14vh;
+  margin: 0 1vw;
+  border-radius: 5px;
+  border: 1px solid #30363d;
+  padding: 5px;
+  color: white;
+  font-size: 1.5vh;
+  transition: .3s ease-out;
+}
+
+h3 {
+  margin: 5px;
+  margin-top: 10px;
+  font-size: 1.8vh;
+}
+
+p {
+  margin: 5px;
+  margin-top: 10px;
+  font-size: 1.5vh;
+  font-weight: 500;
+}
+
+.red {
+   background-color: #f85149;
+}
+
+.green {
+  background-color: #3fb950;
+}
+
+.orange {
+  background-color: #f0883e;
+}
+
+.blue {
+  background-color: #0e7ae6;
+}
+
+.yellow {
+  background-color: #e3b341;
+}

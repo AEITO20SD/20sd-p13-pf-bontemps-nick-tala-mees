@@ -15,7 +15,7 @@ export class TableDetailsComponent implements OnInit {
   }
 
   public categories: CategoryModel[] = [];
-  public id: number | undefined;
+  public id: number = 0;
   public uniqueString: string | undefined;
   public tableNumber: number | undefined;
 
@@ -27,7 +27,6 @@ export class TableDetailsComponent implements OnInit {
 
     this.categoryService.getCategories().subscribe((response: CategoryModel[]) => {
       this.categories = response;
-      console.log(this.categories);
     });
   }
 
