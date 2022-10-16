@@ -50,6 +50,20 @@ CREATE TABLE `category` (
 -- --------------------------------------------------------
 
 --
+-- Gegevens worden geëxporteerd voor tabel `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `imageUrl`) VALUES
+(1, "Menu's", '../../../../assets/svg/menu.svg'),
+(2, 'Drink', '../../../../assets/svg/drink.svg'),
+(3, 'Wines', '../../../../assets/svg/wines.svg'),
+(4, 'Beers', '../../../../assets/svg/beer.svg'),
+(5, 'Coffees', '../../../../assets/svg/Coffee.svg'),
+(6, "Extra's", '../../../../assets/svg/extra.svg');
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `ingredient`
 --
 
