@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 24 okt 2022 om 11:59
--- Serverversie: 10.4.14-MariaDB
--- PHP-versie: 7.4.9
+-- Gegenereerd op: 12 okt 2022 om 13:03
+-- Serverversie: 10.4.17-MariaDB
+-- PHP-versie: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `bontemps`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `addon`
+--
+
+CREATE TABLE `addon` (
+  `id` int(11) NOT NULL,
+  `categoryId` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `color` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,13 +119,23 @@ CREATE TABLE `recipe_ingredient` (
 CREATE TABLE `reservation` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `uniqueString` varchar(255) NOT NULL,
+  `tableNumber` int(11) NOT NULL,
   `guestAmount` int(11) NOT NULL,
+  `uniqueString` varchar(255) NOT NULL,
   `dateOfCreation` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `reservationDate` datetime NOT NULL,
-  `date` datetime DEFAULT NULL,
-  `startTime` datetime DEFAULT NULL,
-  `endTime` timestamp NULL DEFAULT NULL
+  `reservationDate` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `reservation_addon`
+--
+
+CREATE TABLE `reservation_addon` (
+  `reservationId` int(11) NOT NULL,
+  `addonId` int(11) NOT NULL,
+  `addonAmount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -126,16 +161,17 @@ CREATE TABLE `role` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Tabelstructuur voor tabel `tables`
+-- Gegevens worden geëxporteerd voor tabel `role`
 --
 
-CREATE TABLE `tables` (
-  `tableId` int(11) NOT NULL,
-  `tableNumber` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'Gebruiker'),
+(2, 'Bediening'),
+(3, 'Chef'),
+(4, 'Manager'),
+(5, 'Eigenaar'),
+(6, 'Admin');
 
 -- --------------------------------------------------------
 
@@ -201,6 +237,13 @@ CREATE TABLE `user_role` (
   `roleId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `user_role`
+--
+
+INSERT INTO `user_role` (`userId`, `roleId`) VALUES
+(3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -218,6 +261,19 @@ CREATE TABLE `user_vertification_email` (
 --
 -- Indexen voor geëxporteerde tabellen
 --
+
+--
+-- Indexen voor tabel `addon`
+--
+ALTER TABLE `addon`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categoryId` (`categoryId`);
+
+--
+-- Indexen voor tabel `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexen voor tabel `ingredient`
@@ -261,6 +317,13 @@ ALTER TABLE `reservation`
   ADD KEY `userId` (`userId`);
 
 --
+-- Indexen voor tabel `reservation_addon`
+--
+ALTER TABLE `reservation_addon`
+  ADD UNIQUE KEY `reservationId` (`reservationId`),
+  ADD KEY `addonId` (`addonId`);
+
+--
 -- Indexen voor tabel `reservation_menu`
 --
 ALTER TABLE `reservation_menu`
@@ -272,12 +335,6 @@ ALTER TABLE `reservation_menu`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexen voor tabel `tables`
---
-ALTER TABLE `tables`
-  ADD KEY `tableNumber-reservation` (`tableId`);
 
 --
 -- Indexen voor tabel `type_ingredient`
@@ -315,6 +372,18 @@ ALTER TABLE `user_vertification_email`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `addon`
+--
+ALTER TABLE `addon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT voor een tabel `ingredient`
 --
 ALTER TABLE `ingredient`
@@ -342,7 +411,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT voor een tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `type_ingredient`
@@ -360,17 +429,23 @@ ALTER TABLE `type_recipe`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `user_vertification_email`
 --
 ALTER TABLE `user_vertification_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
 --
+
+--
+-- Beperkingen voor tabel `addon`
+--
+ALTER TABLE `addon`
+  ADD CONSTRAINT `categoryId-addon` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`);
 
 --
 -- Beperkingen voor tabel `ingredient`
@@ -405,6 +480,13 @@ ALTER TABLE `reservation`
   ADD CONSTRAINT `userId-reservation` FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
 
 --
+-- Beperkingen voor tabel `reservation_addon`
+--
+ALTER TABLE `reservation_addon`
+  ADD CONSTRAINT `addonId-reservation_addon` FOREIGN KEY (`addonId`) REFERENCES `addon` (`id`),
+  ADD CONSTRAINT `reservationId-reservation_addon` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`);
+
+--
 -- Beperkingen voor tabel `reservation_menu`
 --
 ALTER TABLE `reservation_menu`
@@ -412,17 +494,11 @@ ALTER TABLE `reservation_menu`
   ADD CONSTRAINT `reservationId-reservation_menu` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`);
 
 --
--- Beperkingen voor tabel `tables`
---
-ALTER TABLE `tables`
-  ADD CONSTRAINT `tableNumber-reservation` FOREIGN KEY (`tableId`) REFERENCES `reservation` (`id`);
-
---
 -- Beperkingen voor tabel `user_role`
 --
 ALTER TABLE `user_role`
   ADD CONSTRAINT `roleId-user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
