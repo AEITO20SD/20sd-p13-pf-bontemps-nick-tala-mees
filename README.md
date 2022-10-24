@@ -9,7 +9,7 @@
 ## Important-Links:
 	- ScrumBoard: https://github.com/orgs/AEITO20SD/projects/3/views/1
 	- Google Drive: 
-		- Not yet a member: https://drive.google.com/drive/folders/1z5v6TZVDY1tMjB2aWuvqDCpndP8r-D7m?usp=sharing (Invite link)
+		- Not yet a member: //
 		- Already a member: https://drive.google.com/drive/u/0/folders/1z5v6TZVDY1tMjB2aWuvqDCpndP8r-D7m?ths=true (Normal link)
 	- Discord:
 		- Not yet a member: https://discord.gg/evw9Dy3s (Invite link)
