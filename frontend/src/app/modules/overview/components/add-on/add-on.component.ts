@@ -16,13 +16,13 @@ export class AddOnComponent implements OnInit {
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    console.log(this.id);
-
     this.categoryService.getAddOns(this.id).subscribe((response: AddOnModel[]) => {
       this.addons = response;
-      console.log(this.addons);
     });
+  }
 
+  onClick(_id: number): void {
+    console.log("clicked");
   }
 
 }

@@ -30,8 +30,7 @@ export class TableDetailsComponent implements OnInit {
     });
   }
 
-  onClick(id: number): void {
+  public onClick(id: number): void {
     this.router.navigate(['/restaurant/overview/details/' + this.tableNumber + '/' + this.uniqueString + '/' + id]);
   }
-
 }

@@ -1,0 +1,13 @@
+<p>{{ currentStep }}</p>
+
+<div *ngIf="currentStep == 1">
+  hello step1
+</div>
+
+<button (click)="previousStep()" [disabled]="this.buttonPreviousDisabled">
+  Previous
+</button>
+
+<button (click)="nextStep()">
+  {{ buttonNextName }}
+</button>
