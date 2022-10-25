@@ -1,3 +1,66 @@
-p {
-  color: wheat;
+section {
+  height: 100vh;
+  color: white;
+}
+
+.page-container {
+  margin: auto;
+  height: 675px;
+  max-width: 60vw;
+  position: fixed;
+  top: 25px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.card {
+  box-sizing: border-box;
+  width: inherit;
+  height: 600px;
+  background-color: #161b22;
+  outline: 1px solid #30363d;
+  border-radius: 10px;
+  text-align: center;
+  padding: 40px;
+}
+
+.disclaimer {
+  height: 75px;
+  text-align: center;
+  margin-top: 80px;
+  font-size: 12px;
+}
+
+.disclaimer a {
+  color: #CA2C0C;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.divider {
+  width: 50vw;
+  margin: auto;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+button {
+  width: 100px;
+  height: 32px;
+  border: none;
+  border-radius: 5px;
+  background: #CA2C0C;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+button:disabled {
+  background: #0d1117;
+}
+
+.slides {
+  height: 375px;
 }

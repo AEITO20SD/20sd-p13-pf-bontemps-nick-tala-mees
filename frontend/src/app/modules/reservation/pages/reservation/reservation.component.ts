@@ -16,7 +16,7 @@ active: any;
   public buttonNextName: string = "Next" ;
   public buttonPreviousDisabled: boolean = false;
   public currentStep: number = 0;
-  public maxStep: number = 5;
+  public maxStep: number = 4;
   public minimumStep: number = 1;
 
 
