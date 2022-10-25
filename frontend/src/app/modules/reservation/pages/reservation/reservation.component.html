@@ -1,0 +1,24 @@
+<section>
+  <div class="page-container">
+    <div class="page-object">
+      <div class="card">
+        <div class="slides">
+          <app-reservation-date-slide *ngIf="currentStep == 1"></app-reservation-date-slide>
+          <app-reservation-menu-slide *ngIf="currentStep == 2"></app-reservation-menu-slide>
+          <app-reservation-data-slide *ngIf="currentStep == 3"></app-reservation-data-slide>
+          <app-reservation-overview-slide *ngIf="currentStep == 4"></app-reservation-overview-slide>
+        </div>
+        <hr class="divider">
+        <div class="card-end">
+          <app-progress-bar [currentStep]="currentStep"></app-progress-bar>
+          <button (click)="previousStep()" [disabled]="this.buttonPreviousDisabled">Previous</button>
+          <button (click)="nextStep()">{{ buttonNextName }}</button>
+        </div>
+      </div>
+      <div class="disclaimer">
+        <p>BonTemps.com ⓒ 2022 all right preserved <a href="">Privacy statment </a></p>
+      </div>
+    </div>
+  </div>
+</section>
+

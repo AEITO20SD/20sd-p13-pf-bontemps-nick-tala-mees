@@ -7,7 +7,15 @@ export class MockCategoryService implements ICategoryService {
 
   constructor() { }
 
-  getCategories(): any {
+  public getAddOns(categoryId: number) {
+    return of([{id: 1, name: "AddOn 1", price: "2.70"}, {id: 2, name: "AddOn 2", price: "3.70"}]);
+  }
+
+  public getCategories(): any {
     return of([{id: 1, name: "Category 1"}, {id: 2, name: "Category 2"}]);
+  }
+
+  public getUniqueString(tableId: number): string {
+    return "/1234567890";
   }
 }
