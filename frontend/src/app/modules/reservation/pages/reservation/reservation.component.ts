@@ -15,6 +15,7 @@ active: any;
 
   public buttonNextName: string = "Next" ;
   public buttonPreviousDisabled: boolean = false;
+  public uniqueString: string = "";
   public currentStep: number = 0;
   public maxStep: number = 4;
   public minimumStep: number = 1;
@@ -22,6 +23,7 @@ active: any;
 
   ngOnInit(): void {
     this.currentStep =  parseInt(this.activatedRoute.snapshot.params['id']);
+    this.uniqueString = this.activatedRoute.snapshot.params['uniqueString'];
     if(this.currentStep == this.minimumStep) {
       this.buttonPreviousDisabled = true;
     } else if(this.currentStep == this.maxStep) {
@@ -34,13 +36,13 @@ active: any;
       this.router.navigate(['/']);
     } else {
       this.currentStep++;
-      this.router.navigate(['/reservation/hfhfhf/' + this.currentStep]);
+      this.router.navigate(['/reservation/' + this.uniqueString +'/' + this.currentStep]);
     }
   }
 
   public previousStep(): void {
     this.currentStep--;
-    this.router.navigate(['/reservation/hfhfhf/' + this.currentStep]);
+    this.router.navigate(['/reservation/' + this.uniqueString +'/' + this.currentStep]);
   }
 
 }

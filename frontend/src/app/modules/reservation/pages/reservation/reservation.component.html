@@ -10,7 +10,7 @@
         </div>
         <hr class="divider">
         <div class="card-end">
-          <app-progress-bar></app-progress-bar>
+          <app-progress-bar [currentStep]="currentStep"></app-progress-bar>
           <button (click)="previousStep()" [disabled]="this.buttonPreviousDisabled">Previous</button>
           <button (click)="nextStep()">{{ buttonNextName }}</button>
         </div>
