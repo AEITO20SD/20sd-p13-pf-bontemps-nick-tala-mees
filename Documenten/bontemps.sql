@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 25 okt 2022 om 01:23
+-- Gegenereerd op: 25 okt 2022 om 11:46
 -- Serverversie: 10.4.14-MariaDB
 -- PHP-versie: 7.4.9
 
@@ -136,10 +136,7 @@ CREATE TABLE `reservation` (
   `guestAmount` int(11) NOT NULL,
   `uniqueString` varchar(255) NOT NULL,
   `dateOfCreation` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `reservationDate` datetime NOT NULL,
-  `date` datetime DEFAULT NULL,
-  `startTime` timestamp NULL DEFAULT NULL,
-  `endTime` timestamp NULL DEFAULT NULL
+  `reservationDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -196,8 +193,24 @@ INSERT INTO `role` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `tables` (
+  `id` int(11) NOT NULL,
+  `tableNumber` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `table_reservation`
+--
+
+CREATE TABLE `table_reservation` (
+  `reservationId` int(11) NOT NULL,
+  `startTime` timestamp NULL DEFAULT NULL,
+  `endTime` timestamp NULL DEFAULT NULL,
   `tableId` int(11) NOT NULL,
-  `tableNumber` int(11) NOT NULL
+  `date` datetime NOT NULL,
+  `available` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -360,7 +373,15 @@ ALTER TABLE `role`
 -- Indexen voor tabel `tables`
 --
 ALTER TABLE `tables`
-  ADD PRIMARY KEY (`tableId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tableId-reservation` (`tableNumber`);
+
+--
+-- Indexen voor tabel `table_reservation`
+--
+ALTER TABLE `table_reservation`
+  ADD PRIMARY KEY (`reservationId`,`tableId`),
+  ADD KEY `tableReservation-tables` (`tableId`);
 
 --
 -- Indexen voor tabel `type_ingredient`
@@ -443,7 +464,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT voor een tabel `tables`
 --
 ALTER TABLE `tables`
-  MODIFY `tableId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `table_reservation`
+--
+ALTER TABLE `table_reservation`
+  MODIFY `reservationId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `type_ingredient`
@@ -529,7 +556,14 @@ ALTER TABLE `reservation_menu`
 -- Beperkingen voor tabel `tables`
 --
 ALTER TABLE `tables`
-  ADD CONSTRAINT `tableId-reservation` FOREIGN KEY (`tableId`) REFERENCES `reservation` (`id`);
+  ADD CONSTRAINT `tableId-reservation` FOREIGN KEY (`id`) REFERENCES `reservation` (`id`);
+
+--
+-- Beperkingen voor tabel `table_reservation`
+--
+ALTER TABLE `table_reservation`
+  ADD CONSTRAINT `tableReservation-reservation` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`),
+  ADD CONSTRAINT `tableReservation-tables` FOREIGN KEY (`tableId`) REFERENCES `tables` (`id`);
 
 --
 -- Beperkingen voor tabel `user_role`
