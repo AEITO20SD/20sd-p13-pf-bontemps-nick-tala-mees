@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 12 okt 2022 om 13:03
--- Serverversie: 10.4.17-MariaDB
--- PHP-versie: 8.0.1
+-- Gegenereerd op: 25 okt 2022 om 11:46
+-- Serverversie: 10.4.14-MariaDB
+-- PHP-versie: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -133,7 +133,6 @@ CREATE TABLE `recipe_ingredient` (
 CREATE TABLE `reservation` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `tableNumber` int(11) NOT NULL,
   `guestAmount` int(11) NOT NULL,
   `uniqueString` varchar(255) NOT NULL,
   `dateOfCreation` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -186,6 +185,33 @@ INSERT INTO `role` (`id`, `name`) VALUES
 (4, 'Manager'),
 (5, 'Eigenaar'),
 (6, 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `tables`
+--
+
+CREATE TABLE `tables` (
+  `id` int(11) NOT NULL,
+  `tableNumber` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `table_reservation`
+--
+
+CREATE TABLE `table_reservation` (
+  `reservationId` int(11) NOT NULL,
+  `startTime` timestamp NULL DEFAULT NULL,
+  `endTime` timestamp NULL DEFAULT NULL,
+  `tableId` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `available` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -250,13 +276,6 @@ CREATE TABLE `user_role` (
   `userId` int(11) NOT NULL,
   `roleId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `user_role`
---
-
-INSERT INTO `user_role` (`userId`, `roleId`) VALUES
-(3, 1);
 
 -- --------------------------------------------------------
 
@@ -351,6 +370,20 @@ ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexen voor tabel `tables`
+--
+ALTER TABLE `tables`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tableId-reservation` (`tableNumber`);
+
+--
+-- Indexen voor tabel `table_reservation`
+--
+ALTER TABLE `table_reservation`
+  ADD PRIMARY KEY (`reservationId`,`tableId`),
+  ADD KEY `tableReservation-tables` (`tableId`);
+
+--
 -- Indexen voor tabel `type_ingredient`
 --
 ALTER TABLE `type_ingredient`
@@ -426,6 +459,18 @@ ALTER TABLE `reservation`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT voor een tabel `tables`
+--
+ALTER TABLE `tables`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT voor een tabel `table_reservation`
+--
+ALTER TABLE `table_reservation`
+  MODIFY `reservationId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `type_ingredient`
@@ -506,6 +551,19 @@ ALTER TABLE `reservation_addon`
 ALTER TABLE `reservation_menu`
   ADD CONSTRAINT `menuId-reservation_menu` FOREIGN KEY (`menuId`) REFERENCES `menu` (`id`),
   ADD CONSTRAINT `reservationId-reservation_menu` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`);
+
+--
+-- Beperkingen voor tabel `tables`
+--
+ALTER TABLE `tables`
+  ADD CONSTRAINT `tableId-reservation` FOREIGN KEY (`id`) REFERENCES `reservation` (`id`);
+
+--
+-- Beperkingen voor tabel `table_reservation`
+--
+ALTER TABLE `table_reservation`
+  ADD CONSTRAINT `tableReservation-reservation` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`),
+  ADD CONSTRAINT `tableReservation-tables` FOREIGN KEY (`tableId`) REFERENCES `tables` (`id`);
 
 --
 -- Beperkingen voor tabel `user_role`
