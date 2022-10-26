@@ -21,7 +21,6 @@ export class CategoryService extends BaseService implements ICategoryService {
   }
 
   public getUniqueString(tableId: number): any {
-    // return this.categoryRepository.getUniqueString();
-    return '/1234567890';
+    return this.categoryRepository.getUniqueString(tableId);
   }
 }

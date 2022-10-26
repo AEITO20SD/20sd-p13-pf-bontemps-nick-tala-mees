@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReservationModel } from '../../models/reservation.model';
 import { CategoryService } from '../../services/category.service';
 
 @Component({
@@ -10,11 +11,15 @@ import { CategoryService } from '../../services/category.service';
 export class TableComponent implements OnInit{
 
   public uniqueString: string = '';
+  public reservation: ReservationModel[] = []
 
   constructor(private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.uniqueString = this.categoryService.getUniqueString(this.number);
+    this.categoryService.getUniqueString(this.number).subscribe((response: ReservationModel[]) => {
+      this.reservation = response;
+      this.uniqueString = this.reservation[0].uniqueString;
+    });
   }
 
   @Input() number: number = 0 ;
@@ -22,6 +27,6 @@ export class TableComponent implements OnInit{
   @Input() shape: string | undefined;
 
   public redirect(number: number | undefined): void {
-    this.router.navigate(['/restaurant/overview/details/' + number + this.uniqueString + '/1']);
+    this.router.navigate(['/restaurant/overview/details/' + number + '/' + this.uniqueString + '/1']);
   }
 }

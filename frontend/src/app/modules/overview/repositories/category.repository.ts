@@ -4,6 +4,7 @@ import { Injectable } from "@angular/core";
 import { ICategoryRepository } from "../interfaces/icategory.repository";
 import { AddOnModel } from "../models/addon.model";
 import { CategoryModel } from "../models/category.model";
+import { ReservationModel } from "../models/reservation.model";
 
 @Injectable({providedIn: "root"})
 export class CategoryRepository implements ICategoryRepository {
@@ -16,5 +17,9 @@ export class CategoryRepository implements ICategoryRepository {
 
   public getCategories(): any {
     return this.httpClient.get<CategoryModel[]>("http://localhost:3080/categories/");
+  }
+
+  public getUniqueString(tableId: number): any {
+    return this.httpClient.get<ReservationModel[]>(`http://localhost:3080/reservation/${tableId}`);
   }
 }

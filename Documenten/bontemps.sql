@@ -536,7 +536,7 @@ ALTER TABLE `recipe_ingredient`
 -- Beperkingen voor tabel `reservation`
 --
 ALTER TABLE `reservation`
-  ADD CONSTRAINT `userId-reservation` FOREIGN KEY (`userId`) REFERENCES `user` (`id`);
+  ADD CONSTRAINT `userId-reservation` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `reservation_addon`
@@ -556,14 +556,14 @@ ALTER TABLE `reservation_menu`
 -- Beperkingen voor tabel `tables`
 --
 ALTER TABLE `tables`
-  ADD CONSTRAINT `tableId-reservation` FOREIGN KEY (`id`) REFERENCES `reservation` (`id`);
+  ADD CONSTRAINT `tableId-reservation` FOREIGN KEY (`id`) REFERENCES `reservation` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `table_reservation`
 --
 ALTER TABLE `table_reservation`
-  ADD CONSTRAINT `tableReservation-reservation` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`),
-  ADD CONSTRAINT `tableReservation-tables` FOREIGN KEY (`tableId`) REFERENCES `tables` (`id`);
+  ADD CONSTRAINT `tableReservation-reservation` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tableReservation-tables` FOREIGN KEY (`tableId`) REFERENCES `tables` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `user_role`
