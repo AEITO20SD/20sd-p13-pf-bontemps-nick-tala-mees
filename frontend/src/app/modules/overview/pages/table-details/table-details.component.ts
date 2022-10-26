@@ -15,7 +15,7 @@ export class TableDetailsComponent implements OnInit {
   }
 
   public categories: CategoryModel[] = [];
-  public id: number | undefined;
+  public id: number = 0;
   public uniqueString: string | undefined;
   public tableNumber: number | undefined;
 
@@ -30,8 +30,7 @@ export class TableDetailsComponent implements OnInit {
     });
   }
 
-  onClick(id: number): void {
+  public onClick(id: number): void {
     this.router.navigate(['/restaurant/overview/details/' + this.tableNumber + '/' + this.uniqueString + '/' + id]);
   }
-
 }

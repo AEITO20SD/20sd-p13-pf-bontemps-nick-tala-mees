@@ -12,7 +12,16 @@ export class CategoryService extends BaseService implements ICategoryService {
     super();
   }
 
+  public getAddOns(categoryId: number): any {
+    return this.categoryRepository.getAddOns(categoryId);
+  }
+
   public getCategories(): any {
     return this.categoryRepository.getCategories();
+  }
+
+  public getUniqueString(tableId: number): any {
+    // return this.categoryRepository.getUniqueString();
+    return '/1234567890';
   }
 }

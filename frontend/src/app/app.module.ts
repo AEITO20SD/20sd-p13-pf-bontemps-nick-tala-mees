@@ -11,6 +11,7 @@ import { LandingModule } from './modules/landing/landing.module';
 import { MockCategoryService } from './modules/overview/interfaces/mcategory.service';
 import { OverviewModule } from './modules/overview/overview.module';
 import { CategoryService } from './modules/overview/services/category.service';
+import { ReservationModule } from './modules/reservation/reservation.module';
 
 const testing = false;
 
@@ -24,10 +25,11 @@ const testing = false;
     AuthenticationModule,
     LandingModule,
     ErrorModule,
-    OverviewModule
+    OverviewModule,
+    ReservationModule
   ],
   providers: [
-     {provide: AuthService, useClass: testing ? MockAuthService : AuthService},
+    //  {provide: AuthService, useClass: testing ? MockAuthService : AuthService},
      {provide: CategoryService, useClass: testing ? MockCategoryService : CategoryService}
   ],
   bootstrap: [AppComponent]

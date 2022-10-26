@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `addon` (
   `id` int(11) NOT NULL,
   `categoryId` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` decimal(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -43,8 +43,23 @@ CREATE TABLE `addon` (
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `imageUrl` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Gegevens worden geëxporteerd voor tabel `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `imageUrl`) VALUES
+(1, "Menu's", '../../../../assets/svg/menu.svg'),
+(2, 'Drink', '../../../../assets/svg/drink.svg'),
+(3, 'Wines', '../../../../assets/svg/wines.svg'),
+(4, 'Beers', '../../../../assets/svg/beer.svg'),
+(5, 'Coffees', '../../../../assets/svg/Coffee.svg'),
+(6, "Extra's", '../../../../assets/svg/extra.svg');
 
 -- --------------------------------------------------------
 
@@ -60,7 +75,6 @@ CREATE TABLE `ingredient` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-
 --
 -- Tabelstructuur voor tabel `menu`
 --
