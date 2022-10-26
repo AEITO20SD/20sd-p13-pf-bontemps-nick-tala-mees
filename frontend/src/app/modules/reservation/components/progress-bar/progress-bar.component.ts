@@ -15,7 +15,7 @@ export class ProgressBarComponent implements OnInit {
   public progressWidth: string = "0";
 
   ngOnInit(): void {
-    this.progressWidth = (this.currentStep * 25).toString() + "%";
+    this.progressWidth = ((this.currentStep - 1) * 33.33).toString() + "%";
     console.log(this.progressWidth);
   }
 
