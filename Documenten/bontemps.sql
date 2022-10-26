@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 25 okt 2022 om 11:46
+-- Gegenereerd op: 26 okt 2022 om 15:13
 -- Serverversie: 10.4.14-MariaDB
 -- PHP-versie: 7.4.9
 
@@ -30,10 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `addon` (
   `id` int(11) NOT NULL,
   `categoryId` int(11) NOT NULL,
-  `price` decimal(11) NOT NULL,
+  `price` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `addon`
+--
 
 -- --------------------------------------------------------
 
@@ -43,23 +47,13 @@ CREATE TABLE `addon` (
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `imageUrl` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
 
 --
 -- Gegevens worden geëxporteerd voor tabel `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `imageUrl`) VALUES
-(1, "Menu's", '../../../../assets/svg/menu.svg'),
-(2, 'Drink', '../../../../assets/svg/drink.svg'),
-(3, 'Wines', '../../../../assets/svg/wines.svg'),
-(4, 'Beers', '../../../../assets/svg/beer.svg'),
-(5, 'Coffees', '../../../../assets/svg/Coffee.svg'),
-(6, "Extra's", '../../../../assets/svg/extra.svg');
 
 -- --------------------------------------------------------
 
@@ -75,6 +69,7 @@ CREATE TABLE `ingredient` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
+
 --
 -- Tabelstructuur voor tabel `menu`
 --
@@ -82,10 +77,14 @@ CREATE TABLE `ingredient` (
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` decimal(11,2) NOT NULL,
   `description` varchar(255) NOT NULL,
   `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `menu`
+--
 
 -- --------------------------------------------------------
 
@@ -97,6 +96,10 @@ CREATE TABLE `menu_recipe` (
   `menuId` int(11) NOT NULL,
   `recipeId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `menu_recipe`
+--
 
 -- --------------------------------------------------------
 
@@ -111,6 +114,11 @@ CREATE TABLE `recipe` (
   `description` varchar(255) NOT NULL,
   `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `recipe`
+--
+
 
 -- --------------------------------------------------------
 
@@ -253,6 +261,10 @@ CREATE TABLE `user` (
   `vertification` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `user`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -277,6 +289,10 @@ CREATE TABLE `user_role` (
   `roleId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `user_role`
+--
+
 -- --------------------------------------------------------
 
 --
@@ -290,6 +306,11 @@ CREATE TABLE `user_vertification_email` (
   `expiredAt` timestamp NULL DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `user_vertification_email`
+--
+
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -422,13 +443,13 @@ ALTER TABLE `user_vertification_email`
 -- AUTO_INCREMENT voor een tabel `addon`
 --
 ALTER TABLE `addon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `ingredient`
@@ -440,13 +461,13 @@ ALTER TABLE `ingredient`
 -- AUTO_INCREMENT voor een tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `recipe`
 --
 ALTER TABLE `recipe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `reservation`
@@ -458,7 +479,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT voor een tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `tables`
@@ -488,13 +509,13 @@ ALTER TABLE `type_recipe`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `user_vertification_email`
 --
 ALTER TABLE `user_vertification_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
@@ -504,59 +525,41 @@ ALTER TABLE `user_vertification_email`
 -- Beperkingen voor tabel `addon`
 --
 ALTER TABLE `addon`
-  ADD CONSTRAINT `categoryId-addon` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`);
+  ADD CONSTRAINT `categoryId-addon` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `ingredient`
 --
 ALTER TABLE `ingredient`
-  ADD CONSTRAINT `typeIngredientId-ingredient` FOREIGN KEY (`typeIngredientId`) REFERENCES `type_ingredient` (`id`);
+  ADD CONSTRAINT `typeIngredientId-ingredient` FOREIGN KEY (`typeIngredientId`) REFERENCES `type_ingredient` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `menu_recipe`
 --
 ALTER TABLE `menu_recipe`
-  ADD CONSTRAINT `menuId-menu_recipe` FOREIGN KEY (`menuId`) REFERENCES `menu` (`id`),
-  ADD CONSTRAINT `recipeId-menu_recipe` FOREIGN KEY (`recipeId`) REFERENCES `recipe` (`id`);
-
---
--- Beperkingen voor tabel `recipe`
---
-ALTER TABLE `recipe`
-  ADD CONSTRAINT `typeRecipesId-recipe` FOREIGN KEY (`typeRecipeId`) REFERENCES `type_recipe` (`id`);
+  ADD CONSTRAINT `menuId-menu_recipe` FOREIGN KEY (`menuId`) REFERENCES `menu` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `recipeId-menu_recipe` FOREIGN KEY (`recipeId`) REFERENCES `recipe` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `recipe_ingredient`
 --
 ALTER TABLE `recipe_ingredient`
-  ADD CONSTRAINT `ingredientId-recipe_ingredient` FOREIGN KEY (`ingredientId`) REFERENCES `ingredient` (`id`),
-  ADD CONSTRAINT `recipeId-recipe_ingredient` FOREIGN KEY (`recipeId`) REFERENCES `recipe` (`id`);
-
---
--- Beperkingen voor tabel `reservation`
---
-ALTER TABLE `reservation`
-  ADD CONSTRAINT `userId-reservation` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `ingredientId-recipe_ingredient` FOREIGN KEY (`ingredientId`) REFERENCES `ingredient` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `recipeId-recipe_ingredient` FOREIGN KEY (`recipeId`) REFERENCES `recipe` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `reservation_addon`
 --
 ALTER TABLE `reservation_addon`
   ADD CONSTRAINT `addonId-reservation_addon` FOREIGN KEY (`addonId`) REFERENCES `addon` (`id`),
-  ADD CONSTRAINT `reservationId-reservation_addon` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`);
+  ADD CONSTRAINT `reservationId-reservation_addon` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `reservation_menu`
 --
 ALTER TABLE `reservation_menu`
-  ADD CONSTRAINT `menuId-reservation_menu` FOREIGN KEY (`menuId`) REFERENCES `menu` (`id`),
-  ADD CONSTRAINT `reservationId-reservation_menu` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`);
-
---
--- Beperkingen voor tabel `tables`
---
-ALTER TABLE `tables`
-  ADD CONSTRAINT `tableId-reservation` FOREIGN KEY (`id`) REFERENCES `reservation` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `menuId-reservation_menu` FOREIGN KEY (`menuId`) REFERENCES `menu` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `reservationId-reservation_menu` FOREIGN KEY (`reservationId`) REFERENCES `reservation` (`id`) ON UPDATE CASCADE;
 
 --
 -- Beperkingen voor tabel `table_reservation`
@@ -569,8 +572,8 @@ ALTER TABLE `table_reservation`
 -- Beperkingen voor tabel `user_role`
 --
 ALTER TABLE `user_role`
-  ADD CONSTRAINT `roleId-user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `roleId-user_role` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `userId-user_role` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
