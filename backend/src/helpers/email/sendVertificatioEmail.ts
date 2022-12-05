@@ -32,4 +32,4 @@ exports.sendVertificatioEmail = async (_id, email, res) => {
 
     // Sends the email to the user and inserts data into the database
     emailsender.emailsender(_id, uniqueString, transporter, mailOptions, "user_vertification_email");
-}   
+} 

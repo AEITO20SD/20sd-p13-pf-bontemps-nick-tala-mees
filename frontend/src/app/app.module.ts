@@ -1,60 +1,37 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './users/pages/register/register.component';
-import { LoginComponent } from './users/pages/login/login.component';
-import { HomeComponent } from './home/pages/home/home.component';
-import { HeaderComponent } from './home/shared/header/header.component';
-import { ResetComponent } from './users/pages/reset/reset.component';
-import { ResetFormComponent } from './users/pages/reset-form/reset-form.component';
-import { UnauthorizedComponent } from './errors/pages/unauthorized/unauthorized.component';
-import { ForbiddenComponent } from './errors/pages/forbidden/forbidden.component';
-import { StatusCodeComponent } from './errors/shared/status-code/status-code.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AuthIntercepter } from './users/shared/auth-intercepter';
-import { ExpiredComponent } from './errors/pages/expired/expired.component';
-import { AccountVerifiedComponent } from './errors/pages/account-verified/account-verified.component';
-import { VertificationEmailComponent } from './errors/pages/vertification-email/vertification-email.component';
-import { PasswordEmailComponent } from './errors/pages/password-email/password-email.component';
-import { TableOverviewComponent } from './overview/pages/table-overview/table-overview.component';
-import { TableComponent } from './overview/shared/table/table.component';
+import { AuthenticationModule } from './modules/authentication/authentication.module';
+import { MockAuthService } from './modules/authentication/interfaces/mauth.service';
+import { AuthService } from './modules/authentication/services/auth.service';
+import { ErrorModule } from './modules/error/error.module';
+import { LandingModule } from './modules/landing/landing.module';
+import { MockCategoryService } from './modules/overview/interfaces/mcategory.service';
+import { OverviewModule } from './modules/overview/overview.module';
+import { CategoryService } from './modules/overview/services/category.service';
+import { ReservationModule } from './modules/reservation/reservation.module';
+
+const testing = false;
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RegisterComponent,
-    LoginComponent,
-    HomeComponent,
-    HeaderComponent,
-    ResetComponent,
-    ResetFormComponent,
-    UnauthorizedComponent,
-    ForbiddenComponent,
-    StatusCodeComponent,
-    NavbarComponent,
-    ExpiredComponent,
-    AccountVerifiedComponent,
-    VertificationEmailComponent,
-    PasswordEmailComponent,
-    TableOverviewComponent,
-    TableComponent,
+    AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    FontAwesomeModule
+    BrowserModule,
+    AuthenticationModule,
+    LandingModule,
+    ErrorModule,
+    OverviewModule,
+    ReservationModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true}
+    //  {provide: AuthService, useClass: testing ? MockAuthService : AuthService},
+     {provide: CategoryService, useClass: testing ? MockCategoryService : CategoryService}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

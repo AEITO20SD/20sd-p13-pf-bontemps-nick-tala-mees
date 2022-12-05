@@ -2,8 +2,150 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
-  font-family: 'Verdana', serif;
+    background-color: #0d1117;
+}
+
+/* standard global styles */
+input {
+  width: 300px;
+  height: 25px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #0d1117;
+  outline: 1px solid #30363d;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+}
+
+input:focus {
+    outline: 1px solid #30363d;
+}
+
+.submit {
+  width: 320px;
+  height: 32px;
+  border: none;
+  border-radius: 5px;
+  background: #CA2C0C;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* standard authentification styles */
+.auth-page-section {
+    height: 100vh;
+    color: white;
+}
+
+.auth-page-container {
+  margin: auto;
+  height: 675px;
+  max-width: 425px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.auth-card {
+  width: inherit;
+  height: 600px;
+  background-color: #161b22;
+  /* box-shadow: 0 4px 8px 0 rgba(129, 129, 129, 0.2), 0 6px 20px 0 rgba(164, 164, 164, 0.19); */
+  outline: 1px solid #30363d;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.auth-disclaimer {
+  height: 75px;
+  text-align: center;
+  margin-top: 80px;
+  font-size: 12px;
+}
+
+.auth-disclaimer a {
+  color: #CA2C0C;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-img-container img {
+  height: 130px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+
+.auth-title {
+  font-size: 24px;
+  font-weight: semi-bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.auth-error {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  max-width: 302px;
+  margin: auto;
+  padding: 7px 10px;
+}
+
+.auth-divider {
+  width: 322px;
+  margin: auto;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+}
+
+.auth-alt-text {
+  font-size: 14px;
+  color: white;
+  margin-top: 10px;
+}
+
+.auth-alt-text a {
+  color: #CA2C0C;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 425px) {
+  .login-card {
+    padding: 10px;
+  }
+
+  .auth-divider {
+    width: 100%;
+    max-width: 322px;
+  }
+
+  .auth-from {
+    margin-top: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+      width: calc(100% - 20px);
+      max-width: 302px;
+  }
+
+  .submit {
+    width: 100%;
+    max-width: 322px;
+  }
 }
