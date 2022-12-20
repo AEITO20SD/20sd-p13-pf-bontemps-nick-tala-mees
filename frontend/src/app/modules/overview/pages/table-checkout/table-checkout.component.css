@@ -1,0 +1,64 @@
+.table-checkout-section {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0d1117;
+}
+
+.checkout-overview {
+    width: 100vw;
+    height: 56vh;
+    border-bottom: 1px solid #30363d;
+}
+
+.checkout-section {
+    width: 100vw;
+    height: 36vh;
+    display: inline-block;
+}
+
+.payment-methods {
+    width: 75vw;
+    height: 36vh;
+    display: inline-block;
+}
+
+.checking-payment {
+    width: 24vw;
+    height: 36vh;
+    display: inline-block;
+    border-left: 1px solid #30363d;
+}
+
+.payments-wrapper {
+    display: grid;
+    padding: 1.5vh;
+    row-gap: 2vh;
+    grid-template-columns: auto auto auto auto;
+    width: 75vw;
+    height: 30vh;
+}
+
+.checkout-wrapper {
+    display: grid;
+    padding: 1.5vh;
+    row-gap: 2vh;
+    grid-template-columns: auto  ;
+    width: 20vw;
+    height: 30vh;
+    margin-left: 5vw;
+}
+
+.payment-method {
+    width: 16vw;
+    height: 13vh;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    align-items: center;
+}
+
+.payment-method p {
+    padding-top: 5vh;
+    font-size: 2.5vh;
+    font-weight: 700;
+}
