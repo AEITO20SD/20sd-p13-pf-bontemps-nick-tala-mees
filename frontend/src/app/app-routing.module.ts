@@ -12,6 +12,7 @@ import { PasswordEmailPageComponent } from './modules/error/pages/password-email
 import { UnauthorizedPageComponent } from './modules/error/pages/unauthorized-page/unauthorized-page.component';
 import { VertificationEmailPageComponent } from './modules/error/pages/vertification-email-page/vertification-email-page.component';
 import { LandingPageComponent } from './modules/landing/pages/landing-page/landing-page.component';
+import { TableCheckoutComponent } from './modules/overview/pages/table-checkout/table-checkout.component';
 import { TableDetailsComponent } from './modules/overview/pages/table-details/table-details.component';
 import { TableOverviewPageComponent } from './modules/overview/pages/table-overview-page/table-overview-page.component';
 import { ReservationComponent } from './modules/reservation/pages/reservation/reservation.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
   // Overview page Route
   { path: 'restaurant/overview', component: TableOverviewPageComponent, canActivate: [AuthGuard] },
   { path: 'restaurant/overview/details/:table/:uniqueString/:id', component: TableDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'restaurant/overview/checkout/:table/:uniqueString/:id', component: TableCheckoutComponent, canActivate: [AuthGuard]},
 
   // Reservation page Route
     { path: 'reservation/:uniqueString/:id', component: ReservationComponent, canActivate: [AuthGuard] },

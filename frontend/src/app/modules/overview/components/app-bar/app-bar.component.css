@@ -6,12 +6,30 @@ section {
   display: inline-block;
 }
 
+.back-div {
+  width: 85vw;
+  height: inherit;
+  display: inline-block;
+}
+
+.check-div {
+  width: 5vw;
+  height: inherit;
+  display: inline-block;
+}
+
+.settings-div {
+  width: 10vw;
+  height: inherit;
+  display: inline-block;
+}
+
 .back-button {
+  margin-top: 2vh;
   height: 7vh;
   width: 7vh;
   justify-content: center;
   align-items: center;
-  display: flex;
 }
 
 fa-icon {
@@ -29,6 +47,10 @@ fa-icon:hover {
   background-color: #30363d;
 }
 
-.table {
-  color: white;
+.send-button {
+  margin-top: 2vh;
+  height: 7vh;
+  width: 7vh;
+  justify-content: center;
+    align-items: center;
 }
