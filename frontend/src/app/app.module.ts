@@ -13,7 +13,7 @@ import { OverviewModule } from './modules/overview/overview.module';
 import { CategoryService } from './modules/overview/services/category.service';
 import { ReservationModule } from './modules/reservation/reservation.module';
 
-const testing = true;
+const testing = false;
 
 @NgModule({
   declarations: [

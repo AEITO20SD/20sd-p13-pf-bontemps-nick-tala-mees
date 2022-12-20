@@ -22,4 +22,8 @@ export class CategoryRepository implements ICategoryRepository {
   public getUniqueString(tableId: number): any {
     return this.httpClient.get<ReservationModel[]>(`http://localhost:3080/reservation/${tableId}`);
   }
+
+  public storeAddOns(addOns: any): any {
+    this.httpClient.post<{addons: any}>("http://localhost:3080/categories/addons/stored", addOns).subscribe();
+  }
 }

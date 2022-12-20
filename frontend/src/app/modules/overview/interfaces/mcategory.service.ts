@@ -1,11 +1,16 @@
 import { Injectable } from "@angular/core";
 import { of } from "rxjs";
+import { ReservationModel } from "../models/reservation.model";
 import { ICategoryService } from "./icategory.service";
 
 @Injectable({providedIn: "root"})
 export class MockCategoryService implements ICategoryService {
 
   constructor() { }
+
+  public storeAddOns(addOns: any) {
+    throw new Error("Method not implemented.");
+  }
 
   public getAddOns(categoryId: number) {
     return of([
@@ -83,7 +88,15 @@ export class MockCategoryService implements ICategoryService {
     ]);
   }
 
-  public getUniqueString(tableId: number): string {
-    return "/1234567890";
+  public getUniqueString(tableId: number): any {
+    const object = [{
+      id: 1,
+      guestAmount: 2,
+      uniqueString: '123456789',
+      dateOfCreation: '2021-01-01',
+      dateOfReservation: '2021-01-01',
+    }];
+
+    return object;
   }
 }
