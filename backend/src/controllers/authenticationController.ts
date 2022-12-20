@@ -182,8 +182,6 @@ exports.loginUser = (req, res) => {
         }
 
     });
-
-    console.log(email, password);
 }
 
 exports.resetPasswordEmailUser = (req, res) => {
@@ -226,7 +224,6 @@ exports.resetPasswordUserGet = (req, res) => {
             console.log('Error connecting to DB', error);
             return;
         } else if(results.length > 0){
-             console.log(uniqueString)
             bcrypt.compare(uniqueString, results[0].uniqueString, function(err, result) {
                     if(result){
                         if(results[0].expiredAt < new Date().toISOString().slice(0, 19).replace('T', ' ')){
@@ -251,7 +248,6 @@ exports.resetPasswordUserGet = (req, res) => {
         }
 
     });
-    console.log(userId, uniqueString);
 }
 
 exports.resetPasswordUserCheck = (req, res) => {
@@ -266,7 +262,6 @@ exports.resetPasswordUserCheck = (req, res) => {
             console.log('Error connecting to DB', error);
             return;
         } else if(results.length > 0){
-             console.log(uniqueString)
             bcrypt.compare(uniqueString, results[0].uniqueString, function(err, result) {
                     if(result){
                         if(results[0].expiredAt < new Date().toISOString().slice(0, 19).replace('T', ' ')){
