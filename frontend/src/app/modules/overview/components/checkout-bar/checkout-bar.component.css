@@ -1,0 +1,48 @@
+section {
+    height: 7vh;
+    width: 100vw;
+    background-color: #161b22;
+    border-bottom: 1px solid #30363d;
+    display: inline-block;
+}
+
+.back-div {
+    width: 85vw;
+    height: inherit;
+    display: inline-block;
+}
+
+.check-div {
+    width: 5vw;
+    height: inherit;
+    display: inline-block;
+}
+
+.settings-div {
+    width: 10vw;
+    height: inherit;
+    display: inline-block;
+}
+
+.back-button {
+    margin-top: 2vh;
+    height: 7vh;
+    width: 7vh;
+    justify-content: center;
+    align-items: center;
+}
+
+fa-icon {
+    margin-left: 2.5vw;
+    font-size: 2.5vh;
+    color: #fff;
+    outline: 1px solid #30363d;
+    padding: 1vh 1.1vw;
+    border-radius: 5px;
+    transition: .3s ease-out;
+}
+
+fa-icon:hover {
+    transition: .3s ease-in;
+    background-color: #30363d;
+}

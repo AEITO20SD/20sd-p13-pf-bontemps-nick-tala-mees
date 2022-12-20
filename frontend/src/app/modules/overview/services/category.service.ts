@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { BaseService } from 'src/app/services/base.service';
 import { ICategoryService } from '../interfaces/icategory.service';
 import { CategoryRepository } from '../repositories/category.repository';
@@ -22,5 +23,15 @@ export class CategoryService extends BaseService implements ICategoryService {
 
   public getUniqueString(tableId: number): any {
     return this.categoryRepository.getUniqueString(tableId);
+  }
+
+  public storeAddOns(addOns: any): any {
+    return this.categoryRepository.storeAddOns(addOns);
+  }
+
+  public obeserver: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  public getStoredAddOns(tableId: number): any {
+    return this.categoryRepository.getStoredAddOns(tableId);
   }
 }
