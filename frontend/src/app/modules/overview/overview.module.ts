@@ -9,6 +9,8 @@ import { AddOnComponent } from './components/add-on/add-on.component';
 import { ReceiptComponent } from './components/receipt/receipt.component';
 import { TableDetailsComponent } from './pages/table-details/table-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TableCheckoutComponent } from './pages/table-checkout/table-checkout.component';
+import { CheckoutBarComponent } from './components/checkout-bar/checkout-bar.component';
 
 
 
@@ -19,7 +21,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppBarComponent,
     AddOnComponent,
     ReceiptComponent,
-    TableDetailsComponent
+    TableDetailsComponent,
+    TableCheckoutComponent,
+    CheckoutBarComponent
   ],
   imports: [
     CommonModule,

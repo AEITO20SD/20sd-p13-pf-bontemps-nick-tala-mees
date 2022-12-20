@@ -1,6 +1,9 @@
 // const connection = require('../helpers/connect');
 
 exports.getReservation = (req, res) => {
+
+    const time = Date.now();
+    console.log(time);
     const data = [{
         id: 1,
         guestAmount: 2,
