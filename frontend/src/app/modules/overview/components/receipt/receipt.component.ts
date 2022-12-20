@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-receipt',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReceiptComponent implements OnInit {
 
-  constructor() { }
+  public observer: any;
+  public addOns: any;
+
+  constructor(private categoryServcie: CategoryService) {
+    this.categoryServcie.obeserver.subscribe((response: boolean) => {
+      this.observer = response;
+      if(response === true){
+        this.getStoredAddOns();
+        this.observer = false;
+      }
+    });
+  }
+
+  public getStoredAddOns(): any {
+    this.categoryServcie.getStoredAddOns().subscribe((response: any) => {
+      this.addOns = response;
+    });
+  }
 
   ngOnInit(): void {
+    this.getStoredAddOns();
   }
 
 }

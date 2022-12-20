@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
 import { AddOnModel } from '../../models/addon.model';
 import { CategoryService } from '../../services/category.service';
 
@@ -22,15 +23,16 @@ export class AddOnComponent implements OnInit {
     });
   }
 
-  public onClick(_id: number, _name: string, _price: number): void {
+  public async onClick(_id: number, _name: string, _price: number): Promise<void> {
     this.addonArray.push(({
       id: _id,
       name: _name,
       price: _price
     } as AddOnModel));
-    this.categoryService.storeAddOns({id: _id, name: _name, price: _price});
+    await this.categoryService.storeAddOns({id: _id, name: _name, price: _price});
+
+    setTimeout(() => {
+      this.categoryService.obeserver.next(true);
+    }, 1000);
   }
-
-
-
 }

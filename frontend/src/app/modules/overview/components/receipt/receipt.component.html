@@ -6,23 +6,11 @@
             <span class="addon">Item</span>
             <span class="price">Price</span>
         </div>
-        <div class="item">
-            <span class="time">15:24:17</span>
+        <div class="item" *ngFor="let addOn of addOns">
+            <span class="time">Current</span>
             <span class="number">2</span>
-            <span class="addon">Noordzeekrab</span>
-            <span class="price">8.32</span>
-        </div>
-        <div class="item">
-            <span class="time">15:24:17</span>
-            <span class="number">2</span>
-            <span class="addon">Noordzeekrab</span>
-            <span class="price">8.32</span>
-        </div>
-        <div class="item">
-            <span class="time">15:24:17</span>
-            <span class="number">2</span>
-            <span class="addon">Noordzeekrab</span>
-            <span class="price">8.32</span>
+            <span class="addon">{{addOn.name}}</span>
+            <span class="price">{{addOn.price}}</span>
         </div>
     </div>
 </section>

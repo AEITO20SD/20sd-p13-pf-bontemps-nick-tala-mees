@@ -20,8 +20,13 @@ exports.getAddOns = (req, res) => {
     });
 }
 
-const array = [{status: "initial"}] as any;
+const array = [] as any;
 exports.storeAddOns = (req, res) => {
     array.push(req.body);
     console.log(array);
+}
+
+exports.getStoredAddOns = (req, res) => {
+    console.log(array, "array");
+    res.status(200).send(array);
 }

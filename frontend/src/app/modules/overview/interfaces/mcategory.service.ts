@@ -7,6 +7,10 @@ import { ICategoryService } from "./icategory.service";
 export class MockCategoryService implements ICategoryService {
 
   constructor() { }
+  getStoredAddOns() {
+    throw new Error("Method not implemented.");
+  }
+  public obeserver: any;
 
   public storeAddOns(addOns: any) {
     throw new Error("Method not implemented.");

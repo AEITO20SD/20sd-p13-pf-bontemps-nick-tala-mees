@@ -3,4 +3,5 @@ export interface ICategoryRepository {
   getAddOns(categoryId: number): any;
   getUniqueString(tableId: number): string;
   storeAddOns(addOns: any): any;
+  getStoredAddOns(): any;
 }

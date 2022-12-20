@@ -26,4 +26,8 @@ export class CategoryRepository implements ICategoryRepository {
   public storeAddOns(addOns: any): any {
     this.httpClient.post<{addons: any}>("http://localhost:3080/categories/addons/stored", addOns).subscribe();
   }
+
+  public getStoredAddOns(): any {
+    return this.httpClient.get<any>("http://localhost:3080/categories/addons/stored/get");
+  }
 }
