@@ -5,24 +5,21 @@ section {
 
 .page-container {
   margin: auto;
-  height: 675px;
-  max-width: 60vw;
-  position: fixed;
-  top: 25px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  max-width: 95%;
+  justify-content: space-around;
+
 }
 
 .card {
   box-sizing: border-box;
-  width: inherit;
-  height: 600px;
+  margin:5% 5% 5% 5%;
+  height: 750px;
   background-color: #161b22;
   outline: 1px solid #30363d;
   border-radius: 10px;
   text-align: center;
   padding: 40px;
+  padding-top: 25px;
 }
 
 .disclaimer {
@@ -62,5 +59,5 @@ button:disabled {
 }
 
 .slides {
-  height: 375px;
+  height: 80%;
 }
