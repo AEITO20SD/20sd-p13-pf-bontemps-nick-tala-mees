@@ -1,3 +1,5 @@
+import { forEachChild } from "typescript";
+
 const connection = require('../helpers/connect');
 
 exports.getCategories = (req, res) => {
@@ -22,8 +24,33 @@ exports.getAddOns = (req, res) => {
 
 const array = [] as any;
 exports.storeAddOns = (req, res) => {
-    array.push(req.body);
-    console.log(array);
+
+    if(array.length === 0) {
+        const newElement = {
+            id: req.body.id,
+            name: req.body.name,
+            number: 1,
+            price: req.body.price
+        }
+        array.push(newElement);
+        return;
+    } else if (array.length > 0) {
+        for(let i = 0; i < array.length; i++) {
+            if(array[i].name === req.body.name) {
+                array[i].number = array[i].number + 1;
+                return;
+            } 
+        } 
+        console.log("else");
+        const newElement = {
+            id: req.body.id,
+            name: req.body.name,
+            number: 1,
+            price: req.body.price
+        }
+        array.push(newElement);
+        return;
+    }
 }
 
 exports.getStoredAddOns = (req, res) => {
