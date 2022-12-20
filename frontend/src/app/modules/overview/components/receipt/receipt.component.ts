@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from '../../services/category.service';
 
 @Component({
@@ -10,8 +11,9 @@ export class ReceiptComponent implements OnInit {
 
   public observer: any;
   public addOns: any;
+  public tableId: any;
 
-  constructor(private categoryServcie: CategoryService) {
+  constructor(private categoryServcie: CategoryService, private activatedRoute: ActivatedRoute) {
     this.categoryServcie.obeserver.subscribe((response: boolean) => {
       this.observer = response;
       if(response === true){
@@ -21,14 +23,15 @@ export class ReceiptComponent implements OnInit {
     });
   }
 
-  public getStoredAddOns(): any {
-    this.categoryServcie.getStoredAddOns().subscribe((response: any) => {
-      this.addOns = response;
-    });
+  ngOnInit(): void {
+    this.tableId = this.activatedRoute.snapshot.params['table'];
+    this.getStoredAddOns();
   }
 
-  ngOnInit(): void {
-    this.getStoredAddOns();
+  public getStoredAddOns(): any {
+    this.categoryServcie.getStoredAddOns(this.tableId).subscribe((response: any) => {
+      this.addOns = response;
+    });
   }
 
 }

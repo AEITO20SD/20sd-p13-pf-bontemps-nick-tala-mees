@@ -12,7 +12,7 @@ category.post('/addons/stored', function (req, res) {
     controller.storeAddOns(req, res);
 });
 
-category.get('/addons/stored/get', function (req, res) {
+category.get('/addons/stored/get/:tableId', function (req, res) {
     controller.getStoredAddOns(req, res);
 });
 

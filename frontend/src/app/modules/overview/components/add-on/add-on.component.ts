@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { waitForAsync } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 import { AddOnModel } from '../../models/addon.model';
 import { CategoryService } from '../../services/category.service';
 
@@ -14,10 +15,12 @@ export class AddOnComponent implements OnInit {
 
   public addons: AddOnModel[] = [];
   public addonArray: AddOnModel[] = [];
+  public tableNumber: any;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.tableNumber = this.activatedRoute.snapshot.params['table'];
     this.categoryService.getAddOns(this.id).subscribe((response: AddOnModel[]) => {
       this.addons = response;
     });
@@ -29,7 +32,7 @@ export class AddOnComponent implements OnInit {
       name: _name,
       price: _price
     } as AddOnModel));
-    await this.categoryService.storeAddOns({id: _id, name: _name, price: _price});
+    await this.categoryService.storeAddOns({id: _id, name: _name, price: _price, tableId: this.tableNumber});
 
     setTimeout(() => {
       this.categoryService.obeserver.next(true);

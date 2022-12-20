@@ -7,7 +7,7 @@ import { ICategoryService } from "./icategory.service";
 export class MockCategoryService implements ICategoryService {
 
   constructor() { }
-  getStoredAddOns() {
+  getStoredAddOns(tableId: number): any {
     throw new Error("Method not implemented.");
   }
   public obeserver: any;

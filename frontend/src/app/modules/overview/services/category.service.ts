@@ -31,7 +31,7 @@ export class CategoryService extends BaseService implements ICategoryService {
 
   public obeserver: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  public getStoredAddOns(): any {
-    return this.categoryRepository.getStoredAddOns();
+  public getStoredAddOns(tableId: number): any {
+    return this.categoryRepository.getStoredAddOns(tableId);
   }
 }

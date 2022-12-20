@@ -4,5 +4,5 @@ export interface ICategoryService {
   getUniqueString(tableId: number): any;
   storeAddOns(addOns: any): any;
   obeserver: any;
-  getStoredAddOns(): any;
+  getStoredAddOns(tableId: number): any;
 }
