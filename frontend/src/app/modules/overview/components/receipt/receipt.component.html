@@ -1,16 +1,24 @@
 <section>
     <div class="wrapper">
+        <h4 class="table">{{tableId}}</h4>
         <div class="head">
             <span class="time">Time</span>
             <span class="number">Amount</span>
             <span class="addon">Item</span>
             <span class="price">Price</span>
         </div>
-        <div class="item" *ngFor="let addOn of addOns">
-            <span class="time">Current</span>
-            <span class="number">{{addOn.number}}</span>
-            <span class="addon">{{addOn.name}}</span>
-            <span class="price">{{addOn.price}}</span>
+        <div *ngIf="addOns.length > 0">
+            <div class="item" *ngFor="let addOn of addOns">
+                <span class="time">Current</span>
+                <span class="number">{{addOn.number}}</span>
+                <span class="addon">{{addOn.name}}</span>
+                <span class="price">{{addOn.price}}</span>
+            </div>
+        </div>
+        <div *ngIf="addOns.length === 0">
+            <div class="no-content">
+                <h3>Products you add will appear here</h3>
+            </div>
         </div>
     </div>
 </section>

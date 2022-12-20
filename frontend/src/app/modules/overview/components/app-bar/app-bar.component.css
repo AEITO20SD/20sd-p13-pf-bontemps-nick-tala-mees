@@ -3,6 +3,7 @@ section {
   width: 100vw;
   background-color: #161b22;
   border-bottom: 1px solid #30363d;
+  display: inline-block;
 }
 
 .back-button {
@@ -26,4 +27,8 @@ fa-icon {
 fa-icon:hover {
   transition: .3s ease-in;
   background-color: #30363d;
+}
+
+.table {
+  color: white;
 }

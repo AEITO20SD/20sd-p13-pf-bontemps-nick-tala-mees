@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { of } from "rxjs";
-import { ReservationModel } from "../models/reservation.model";
 import { ICategoryService } from "./icategory.service";
 
 @Injectable({providedIn: "root"})
