@@ -5,13 +5,8 @@ section {
 
 .page-container {
   margin: auto;
-  height: 675px;
-  max-width: 60vw;
-  position: fixed;
-  top: 25px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  max-width: 1200px;
+  padding: 47px 30px 10px;
 }
 
 .card {
@@ -26,9 +21,8 @@ section {
 }
 
 .disclaimer {
-  height: 75px;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 50px;
   font-size: 12px;
 }
 

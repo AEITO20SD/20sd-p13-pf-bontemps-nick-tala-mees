@@ -9,8 +9,8 @@ import { ReservationMenuSlideComponent } from './components/reservation-menu-sli
 import { ReservationDataSlideComponent } from './components/reservation-data-slide/reservation-data-slide.component';
 import { ReservationOverviewSlideComponent } from './components/reservation-overview-slide/reservation-overview-slide.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-
-
+import { FormsModule } from '@angular/forms';
+import { TimePeriodsComponent } from './components/time-periods/time-periods.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +19,15 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     ReservationMenuSlideComponent,
     ReservationDataSlideComponent,
     ReservationOverviewSlideComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    TimePeriodsComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ]
 })
 export class ReservationModule { }

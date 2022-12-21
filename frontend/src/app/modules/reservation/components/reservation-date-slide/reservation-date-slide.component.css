@@ -1,0 +1,29 @@
+.date-container > * {
+    margin-bottom: 20px;
+}
+
+.date-container .amount-object > * {
+    display: inline-block;
+}
+
+.date-container .amount-object > *:first-child {
+    margin-right: 10px;
+}
+
+.date-container .amount-object .error {
+    display: block;
+    margin-top: 10px;
+    color: red;
+}
+
+.date-container .date-object section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.date-container .date-object .date-object-item {
+    font-size: 16px;
+    padding: 15px 10px;
+    width: calc(100% / 7 - 22px);
+    border: 1px solid white;
+}

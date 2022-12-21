@@ -1,1 +1,18 @@
-<p>reservation-date-slide works!</p>
+<section>
+    <div class="date-container">
+        <div class="amount-object">
+            <h3>Aantal Personen:</h3>
+            <input type="number" [(ngModel)]="guestAmount" (ngModelChange)="amountChanged($event)">
+            <p *ngIf="errorAmount" class="error">Het aantal personen moet minimaal 4 zijn</p>
+        </div>
+        <div *ngIf="showDate" class="date-object">
+            <section>
+                <div *ngFor="let calanderItem of calander; index as i;" class="date-object-item item-{{i}}">
+                    <h3>{{calanderItem.day}}</h3>
+                    <p>{{calanderItem.date}}-{{calanderItem.month}}-{{calanderItem.year}}</p>
+                </div>
+            </section>
+        </div>
+        <app-time-periods *ngIf="showTime"></app-time-periods>
+    </div> 
+</section>
