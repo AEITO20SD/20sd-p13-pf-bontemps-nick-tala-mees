@@ -1,7 +1,10 @@
 <h3>Menu kiezen</h3>
 <hr>
 <div class="flex-container">
-    <div class="menu menu1" *ngFor="let menu of menus">{{menu.imgUrl}}</div>
+    <div class="menu menu1" *ngFor="let menu of menus">
+        <img src="{{menu.imgUrl}}">
+
+    </div>
 
     <!-- <div class="menu menu2"></div>
 
