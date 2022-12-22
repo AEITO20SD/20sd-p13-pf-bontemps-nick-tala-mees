@@ -11,7 +11,7 @@ exports.generateCalander = (req) => {
             date: date,
             timePeriods: [],
         };
-        for (let j = 0; j < 21; j++) {
+        for (let j = 0; j < 25; j++) {
             let dateTime = new Date();
             let hours = 16 + Math.floor(j / 4);
             let minutes = 15 * j - 60 * Math.floor(j / 4);

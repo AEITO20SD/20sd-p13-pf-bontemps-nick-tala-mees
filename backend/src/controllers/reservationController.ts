@@ -80,12 +80,17 @@ exports.getCalander = (req, res) => {
                     // Check if calanderDateTime is same as resultDateTime
                     if (resultDateTime.getTime() == calanderDateTime.getTime()) {
 
-                        // Filling in the counter
-                        calander[j].timePeriods[l].peopleCounter += result[i].guestAmount;
-                        console.log("Hello");
+                        // Loop to reach 5 timePeriods
+                        for (let k = 0; k < 5; k++) {
+
+                            // Index to reach 5 timePeriods
+                            let index = l + k;
+
+                            // Filling in the counter
+                            calander[j].timePeriods[index].peopleCounter += result[i].guestAmount;
+                        }
                     }
                 }
-                console.log("World");
             }
         }
     }
