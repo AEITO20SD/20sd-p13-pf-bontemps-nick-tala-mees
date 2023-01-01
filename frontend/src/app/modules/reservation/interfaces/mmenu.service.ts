@@ -26,7 +26,7 @@ export class MockMenuService implements IMenuService {
         name: 'Winter Menu',
         price: '30,00',
         description: 'allerlekkerste Winter Menu',
-        imgUrl: '/assets/img/aardappelmenu.png',
+        imgUrl: '/assets/img/pannenkoekmenu.png',
       },
       {
         id: 4,

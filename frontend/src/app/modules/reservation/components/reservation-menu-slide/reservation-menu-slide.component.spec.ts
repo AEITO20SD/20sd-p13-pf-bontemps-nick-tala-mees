@@ -8,9 +8,8 @@ describe('ReservationMenuSlideComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReservationMenuSlideComponent ]
-    })
-    .compileComponents();
+      declarations: [ReservationMenuSlideComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
