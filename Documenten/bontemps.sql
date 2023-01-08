@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 okt 2022 om 15:13
+-- Gegenereerd op: 08 jan 2023 om 21:52
 -- Serverversie: 10.4.14-MariaDB
 -- PHP-versie: 7.4.9
 
@@ -35,10 +35,6 @@ CREATE TABLE `addon` (
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Gegevens worden geëxporteerd voor tabel `addon`
---
-
 -- --------------------------------------------------------
 
 --
@@ -54,6 +50,8 @@ CREATE TABLE `category` (
 -- Gegevens worden geëxporteerd voor tabel `category`
 --
 
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Menu\'s');
 
 -- --------------------------------------------------------
 
@@ -86,6 +84,17 @@ CREATE TABLE `menu` (
 -- Gegevens worden geëxporteerd voor tabel `menu`
 --
 
+INSERT INTO `menu` (`id`, `name`, `price`, `description`, `imgUrl`) VALUES
+(6, 'Taart menu', '24.50', 'de lekkerste taart menu.', '/assets/img/taartmenu.png'),
+(7, 'Herfst menu', '30.50', 'de lekkerste herfst menu.', '/assets/img/herfstmenu.png'),
+(8, 'pannenkoek menu', '15.90', 'de lekkerste pannenkoek menu.', '/assets/img/pannenkoekmenu.png'),
+(9, 'pasta menu', '20.00', 'de lekkerste pasta menu.', '/assets/img/pastamenu.png'),
+(10, 'Vlees menu', '40.00', 'de lekkerste vlees menu.', '/assets/img/vleesmenu.png'),
+(11, 'Salade menu', '19.70', 'de lekkerste salade menu.', '/assets/img/salademenu.png'),
+(12, 'Sushi menu', '50.65', 'de lekkerste sushi menu.', '/assets/img/sushimenu.png'),
+(13, 'burgermenu menu', '23.70', 'de lekkerste burger menu.', '/assets/img/burgermenu.png'),
+(14, 'Broodjes menu', '19.70', 'de lekkerste broodjes menu.', '/assets/img/broodjesmenu.png');
+
 -- --------------------------------------------------------
 
 --
@@ -100,6 +109,12 @@ CREATE TABLE `menu_recipe` (
 --
 -- Gegevens worden geëxporteerd voor tabel `menu_recipe`
 --
+
+INSERT INTO `menu_recipe` (`menuId`, `recipeId`) VALUES
+(6, 6),
+(6, 12),
+(6, 6),
+(6, 13);
 
 -- --------------------------------------------------------
 
@@ -119,6 +134,10 @@ CREATE TABLE `recipe` (
 -- Gegevens worden geëxporteerd voor tabel `recipe`
 --
 
+INSERT INTO `recipe` (`id`, `name`, `typeRecipeId`, `description`, `imgUrl`) VALUES
+(6, 'Chocolade taart', 6, 'Chocoladetaart is een taart die zich kenmerkt door het feit dat hij gesmolten chocolade of cacaopoeder bevat. ', 'assets/img/chocoladetaart.png'),
+(12, 'Roze taart', 0, 'Lekkere Roze taart.', 'assets\\img\\rozetaart.png'),
+(13, 'Slagroom taart', 0, 'Lekkere Slagroom taart.', 'assets\\img\\slagroomtaart.png');
 
 -- --------------------------------------------------------
 
@@ -265,6 +284,9 @@ CREATE TABLE `user` (
 -- Gegevens worden geëxporteerd voor tabel `user`
 --
 
+INSERT INTO `user` (`id`, `name`, `password`, `phonenumber`, `email`, `street`, `postalCode`, `city`, `vertification`) VALUES
+(3, 'tota kahlous', '$2b$10$ffkRNZaJglzqFrTzzoHXpe/iqziqPQEcUoz8lIZ5eAWHBYVGcVw1y', '0684464962', 'talahasan1999@gmail.com', 'helloworld', '1763kg', 'Alkmaar', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -293,6 +315,9 @@ CREATE TABLE `user_role` (
 -- Gegevens worden geëxporteerd voor tabel `user_role`
 --
 
+INSERT INTO `user_role` (`userId`, `roleId`) VALUES
+(3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -311,6 +336,9 @@ CREATE TABLE `user_vertification_email` (
 -- Gegevens worden geëxporteerd voor tabel `user_vertification_email`
 --
 
+INSERT INTO `user_vertification_email` (`id`, `uniqueString`, `userId`, `expiredAt`, `createdAt`) VALUES
+(1, '$2b$10$/5D1EXti.WVIPGgzDDbmFOJM/j9tmyLKav.Db4lkN/FxOwoYmy3R.', '1', '2022-10-25 07:59:12', '2022-10-25 07:55:36'),
+(2, '$2b$10$SbAs9rYKugycGBeK7yuTZO561WDJpcjBKi9ZE1gPNwKSBJ/Q0Tqu6', '2', '2022-10-25 08:26:47', '2022-10-25 08:23:11');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -443,13 +471,13 @@ ALTER TABLE `user_vertification_email`
 -- AUTO_INCREMENT voor een tabel `addon`
 --
 ALTER TABLE `addon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT voor een tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT voor een tabel `ingredient`
@@ -461,13 +489,13 @@ ALTER TABLE `ingredient`
 -- AUTO_INCREMENT voor een tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT voor een tabel `recipe`
 --
 ALTER TABLE `recipe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT voor een tabel `reservation`
@@ -479,7 +507,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT voor een tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `tables`
@@ -509,13 +537,13 @@ ALTER TABLE `type_recipe`
 -- AUTO_INCREMENT voor een tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT voor een tabel `user_vertification_email`
 --
 ALTER TABLE `user_vertification_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

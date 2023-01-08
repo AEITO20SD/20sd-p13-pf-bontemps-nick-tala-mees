@@ -15,9 +15,9 @@ import { LandingPageComponent } from './modules/landing/pages/landing-page/landi
 import { TableDetailsComponent } from './modules/overview/pages/table-details/table-details.component';
 import { TableOverviewPageComponent } from './modules/overview/pages/table-overview-page/table-overview-page.component';
 import { ReservationComponent } from './modules/reservation/pages/reservation/reservation.component';
+import { ReservationDisplayOneDataComponent } from './modules/reservation/components/reservation-display-one-data/reservation-display-one-data.component';
 
 const routes: Routes = [
-
   // Landing page Route
   { path: '', component: LandingPageComponent },
 
@@ -25,29 +25,54 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'login/reset-password', component: ResetPasswordPageComponent },
   { path: 'login/reset-password-send', component: PasswordEmailPageComponent },
-   { path: 'login/reset-password-new/:id/:uniqueString', component: ConfirmPasswordPageComponent },
+  {
+    path: 'login/reset-password-new/:id/:uniqueString',
+    component: ConfirmPasswordPageComponent,
+  },
 
   // Register page Route
   { path: 'register', component: RegisterPageComponent },
-  { path: 'register/send-verification-email', component: VertificationEmailPageComponent },
+  {
+    path: 'register/send-verification-email',
+    component: VertificationEmailPageComponent,
+  },
   { path: 'register/verified', component: AccountVerifiedPageComponent },
 
   // Error page Route
-  { path: 'error/401', component: UnauthorizedPageComponent},
+  { path: 'error/401', component: UnauthorizedPageComponent },
   { path: 'error/403', component: ForbiddenPageComponent },
   { path: 'error/410', component: ExpiredPageComponent },
 
   // Overview page Route
-  { path: 'restaurant/overview', component: TableOverviewPageComponent, canActivate: [AuthGuard] },
-  { path: 'restaurant/overview/details/:table/:uniqueString/:id', component: TableDetailsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'restaurant/overview',
+    component: TableOverviewPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'restaurant/overview/details/:table/:uniqueString/:id',
+    component: TableDetailsComponent,
+    canActivate: [AuthGuard],
+  },
 
   // Reservation page Route
-    { path: 'reservation/:uniqueString/:id', component: ReservationComponent, canActivate: [AuthGuard] },
+  {
+    path: 'reservation/:uniqueString/:id',
+    component: ReservationComponent,
+    canActivate: [AuthGuard],
+  },
+
+  // Reservation display one page Route
+  {
+    path: 'reservation-one-data/:id',
+    component: ReservationDisplayOneDataComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

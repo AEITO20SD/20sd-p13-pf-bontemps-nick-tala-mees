@@ -1,0 +1,17 @@
+<h3>Taart menu</h3>
+<hr>
+<div class="container">
+  <div class="flex-container">
+    <div class="col-4 mainCard" *ngFor="let data of recipeDatas">
+      <div class="card">
+        <img class="card-img-top" [src]="data.imgUrl" alt="Card image cap" />
+        <div class="card-body">
+          <h4 class="card-title">{{ data.name }}</h4>
+          <p class="card-text">
+            {{ data.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

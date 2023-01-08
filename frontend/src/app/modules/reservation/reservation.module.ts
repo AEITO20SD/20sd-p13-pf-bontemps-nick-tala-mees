@@ -9,8 +9,7 @@ import { ReservationMenuSlideComponent } from './components/reservation-menu-sli
 import { ReservationDataSlideComponent } from './components/reservation-data-slide/reservation-data-slide.component';
 import { ReservationOverviewSlideComponent } from './components/reservation-overview-slide/reservation-overview-slide.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-
-
+import { ReservationDisplayOneDataComponent } from './components/reservation-display-one-data/reservation-display-one-data.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +18,9 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     ReservationMenuSlideComponent,
     ReservationDataSlideComponent,
     ReservationOverviewSlideComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    ReservationDisplayOneDataComponent,
   ],
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    RouterModule,
-    FontAwesomeModule
-  ]
+  imports: [CommonModule, HttpClientModule, RouterModule, FontAwesomeModule],
 })
-export class ReservationModule { }
+export class ReservationModule {}

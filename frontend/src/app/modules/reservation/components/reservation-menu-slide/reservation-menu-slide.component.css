@@ -5,7 +5,6 @@ flex-wrap: wrap ;
 width: 50%;
 justify-content: space-around;
 height: 485px;
-/* border: solid rgb(155, 155, 155) 0.5px; */
 }
 hr{
     border-top: 0.5px;
@@ -19,7 +18,9 @@ hr{
     margin-top: 1.5%;
 
 }
+
 img{
     width: 100%;
-    height: auto;
+    height: 135px;
+    cursor:pointer;
 }

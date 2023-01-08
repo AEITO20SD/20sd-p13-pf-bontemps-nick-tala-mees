@@ -2,25 +2,7 @@
 <hr>
 <div class="flex-container">
     <div class="menu menu1" *ngFor="let menu of menus">
-        <img src="{{menu.imgUrl}}">
+        <img src="{{ menu.imgUrl }}" (click)="btnimage(menu.id)" />
 
     </div>
-
-    <!-- <div class="menu menu2"></div>
-
-    <div class="menu menu3"></div>
-
-    <div class="menu menu4"></div>
-
-    <div class="menu menu5"></div>
-
-    <div class="menu menu6"></div>
-
-    <div class="menu menu7"></div>
-
-    <div class="menu menu8"></div>
-
-    <div class="menu menu9"></div> -->
-
-
 </div>
