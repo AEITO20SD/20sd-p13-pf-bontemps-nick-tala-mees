@@ -10,7 +10,6 @@ import { ReservationDataSlideComponent } from './components/reservation-data-sli
 import { ReservationOverviewSlideComponent } from './components/reservation-overview-slide/reservation-overview-slide.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { FormsModule } from '@angular/forms';
-import { TimePeriodsComponent } from './components/time-periods/time-periods.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { TimePeriodsComponent } from './components/time-periods/time-periods.com
     ReservationDataSlideComponent,
     ReservationOverviewSlideComponent,
     ProgressBarComponent,
-    TimePeriodsComponent
   ],
   imports: [
     CommonModule,

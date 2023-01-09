@@ -1,29 +1,55 @@
-.date-container > * {
+.dateTimePicker-container > * {
     margin-bottom: 20px;
 }
 
-.date-container .amount-object > * {
+.dateTimePicker-container .info-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.dateTimePicker-container .info-wrapper div > * {
     display: inline-block;
 }
 
-.date-container .amount-object > *:first-child {
+.dateTimePicker-container .info-wrapper div > *:not(:last-child) {
     margin-right: 10px;
 }
 
-.date-container .amount-object .error {
+.dateTimePicker-container .info-wrapper .date {
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 100ms ease-in;
+}
+
+.dateTimePicker-container .info-wrapper .date:hover {
+    color: red;
+}
+
+.dateTimePicker-container .info-wrapper div .error {
     display: block;
     margin-top: 10px;
     color: red;
 }
 
-.date-container .date-object section {
+.dateTimePicker-container .date-container section,
+.dateTimePicker-container .timePeriods-container section  {
     display: flex;
     flex-wrap: wrap;
 }
 
-.date-container .date-object .date-object-item {
+.dateTimePicker-container .date-container .date-item {
     font-size: 16px;
     padding: 15px 10px;
     width: calc(100% / 7 - 22px);
     border: 1px solid white;
+    cursor: pointer;
+}
+
+.dateTimePicker-container .timePeriods-container .time-item {
+    font-size: 16px;
+    padding: 20px 10px;
+    width: calc(100% / 5 - 22px);
+    border: 1px solid white;
+    cursor: pointer;
 }

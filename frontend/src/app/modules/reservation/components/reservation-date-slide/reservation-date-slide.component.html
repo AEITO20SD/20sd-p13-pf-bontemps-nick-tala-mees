@@ -1,18 +1,31 @@
 <section>
-    <div class="date-container">
-        <div class="amount-object">
-            <h3>Aantal Personen:</h3>
-            <input type="number" [(ngModel)]="guestAmount" (ngModelChange)="amountChanged($event)">
-            <p *ngIf="errorAmount" class="error">Het aantal personen moet minimaal 4 zijn</p>
+    <div class="dateTimePicker-container">
+        <div class="info-wrapper">
+            <div>
+                <h3>Aantal Personen:</h3>
+                <input type="number" [(ngModel)]="guestAmount" (ngModelChange)="resetSelectedTimeDate($event)">
+                <p *ngIf="guestAmount > 3 && timePeriods.length" class="date" (click)="resetSelectedTimeDate($event)">{{ selectedDate | date: 'dd-MM-y' }}</p>
+                <p *ngIf="guestAmount < 4 && guestAmount != 0" class="error">Het aantal personen moet minimaal 4 zijn</p>
+            </div>
         </div>
-        <div *ngIf="showDate" class="date-object">
+        <div class="date-container" *ngIf="guestAmount > 3 && !timePeriods.length">
             <section>
-                <div *ngFor="let calanderItem of calander; index as i;" class="date-object-item item-{{i}}">
-                    <h3>{{calanderItem.day}}</h3>
-                    <p>{{calanderItem.date}}-{{calanderItem.month}}-{{calanderItem.year}}</p>
+                <div class="date-item" *ngFor="let calanderDate of calander">
+                    <div (click)="selectDate(calanderDate)">
+                        {{ calanderDate.date | date : 'EEEE' }}<br/>
+                        {{ calanderDate.date | date : 'dd-MM-y' }}
+                    </div>
                 </div>
             </section>
         </div>
-        <app-time-periods *ngIf="showTime"></app-time-periods>
-    </div> 
+        <div class="timePeriods-container" *ngIf="guestAmount > 3 && timePeriods.length">
+            <section>
+                <div class="time-item" *ngFor="let timePeriod of timePeriods">
+                    <div (click)="selectTime(timePeriod.dateTime)">
+                        {{ timePeriod.dateTime | date : 'HH:mm' }}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 </section>

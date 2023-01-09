@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
-import { timeStamp } from 'console';
-import { ReservationDateModel } from '../../models/reservationDate.model';
-import { DateModel } from '../../models/date.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ReservationService } from '../../services/reservation.services';
+import { CalanderModel } from '../../models/calander.model';
+import { TimePeriodModel } from '../../models/timePeriod.model';
 
 @Component({
   selector: 'app-reservation-date-slide',
@@ -12,73 +12,25 @@ import { DateModel } from '../../models/date.model';
 export class ReservationDateSlideComponent implements OnInit {
 
   public amountError: string = '';
+  public uniqueString: string = "";
   public guestAmount: number = 0;
-  public errorAmount: boolean = false;
-  public showDate: boolean = true;
-  public showTime: boolean = false;
+  public calander: CalanderModel[] = [];
 
-  public calander: Array<DateModel> = [];
-
-  constructor() { }   
+  constructor(private activatedRoute: ActivatedRoute, private reservationService: ReservationService) { }   
 
   ngOnInit(): void {
-    for (let i = 0; i < 28; i++) {
-      let date: Date = new Date();
-      date.setDate(date.getDate() + i);
-      this.calander[i] = { 
-        day: this.getDayFromNumber(date.getDay()), 
-        date: date.getDate(), 
-        month: date.getMonth(), 
-        year: date.getFullYear() - 2000,
-      };
-    }
+    this.uniqueString = this.activatedRoute.snapshot.params['uniqueString'];
+
+    this.reservationService.getGeneratedCalander().subscribe((response: CalanderModel[]) => {
+      this.calander = response;
+    });
   }
 
-  // Handels what to do when amount changes
-  amountChanged(amount: number): void {
-    if(amount < 4 && amount !== null) {
-      this.errorAmount = true;
-      this.showDate = false;
-    } else if(amount !== null) {
-      this.errorAmount = false;
-      this.showDate = true;
-    } else {
-      this.errorAmount = false;
-      this.showDate = false;
-    }
-    console.log(this.guestAmount);
+  public async selectDate(_date: CalanderModel): Promise<void> {
+    this.selectedDate = _date.date;
+    this.timePeriods = _date.timePeriods;
   }
 
-  // Function to get the Day in string value from number
-  getDayFromNumber(value: number): string {
-    let dayString: string = '';
 
-    switch(value) {
-      case 0:
-        dayString = 'Sun';
-        break;
-      case 1:
-        dayString = 'Mon';
-        break;
-      case 2:
-        dayString = 'Tue';
-        break;
-      case 3:
-        dayString = 'Wed';
-        break;
-      case 4:
-        dayString = 'Thu';
-        break;
-      case 5:
-        dayString = 'Fri';
-        break;
-      case 6:
-        dayString = 'Sat';
-        break;
-      default:
-        dayString = 'Undifiend';
-        break;
-    }
-    return dayString;
   }
 }
