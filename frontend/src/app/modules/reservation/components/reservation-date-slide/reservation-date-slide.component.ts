@@ -15,6 +15,8 @@ export class ReservationDateSlideComponent implements OnInit {
   public uniqueString: string = "";
   public guestAmount: number = 0;
   public calander: CalanderModel[] = [];
+  public selectedDate: Date | undefined = undefined;
+  public timePeriods: TimePeriodModel[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, private reservationService: ReservationService) { }   
 
@@ -31,6 +33,12 @@ export class ReservationDateSlideComponent implements OnInit {
     this.timePeriods = _date.timePeriods;
   }
 
+  public async selectTime(_date: Date): Promise<void> {
+    
+  }
 
+  public async resetSelectedTimeDate(e: any): Promise<void> {
+    this.timePeriods = [];
+    this.selectedDate = undefined;
   }
 }
