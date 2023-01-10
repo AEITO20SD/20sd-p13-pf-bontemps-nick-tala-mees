@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 okt 2022 om 15:13
--- Serverversie: 10.4.14-MariaDB
--- PHP-versie: 7.4.9
+-- Gegenereerd op: 09 jan 2023 om 12:29
+-- Serverversie: 10.4.17-MariaDB
+-- PHP-versie: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,10 +35,6 @@ CREATE TABLE `addon` (
   `color` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Gegevens worden geëxporteerd voor tabel `addon`
---
-
 -- --------------------------------------------------------
 
 --
@@ -49,11 +45,6 @@ CREATE TABLE `category` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `category`
---
-
 
 -- --------------------------------------------------------
 
@@ -82,10 +73,6 @@ CREATE TABLE `menu` (
   `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Gegevens worden geëxporteerd voor tabel `menu`
---
-
 -- --------------------------------------------------------
 
 --
@@ -96,10 +83,6 @@ CREATE TABLE `menu_recipe` (
   `menuId` int(11) NOT NULL,
   `recipeId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `menu_recipe`
---
 
 -- --------------------------------------------------------
 
@@ -114,11 +97,6 @@ CREATE TABLE `recipe` (
   `description` varchar(255) NOT NULL,
   `imgUrl` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `recipe`
---
-
 
 -- --------------------------------------------------------
 
@@ -141,10 +119,11 @@ CREATE TABLE `recipe_ingredient` (
 CREATE TABLE `reservation` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `guestAmount` int(11) NOT NULL,
+  `tableNumber` int(11) NOT NULL DEFAULT 0,
+  `guestAmount` int(11) NOT NULL DEFAULT 0,
   `uniqueString` varchar(255) NOT NULL,
   `dateOfCreation` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `reservationDate` datetime NOT NULL
+  `reservationDate` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -261,10 +240,6 @@ CREATE TABLE `user` (
   `vertification` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Gegevens worden geëxporteerd voor tabel `user`
---
-
 -- --------------------------------------------------------
 
 --
@@ -289,10 +264,6 @@ CREATE TABLE `user_role` (
   `roleId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Gegevens worden geëxporteerd voor tabel `user_role`
---
-
 -- --------------------------------------------------------
 
 --
@@ -306,11 +277,6 @@ CREATE TABLE `user_vertification_email` (
   `expiredAt` timestamp NULL DEFAULT NULL,
   `createdAt` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Gegevens worden geëxporteerd voor tabel `user_vertification_email`
---
-
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -443,13 +409,13 @@ ALTER TABLE `user_vertification_email`
 -- AUTO_INCREMENT voor een tabel `addon`
 --
 ALTER TABLE `addon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `ingredient`
@@ -461,13 +427,13 @@ ALTER TABLE `ingredient`
 -- AUTO_INCREMENT voor een tabel `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `recipe`
 --
 ALTER TABLE `recipe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT voor een tabel `reservation`
@@ -479,7 +445,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT voor een tabel `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `tables`
@@ -546,6 +512,12 @@ ALTER TABLE `menu_recipe`
 ALTER TABLE `recipe_ingredient`
   ADD CONSTRAINT `ingredientId-recipe_ingredient` FOREIGN KEY (`ingredientId`) REFERENCES `ingredient` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `recipeId-recipe_ingredient` FOREIGN KEY (`recipeId`) REFERENCES `recipe` (`id`) ON UPDATE CASCADE;
+
+--
+-- Beperkingen voor tabel `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `userId-reservation` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
 -- Beperkingen voor tabel `reservation_addon`
