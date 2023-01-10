@@ -40,5 +40,41 @@ export class ReservationDateSlideComponent implements OnInit {
   public async resetSelectedTimeDate(e: any): Promise<void> {
     this.timePeriods = [];
     this.selectedDate = undefined;
+
+    // add given people to calander
+    // loop through days
+    for (let i = 0; i < this.calander.length; i++) {
+
+      // Counter for full timePeriods
+      let counter: number = 0;
+      
+      // loop through time periods
+      for (let j = 0; j < this.calander[i].timePeriods.length; j++) {
+        
+        // Check if the timeperiod is full
+        if(this.calander[i].timePeriods[j].peopleCounter + this.guestAmount > 50) {
+
+          // Sets the timePeriod as unavailable
+          this.calander[i].timePeriods[j].availability = 'unavailable';
+
+          // add to counter
+          counter++;
+        } else {
+
+          // Sets the timePeriod as available
+          this.calander[i].timePeriods[j].availability = 'available';
+        }
+      }
+
+      // Check if all timeperiods are full
+      if (counter === 25) {
+
+        // Sets the day as unavailable
+        this.calander[i].availability = 'unavailable';
+      } else {
+        // Sets the day as available
+        this.calander[i].availability = 'available';
+      }
+    }
   }
 }

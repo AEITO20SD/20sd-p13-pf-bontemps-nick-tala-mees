@@ -10,8 +10,11 @@
         </div>
         <div class="date-container" *ngIf="guestAmount > 3 && !timePeriods.length">
             <section>
-                <div class="date-item {{calanderDate.availability}}" *ngFor="let calanderDate of calander">
-                    <div (click)="selectDate(calanderDate)">
+                <div 
+                    class="date-item {{calanderDate.availability}}" 
+                    (click)="selectDate(calanderDate)" 
+                    *ngFor="let calanderDate of calander">
+                    <div>
                         {{ calanderDate.date | date : 'EEEE' }}<br/>
                         {{ calanderDate.date | date : 'dd-MM-y' }}
                     </div>
@@ -20,8 +23,11 @@
         </div>
         <div class="timePeriods-container" *ngIf="guestAmount > 3 && timePeriods.length">
             <section>
-                <div class="time-item {{timePeriod.availability}}" *ngFor="let timePeriod of timePeriods">
-                    <div (click)="selectTime(timePeriod.dateTime)">
+                <div 
+                    class="time-item {{timePeriod.availability}}" 
+                    (click)="selectTime(timePeriod.dateTime)" 
+                    *ngFor="let timePeriod of timePeriods">
+                    <div>
                         {{ timePeriod.dateTime | date : 'HH:mm' }}
                     </div>
                 </div>
