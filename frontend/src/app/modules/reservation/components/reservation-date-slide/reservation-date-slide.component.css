@@ -48,8 +48,8 @@
 
 .dateTimePicker-container .timePeriods-container .time-item {
     font-size: 16px;
-    padding: 20px 10px;
-    width: calc(100% / 5 - 22px);
+    padding: 40px 10px;
+    width: calc(100% / 7 - 22px);
     border: 1px solid white;
     cursor: pointer;
 }

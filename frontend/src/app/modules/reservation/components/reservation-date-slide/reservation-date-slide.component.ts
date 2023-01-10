@@ -30,7 +30,7 @@ export class ReservationDateSlideComponent implements OnInit {
 
   public async selectDate(_date: CalanderModel): Promise<void> {
     this.selectedDate = _date.date;
-    this.timePeriods = _date.timePeriods;
+    this.timePeriods = _date.timePeriods.slice(0, -4);
   }
 
   public async selectTime(_date: Date): Promise<void> {
