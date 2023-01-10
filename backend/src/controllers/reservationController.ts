@@ -1,3 +1,4 @@
+import { count } from "console";
 import e from "express";
 
 const connection = require('../helpers/connect');
@@ -22,31 +23,38 @@ exports.getCalander = (req, res) => {
     const result = [
         {
             id: 1,
-            guestAmount: 4,
+            guestAmount: 51,
             uniqueString: '123456789',
             dateOfCreation: '2021-01-01',
-            dateOfReservation: '2022-12-28T16:15:00',
+            dateOfReservation: '2023-01-14 16:00:00',
         },
         {
             id: 2,
-            guestAmount: 6,
+            guestAmount: 51,
             uniqueString: '123456789',
             dateOfCreation: '2021-01-01',
-            dateOfReservation: '2022-12-28 16:45:00',
+            dateOfReservation: '2023-01-14 17:15:00',
         },
         {
             id: 3,
-            guestAmount: 8,
+            guestAmount: 51,
             uniqueString: '123456789',
             dateOfCreation: '2021-01-01',
-            dateOfReservation: '2022-12-28 20:15:00',
+            dateOfReservation: '2023-01-14 18:30:00',
         },
         {
             id: 4,
-            guestAmount: 5,
+            guestAmount: 51,
             uniqueString: '123456789',
             dateOfCreation: '2021-01-01',
-            dateOfReservation: '2022-12-28 21:00:00',
+            dateOfReservation: '2023-01-14 19:45:00',
+        },
+        {
+            id: 5,
+            guestAmount: 51,
+            uniqueString: '123456789',
+            dateOfCreation: '2021-01-01',
+            dateOfReservation: '2023-01-14 21:00:00',
         },
     ];
 
@@ -90,10 +98,42 @@ exports.getCalander = (req, res) => {
 
                             // Filling in the counter
                             calander[j].timePeriods[index].peopleCounter += result[i].guestAmount;
+
+                            // Check if the timeperiod is full
+                            if (calander[j].timePeriods[index].peopleCounter > 50) {
+
+                                // Sets the timePeriod as unavailable
+                                calander[j].timePeriods[index].availability = 'unavailable';
+                            }
                         }
                     }
                 }
             }
+        }
+    }
+
+    // Loop through calander dates
+    for (let i = 0; i < calander.length; i++) {
+
+        // Counter for full timePeriods
+        let counter: number = 0;
+
+        // Loop through calander time
+        for (let j = 0; j < calander[i].timePeriods.length; j++) {
+
+            // Check if timeperiod is unavailable
+            if (calander[i].timePeriods[j].availability == 'unavailable') {
+
+                // add to counter
+                counter++;
+            }
+        }
+
+        // Check if all timeperiods are full
+        if (counter === 25) {
+
+            // Sets the day as unavailable
+            calander[i].availability = 'unavailable';
         }
     }
 

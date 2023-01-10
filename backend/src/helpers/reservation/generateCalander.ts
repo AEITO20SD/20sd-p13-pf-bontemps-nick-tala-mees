@@ -9,6 +9,7 @@ exports.generateCalander = (req) => {
         date.setHours(0,0,0,0);
         calander[i] = {
             date: date,
+            availability: 'available',
             timePeriods: [],
         };
         for (let j = 0; j < 25; j++) {
@@ -21,6 +22,7 @@ exports.generateCalander = (req) => {
             // console.log(dateTime);
             calander[i].timePeriods[j] = {
                 dateTime: dateTime,
+                availability: 'available',
                 peopleCounter: 0,
             }
         };

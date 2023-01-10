@@ -53,3 +53,12 @@
     border: 1px solid white;
     cursor: pointer;
 }
+
+.available {
+    background-color: green;
+}
+
+.unavailable {
+    background-color: red;
+    pointer-events: none;
+}
