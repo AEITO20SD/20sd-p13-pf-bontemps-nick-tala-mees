@@ -1,3 +1,5 @@
+import e from "express";
+
 const connection = require('../helpers/connect');
 const generateCalander = require('../helpers/reservation/generateCalander');
 
@@ -96,4 +98,20 @@ exports.getCalander = (req, res) => {
     }
 
     res.send(calander);
+}
+
+exports.insertDate = (req, res) => {
+
+    // Request body data decalration
+    const { guestAmount, uniqueString, reservationDate } = req.body
+
+    // Update the reservation with guestAmount and reservationDate
+    connection.query('UPDATE reservation SET guestAmount = ?, reservationDate = ? WHERE uniqueString = ?', 
+    [guestAmount, reservationDate, uniqueString], function(error, results, fields) {
+        if(error) {
+            res.status(500);
+        } else {
+            res.status(200);
+        }   
+    });           
 }

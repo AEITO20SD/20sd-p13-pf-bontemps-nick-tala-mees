@@ -34,7 +34,7 @@ export class ReservationDateSlideComponent implements OnInit {
   }
 
   public async selectTime(_date: Date): Promise<void> {
-    
+    await this.reservationService.updateReservation(this.guestAmount, this.uniqueString, _date,);
   }
 
   public async resetSelectedTimeDate(e: any): Promise<void> {
