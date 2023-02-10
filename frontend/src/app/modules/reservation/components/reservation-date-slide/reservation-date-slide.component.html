@@ -1,1 +1,37 @@
-<p>reservation-date-slide works!</p>
+<section>
+    <div class="dateTimePicker-container">
+        <div class="info-wrapper">
+            <div>
+                <h3>Aantal Personen:</h3>
+                <input type="number" [(ngModel)]="guestAmount" (ngModelChange)="resetSelectedTimeDate($event)">
+                <p *ngIf="guestAmount > 3 && timePeriods.length" class="date" (click)="resetSelectedTimeDate($event)">{{ selectedDate | date: 'dd-MM-y' }}</p>
+                <p *ngIf="guestAmount < 4 && guestAmount != 0" class="error">Het aantal personen moet minimaal 4 zijn</p>
+            </div>
+        </div>
+        <div class="date-container" *ngIf="guestAmount > 3 && !timePeriods.length">
+            <section>
+                <div 
+                    class="date-item {{calanderDate.availability}}" 
+                    (click)="selectDate(calanderDate)" 
+                    *ngFor="let calanderDate of calander">
+                    <div>
+                        {{ calanderDate.date | date : 'EEEE' }}<br/>
+                        {{ calanderDate.date | date : 'dd-MM-y' }}
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="timePeriods-container" *ngIf="guestAmount > 3 && timePeriods.length">
+            <section>
+                <div 
+                    class="time-item {{timePeriod.availability}}" 
+                    (click)="selectTime(timePeriod.dateTime)" 
+                    *ngFor="let timePeriod of timePeriods">
+                    <div>
+                        {{ timePeriod.dateTime | date : 'HH:mm' }}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
